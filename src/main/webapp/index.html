@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Ludum Dare Search</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="css/bootstrap-responsive.css" rel="stylesheet">
+</head>
+<body>
+	<script src="http://code.jquery.com/jquery.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/bootstrap-button.js"></script>
+	<script src="js/jquery.address.js"></script>
+	<script src="js/jquery.deserialize.min.js"></script>
+	<script src="js/jquery.endless-scroll.js"></script>
+
+	<div class="navbar navbar-inverse">
+		<div class="navbar-inner">
+			<a class="brand" href="#">LD48 Search</a>
+			<ul class="nav">
+				<li><a href="http://github.com/badlogic/ldstats">Source</a></li>
+				<li><a href="http://github.com/badlogic/ldstats">API</a></li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="container">
+		<h1>Ludum Dare Search</h1>
+		<p>
+			This site allows you to search Ludum Dare entries. That way you can
+			for example just display web based games by filtering the link type.<br />
+			<br /> Specify query terms for link types (e.g. web, desktop),
+			users, and keywords in the entry descriptions. Separate terms by
+			comma.
+		</p>
+		<form>
+			<fieldset>
+				<div class="control-group">
+				<label>Ludum Dare #</label>
+				<select name="qld">
+				</select>
+				<label>Keywords</label> 
+				<input name="qtext" type="text" placeholder="gdx,...">
+				<label>Platforms</label> 
+				<input name="qlink" type="text" placeholder="web,desktop..."> 
+				<label>Users</label> 
+				<input name="quser" type="text" placeholder="badlogic,..."><br/>
+				<label>Type</label>
+				<select name="qtype">
+				  <option value="">All</option>
+				  <option value="compo">48h Compo Entries</option>
+				  <option value="open">Jam Entries</option>
+				</select><br/>
+				<label>Sort By</label>
+				<select name="qsort">
+				  <option value="">None</option>
+				  <option value="comment">Comment Count</option>
+				  <option value="title">Title</option>
+				</select><br/>
+				<button id="search" type="submit" class="btn">Search</button>
+				</div>
+			</fieldset>
+		</form>
+		<div id="results">
+		</div>
+	</div>
+
+	<script>
+	var PAGE_SIZE = 25;
+	var qstart = 0;
+	var initialized = false;
+	var searching = false;
+	
+	$(document).ready(function() {
+		// set the submit callback, reinitializes start and lenght
+    	$("form").submit(function() {
+    		qstart = 0;
+    		searching = false;
+    		$.address.value($("form").serialize());
+    		return false;
+    	});
+    	
+		// fetch the ludum dare names from the service
+		// this will perform a search if the address contains
+		// query parameters, as the change event below won't be
+		// invoked
+    	$.ajax({ "url": "rest/ludumDares", "success": function(data) {
+			var ld = $('[name="qld"]');
+			for(var i = 0; i < data.length; i++) {
+				ld.append($(document.createElement("option")).val(data[i]).text("LD" + data[i]));
+			}
+			if($.address.path() != '/') {
+				console.log("external url change: " + $.address.path());
+				$("form").deserialize($.address.path().substring(1), function() {
+					initialized = true;
+					search();
+				});
+			} else {
+				initialized = true;
+			}
+		}});
+    	
+		// invoked when the address changes due to the user
+		// modifying any search parameter and hitting submit
+		$.address.change(function(event) {
+			if(event.path != '/' && initialized) {
+				console.log("internal change: " + event.path);
+				$("form").deserialize(event.path.substring(1), search);
+			}
+		});
+		
+		// poor man's infinite scroll
+		$(window).scroll(function() {
+			if($(window).scrollTop() > $(document).height() - 200 - $(window).height()) {
+				if($.address.path() != "/") {
+					if(!searching) {
+						qstart += PAGE_SIZE;
+						search();
+					}
+				}
+			}
+		});
+		
+    });
+	
+	function search() {
+		// if we are already searching bail out, guard against excessive scroll
+		if(searching) {
+			return;
+		}
+		// first result page? tell user we are searching
+		if(qstart == 0) $("#results").text("Searching...");
+		searching = true;
+    	$.ajax({ "url": "rest/query", 
+			 "data": $("form").serialize() + "&qstart=" + qstart + "&qlength=" + PAGE_SIZE, 
+			  "success": function(data) {
+				// no more results
+				if(data.total == 0) {
+					if(qstart == 0) {
+						var results = $("#results");
+						results.empty();
+						results.append($(document.createElement("h3")).text(data.total + " Results"));
+					}
+					searching = true;
+					return;
+				}
+				console.log("adding results");
+				addResults(data);
+				searching = false;
+			  }
+		});
+    }
+	
+	function addResults(data) {
+		var results = $("#results");
+		if(qstart == 0) {
+			results.empty();
+			results.append($(document.createElement("h3")).text(data.total + " Results"));
+		}
+		var entries = data.entries;
+		for(var i = 0; i < entries.length; i++) {
+			var div = buildSearchResult(entries[i]);
+			div.css("background-color", "whitesmoke");
+			results.append(div);
+		}
+	}
+	
+	function buildSearchResult(entry) {
+		div = $(document.createElement("div"));
+		div.append($(document.createElement("h3")).html('<a target="_blank" href="http://www.ludumdare.com/compo/ludum-dare-' + $('[name="qld"]').val() + '/?action=preview&uid=' + entry.uid + '">' + entry.title + "</a>"));
+		div.append($(document.createElement("h5")).text(entry.user));
+		var links = $(document.createElement("h4"));
+		for(var key in entry.links) {
+			var link = $(document.createElement("a"));
+			link.text(key);
+			link.attr("href", entry.links[key]);
+			link.attr("target", "_blank");
+			links.append(link);
+			links.append(" | ");
+		}
+		div.append(links);
+		if(entry.screenshotUrls && entry.screenshotUrls.length > 0) {
+			var img = $(document.createElement("img"));
+			img.attr("src", entry.screenshotUrls[0]);
+			img.css("max-width", "480px");
+			div.append(document.createElement("br"));
+			div.append(img);
+		}
+		div.append($(document.createElement("p")).html(entry.text));
+		div.append($(document.createElement("div")).html('<a target="_blank" href="http://www.ludumdare.com/compo/ludum-dare-' + $('[name="qld"]').val() + '/?action=preview&uid=' + entry.uid + '">' + entry.comments.length + " Comments</a>"));
+		return div;
+	}
+	</script>
+</body>
+</html>
