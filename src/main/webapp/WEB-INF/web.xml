@@ -6,7 +6,7 @@
     <servlet-class>com.sun.jersey.spi.container.servlet.ServletContainer</servlet-class>
     <init-param>
       <param-name>com.sun.jersey.config.property.packages</param-name>
-      <param-value>com.badlogic.ldstats.service</param-value>
+      <param-value>com.badlogicgames.libgdx.site</param-value>
     </init-param>
     <init-param>
       <param-name>com.sun.jersey.api.json.POJOMappingFeature</param-name>
@@ -20,6 +20,6 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>LD Statistics Service</servlet-name>
-    <url-pattern>/rest/*</url-pattern>
+    <url-pattern>/service/*</url-pattern>
   </servlet-mapping>
 </web-app>
