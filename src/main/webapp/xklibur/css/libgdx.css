@@ -291,3 +291,24 @@ img{
 	max-width:100%;
 	vertical-align:middle;
 }
+
+
+/* "responsive" design media queries */
+@media (max-width: 1290px) {
+	img#logo{
+		float:none;
+	}
+	ul.menu{
+		padding-left:0px;
+	}
+}
+@media (max-width: 950px) {
+	ul.menu li a{
+		background:none !important;
+		padding-top:0px;
+		height:auto;
+		width:auto;
+		padding-left:5px;
+		padding-right:5px;
+	}
+}
