@@ -100,9 +100,10 @@ div#slogan{
 div#banner{
 	background:#000 url(../img/bannerstuff.png);
 	height:500px;
+	padding-top:120px;
+	text-align:center;
 }
 div#calltoaction{
-	position:absolute;
 	width:400px;
 	background:#333;
 /*	border:2px solid #353535;*/
@@ -110,12 +111,11 @@ div#calltoaction{
 	border:1px solid #555;
 	color:#fff;
 	text-align:center;
-    top: 150px;
-    left:50px;
     padding:30px;
     border-radius:10px;
-    z-index:2;
     font-size:25px;
+    margin-top:70px;
+    display:inline-block;
 }
 div#calltoaction a{
 	display:inline-block;
@@ -137,6 +137,18 @@ div#calltoaction a:hover{
 	margin-right:-2px;
 	color:#ddd;
 	box-shadow: 2px 2px 5px #222;
+}
+
+div#tabletborder{
+	background:#999;
+	padding:2px;
+	border-radius:10px;
+	display:inline-block;
+}
+div#tabletinner{
+	background:#000;
+	border-radius:8px;
+	padding:30px;
 }
 
 div#highlights{
