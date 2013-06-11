@@ -103,16 +103,19 @@ div#banner{
 }
 div#calltoaction{
 	position:absolute;
-	width:450px;
+	width:400px;
 	background:#333;
-	border:2px solid #000;
+/*	border:2px solid #353535;*/
+	box-shadow: 0px 0px 10px #000;
+	border:1px solid #555;
 	color:#fff;
 	text-align:center;
-    top: 200px;
+    top: 150px;
     left:50px;
-    padding:40px;
+    padding:30px;
     border-radius:10px;
     z-index:2;
+    font-size:25px;
 }
 div#calltoaction a{
 	display:inline-block;
@@ -121,12 +124,14 @@ div#calltoaction a{
 	background:#e44d3c;
 	padding:8px;
 	text-decoration:none;
-	margin-top:10px;
+	margin-top:20px;
 	box-shadow: 4px 4px 5px #222;
 	border-radius:5px;
+	font-size:18px;
+	font-weight:lighter;
 }
 div#calltoaction a:hover{
-	margin-top:12px;
+	margin-top:22px;
 	margin-bottom:-2px;
 	margin-left:2px;
 	margin-right:-2px;
@@ -137,17 +142,40 @@ div#calltoaction a:hover{
 div#highlights{
 	background:#343434;
 	color:#fff;
+	padding-top:25px;
+	padding-bottom:40px;
 }
 div#highlights h2{
 	color:#fff;
 }
 div#highlights div div div{
 	padding:20px;
-	background: transparent url(../img/highlight.png) top left no-repeat;
+	background-repeat:no-repeat;
+	background-position:0px 7px;
 	margin-top:15px;
 	padding-top:0px;
 	padding-left:50px;
 }
+
+div#hl_easy{
+	background-image:url(../img/hl_easy.png);
+}
+div#hl_open{
+	background-image:url(../img/hl_open.png);
+}
+div#hl_crossplatform{
+	background-image:url(../img/hl_crossplatform.png);
+}
+div#hl_modular{
+	background-image:url(../img/hl_modular.png);
+}
+div#hl_fast{
+	background-image:url(../img/hl_fast.png);
+}
+div#hl_community{
+	background-image:url(../img/hl_community.png);
+}
+
 
 
 div#topgameshead{
@@ -161,18 +189,32 @@ div#topgameshead h1{
 }
 
 div#topgames{
-	padding:10px;
+	padding-top:30px;
+	padding-bottom:30px;
 }
-div#topgames div div div{
-   border-radius: 8px;
-   box-shadow: 0 0 4px #aaa;
-   border:1px #aaa solid;
-   	padding: 10px;
+div#topgames a{
+	display:block;
+	border-radius: 8px;
+	box-shadow: 0 0 4px #aaa;
+	border:1px #aaa solid;
+   	padding: 7px;
+	margin:5px;
 	margin-bottom: 15px;
 	margin-top: 15px;
 	text-align:center;
+	color:#444;
+	font-size:14px;
 }
-
+div#topgames a:hover{
+	text-decoration:none;
+	box-shadow: 0 0 4px #e44d3c;
+	border:1px solid #e44d3c;
+}
+div#topgames span{ /*title of the game*/
+	display:block;
+	font-size:17px;
+	color:#222;
+}
 
 .clear{
 	clear:both;
@@ -185,6 +227,13 @@ div#topgames div div div{
 	font-size:15px;
 	padding:20px;
 	margin-top:15px;
+}
+
+
+/* news feed */
+
+#feed > div{
+	margin-top:20px;
 }
 
 
@@ -230,4 +279,8 @@ pre{
 	border:1px solid #ddd;
 	padding:9px;
 	border-radius:5px;
+}
+img{
+	max-width:100%;
+	vertical-align:middle;
 }
