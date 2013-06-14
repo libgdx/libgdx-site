@@ -43,12 +43,7 @@
 		
 }
 
-.grid {
-	margin-left: -3%;
-	max-width: 105%;
-}
-
-.unit,.one-of.two,.one-of-three,.one-of-four{
+.unit,.one-of-one,.one-of-two,.one-of-three,.one-of-four{
 	display: inline-block;
 	*display: inline;
 	*zoom: 1;
@@ -108,7 +103,8 @@ h1, .alpha, h2, .beta {
 h1, .alpha {
 	font-size: 60px;
 	font-size: 3rem;
-	font-weight: 700;
+/*	font-weight: 700;*/
+	font-weight:normal;
 	line-height: 1;
 }
 

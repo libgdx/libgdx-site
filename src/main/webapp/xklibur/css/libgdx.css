@@ -101,7 +101,7 @@ div#slogan{
 div#banner{
 	background:#000 url(../img/bannerstuff.png);
 	height:500px;
-	padding-top:120px;
+	padding-top:50px;
 	text-align:center;
 }
 div#calltoaction{
@@ -115,7 +115,6 @@ div#calltoaction{
     padding:30px;
     border-radius:10px;
     font-size:25px;
-    margin-top:70px;
     display:inline-block;
     max-width:100%;
 }
@@ -166,7 +165,7 @@ div#highlights h2{
 div#highlights h1{
 	color:#ddd;
 }
-div#highlights div div div{
+div#highlights div div{
 	padding:20px;
 	background-repeat:no-repeat;
 	background-position:0px 7px;
@@ -270,8 +269,11 @@ a:hover{
 	text-decoration:underline;
 }
 
-ul{
-	padding-left:1.5em;
+ul,ol{
+	padding-left:2em;
+}
+li{
+	padding-left:5px;
 }
 h1,h2{
 	color:#333;
@@ -334,3 +336,21 @@ img{
 		width: 46.05%; 
 	}
 }
+
+
+
+
+
+
+
+/* TODO center stuff */
+
+#outer {height: 450px; overflow: hidden; position: relative;width:100%;}
+#outer[id] {display: table; position: static;}
+
+#middle {position: absolute; top: 50%;width: 100%;} /* for quirk explorer only*/
+#middle[id] {display: table-cell; vertical-align: middle;  position: static;}
+
+#inner {position: relative; top: -50%} /* for quirk explorer only */
+/* optional: #inner[id] {position: static;} */
+
