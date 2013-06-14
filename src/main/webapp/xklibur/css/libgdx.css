@@ -7,8 +7,9 @@ html,body{
   	padding-bottom: 15px;
     padding-top: 15px;
 }
-.bottombar{
-	border-bottom:10px #e84c3d solid;
+.graybar{
+/*	border-bottom:10px #e84c3d solid;*/
+	border-top:10px #343434 solid;
 	margin-bottom:15px;
 }
 
@@ -116,6 +117,7 @@ div#calltoaction{
     font-size:25px;
     margin-top:70px;
     display:inline-block;
+    max-width:100%;
 }
 div#calltoaction a{
 	display:inline-block;
@@ -144,6 +146,7 @@ div#tabletborder{
 	padding:2px;
 	border-radius:10px;
 	display:inline-block;
+    max-width:100%;
 }
 div#tabletinner{
 	background:#000;
@@ -322,5 +325,12 @@ img{
 		width:auto;
 		padding-left:5px;
 		padding-right:5px;
+	}
+	
+	/* TODO
+	   gute Werte für Breiten der verschiedenen Boxen bei verschiedenen Größen finden
+	*/
+	.one-of-four{
+		width: 46.05%; 
 	}
 }
