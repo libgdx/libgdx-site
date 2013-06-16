@@ -337,21 +337,46 @@ img{
 	}
 }
 
-#button {
+.framed {
+  display: block;
+  border-radius: 8px;
+  box-shadow: 0 0 4px #aaa;
+  border: 1px #aaa solid;
+  padding: 7px;
+  margin: 5px;
+  margin-bottom: 15px;
+  margin-top: 15px;
+  text-align: center;
+  color: #444;
+  font-size: 14px;
+}
+
+.button {
   display:inline-block;
   color:#fff;
   font-weight:bold;
   background:#e44d3c;
   padding:8px;
   text-decoration:none;
-  margin-top:20px;
   box-shadow: 4px 4px 5px #222;
   border-radius:5px;
   font-size:18px;
   font-weight:lighter;
+  margin-bottom:15px;
+  margin-right:5px;
 }
-#button hover{
-  margin-top:22px;
+.button a:hover{
+  display:inline-block;
+  font-weight:bold;
+  background:#e44d3c;
+  padding:8px;
+  text-decoration:none;
+  box-shadow: 4px 4px 5px #222;
+  border-radius:5px;
+  font-size:18px;
+  font-weight:lighter;
+
+  margin-top:2px;
   margin-bottom:-2px;
   margin-left:2px;
   margin-right:-2px;

@@ -1,10 +1,9 @@
+<div class="graybar"></div>
 <div class="container">
 	<h2 id="title"></h2>
 	<div id="links"></div>
-	<div class="container" id="gallery">
-		<div class="unit one-of-one">
-			<img id="mainimage"/>
-		</div>
+	<div>
+		<img class="framed" id="mainimage"/>
 	</div>
 	<div id="description"></div>
 </div>
@@ -15,13 +14,14 @@ function loadGame(game) {
 		$("#title").html("This is not the game you are looking for");
 		return;
 	} else {
-		$("#title").html(game.title + " by <span>" + game.creator + "</span>");
+		$("#title").html(game.title + " by <span>" + game.creator + '</span>&nbsp;<a style="font-size: 16px" href="editentry.html?id=' + game.id + '">edit</a>');
 		for(var i = 0; i < game.downloadUrls.length; i++) {
 			var link = $(document.createElement("a")).addClass("button");
 			link.attr("href", game.downloadUrls[i].url);
 			link.html(game.downloadUrls[i].name);
 			$("#links").append(link);
 		}
+		
 		$("#mainimage").attr("src", game.imageUrls[0]);
 		$("#description").html(game.description);
 	}
