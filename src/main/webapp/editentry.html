@@ -5,7 +5,7 @@
 <link href="css/toast.css" rel="stylesheet"/>
 <link rel="stylesheet" href="css/libgdx.css" />
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
-<script src="js/testdata.js"></script>
+<script src="js/utils.js"></script>
 </head>
 <body>
 <div id="header">
@@ -22,7 +22,122 @@
 	<div class="clear"></div>
 	</div>
 </div>
-<div id="footer">
+<div class="graybar"></div>
+<div class="container">
+<h2 id="edit">New Entry</h2>
+<p>Simply fill out the form below. All fields are mandatory. Once submitted, you will see a token that you can to modify your entry in the
+future. If you modify your entry, make sure to supply the token you received when you created the entry.</p>
+<form class="contactform">
+	<ul>
+		<li><label for="title">Title</label><input type="text" id="title" name="title" placeholder="Your game's name"  /></li>
+		<li><label for="creator">Creator</label><input type="text" id="creator" name="creator" placeholder="Name of the game's creator"  />
+		<li><label>Description</label><textarea id="description"  >Describe your game, no markup allowed</textarea></li>
+		<li>
+			<label for="linkname">Link</label>
+			<input type="text" id="linkname" name="linkname" placeholder="Name of the link, e.g. Play Store, Github, ..."  />
+			<input type="url" id="linkurl" name="linkurl" placeholder="URL"  />
+		</li>
+		<li>
+			<label for="imageurl">Image</label>
+			<input type="url" id="imageurl" name="imageurl" placeholder="URL"  />
+			<img id="preview"/>
+		</li>
+		<li><div id="tokendiv"></div></li>
+		<li><div id="recaptcha"></div></li>
+		<li><button id="submit" type="submit">Submit</button></li>
+	</ul>
+</form>
+<div id="result"></div>
+</div>
+<script type="text/javascript" src="http://www.google.com/recaptcha/api/js/recaptcha_ajax.js"></script>
+
+<script>
+var isCreate = true;
+
+function loadGame(game) {
+	isCreate = false;
+	if(!game) return;
+	$("#tokendiv").html('<label for="token">Token</label><input id="token" name="token"/>');
+	$("#title").attr("value", game.title);
+	$("#creator").attr("value", game.creator);
+	$("#description").html(game.description);
+	$("#linkname").attr("value", game.downloadUrls[0].name);
+	$("#linkurl").attr("value", game.downloadUrls[0].url);
+	$("#imageurl").attr("value", game.imageUrls[0]);
+	$("#preview").attr("src", game.imageUrls[0]);
+	$("#edit").html("Edit Entry");
+}
+
+function saveGame() {
+	var challenge = Recaptcha.get_challenge();
+	var response = Recaptcha.get_response();
+	var url = "http://" + window.location.host.split(":")[0] + ":7777/libgdx-site/service/";
+	if(isCreate) url += "create";
+	else url += "update";
+	
+	game = {
+		title: $("#title").val(),
+		creator: $("#creator").val(),
+		description: $("#desription").val(),
+		imageUrls: [$("#imageurl").val()],
+		downloadUrls: [{name: $("#linkname").val(), url: $("#linkurl").val()}]
+	}
+	
+	$.ajax({
+		type: "POST",
+		url: url,
+		contentType: "application/json",
+		data: JSON.stringify({ 
+			challenge: challenge,
+			response: response,
+			token: $("#token").val(),
+			game: game,
+		}), 
+		success: processResponse,
+		error: function() {
+			$("#result").html("<h2>Sorry, server error<h2>");
+		}
+	});
+}
+
+function processResponse(data) {
+	alert(data.success);
+}
+
+$(document).ready(function() {
+	var publicKey = "6LcY7OISAAAAAEWzUbJzDJXuy0I1UfpEdDuErm-g";
+	Recaptcha.create(
+		publicKey,
+		"recaptcha",
+		{
+		  theme: "red",
+		  callback: Recaptcha.focus_response_field
+		}
+	);
+	
+	var gameId = getParameterByName("id");
+	if(gameId) {
+		$.ajax({
+			url: "http://" + window.location.host.split(":")[0] + ":7777/libgdx-site/service/game?id=" + gameId,
+			success: loadGame,
+			error: function() {
+				isCreate = true;
+			}
+		});
+	}
+	
+	$("#imageurl").change(function() {
+		var url = $("#imageurl").val();
+		console.log(url);
+		if(url) $("#preview").attr("src", url);
+	});
+	
+	$("form").submit(function() {
+		saveGame();
+		return false;
+	});
+});
+</script><div id="footer">
 	<div class="container">
 		<div class="grid">
 			This page is copyright &copy; 2013 Mario Zechner; All other trademarks, logos and copyrights are the property of their respective owners. <span style="float:right">Design by XKlibur</div>

@@ -65,22 +65,24 @@ public class GameService {
 	@POST
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("create")
-	public Result create(Game game) {
-		String token = db.create(game);
+	public Result create(GameRequest request) {
+		String token = db.create(request.game);
 		return new Result(true, token);
 	}
 	
 	@POST
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("update")
-	public Result update(String token, Game game) {
-		return new Result(db.update(token, game), "Updated");
+	public Result update(GameRequest request) {
+		return new Result(db.update(request.token, request.game), "Updated");
 	}
 	
 	@POST
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("delete")
-	public Result update(String token, String gameId) {
-		return new Result(db.delete(token, gameId), "Deleted");
+	public Result delete(GameRequest request) {
+		// FIXME
+		return null;
+//		return new Result(db.delete(request.token, request.game), "Deleted");
 	}
 }

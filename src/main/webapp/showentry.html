@@ -5,7 +5,7 @@
 <link href="css/toast.css" rel="stylesheet"/>
 <link rel="stylesheet" href="css/libgdx.css" />
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
-<script src="js/testdata.js"></script>
+<script src="js/utils.js"></script>
 </head>
 <body>
 <div id="header">
@@ -51,17 +51,10 @@ function loadGame(game) {
 	}
 }
 
-function getParameterByName(name) {
-    name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
-    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
-        results = regex.exec(location.search);
-    return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
-}
-
 $(document).ready(function() {
 	var gameId = getParameterByName("id");
 	$.ajax({
-		url: "http://" + window.location.host.split(":")[0] + ":8080/libgdx-site/service/game?id=" + gameId,
+		url: "http://" + window.location.host.split(":")[0] + ":7777/libgdx-site/service/game?id=" + gameId,
 		success: loadGame,
 		error: function() {
 			loadGame(testGame());

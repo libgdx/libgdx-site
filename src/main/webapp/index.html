@@ -5,7 +5,7 @@
 <link href="css/toast.css" rel="stylesheet"/>
 <link rel="stylesheet" href="css/libgdx.css" />
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
-<script src="js/testdata.js"></script>
+<script src="js/utils.js"></script>
 </head>
 <body>
 <div id="header">
@@ -120,7 +120,7 @@ function loadShowcase(data) {
 
 $(document).ready(function() {
 	$.ajax({
-		url: "http://" + window.location.host.split(":")[0] + ":8080/libgdx-site/service/randomGames?num=9",
+		url: "http://" + window.location.host.split(":")[0] + ":7777/libgdx-site/service/randomGames?num=9",
 		success: loadShowcase,
 		error: function() {
 			loadShowcase(testGames(9));	
