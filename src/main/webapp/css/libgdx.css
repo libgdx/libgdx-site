@@ -4,8 +4,8 @@ html,body{
 }
 #header{
 	border-top:10px #e84c3d solid;
-  	padding-bottom: 15px;
-    padding-top: 15px;
+  	padding-bottom: 10px;
+    padding-top: 10px;
 }
 .graybar{
 /*	border-bottom:10px #e84c3d solid;*/
