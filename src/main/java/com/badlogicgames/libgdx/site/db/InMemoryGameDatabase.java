@@ -7,9 +7,17 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
+/**
+ * This should really use lock-less collections...
+ * @author badlogic
+ *
+ */
 public class InMemoryGameDatabase implements GameDatabase {
 	Map<String, String> tokensToIds = new HashMap<String, String>();
 	Map<String, Game> idsToGames = new HashMap<String, Game>();
+	
+	public InMemoryGameDatabase() {
+	}
 	
 	public InMemoryGameDatabase(Game[] games) {
 		for(Game game: games) {
@@ -51,5 +59,14 @@ public class InMemoryGameDatabase implements GameDatabase {
 
 	public synchronized List<Game> getGames() {
 		return new ArrayList<Game>(idsToGames.values());
+	}
+
+	public synchronized void addGame(GameRecord gameRecord) {
+		idsToGames.put(gameRecord.game.id, gameRecord.game);
+		tokensToIds.put(gameRecord.token, gameRecord.game.id);
+	}
+
+	public synchronized Game getGame(String gameId) {
+		return idsToGames.get(gameId);
 	}
 }

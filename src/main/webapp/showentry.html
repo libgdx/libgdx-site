@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>libgdx</title>
+<link href="css/toast.css" rel="stylesheet"/>
+<link rel="stylesheet" href="css/libgdx.css" />
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+<script src="js/testdata.js"></script>
+</head>
+<body>
+<div id="header">
+<div class="container" style="padding:0px;">
+	<a href="index.html"><img src="img/logo.png" id="logo"/></a>
+	<ul class="menu">
+		<li><a href="news.html" id="menu_news">News</a></li>
+		<li><a href="download.html" id="menu_download">Download</a></li>
+		<li><a href="source.html" id="menu_source">Source</a></li>
+		<li><a href="documentation.html" id="menu_documentation">Documentation</a></li>
+		<li><a href="gallery.html" id="menu_gallery">Gallery</a></li>
+		<li><a href="community.html" id="menu_community">Community</a></li>
+	</ul>
+	<div class="clear"></div>
+	</div>
+</div>
+<div class="container">
+	<h2 id="title"></h2>
+	<div id="links"></div>
+	<div class="container" id="gallery">
+		<div class="unit one-of-one">
+			<img id="mainimage"/>
+		</div>
+	</div>
+	<div id="description"></div>
+</div>
+
+<script>
+function loadGame(game) {
+	if(!game) {
+		$("#title").html("This is not the game you are looking for");
+		return;
+	} else {
+		$("#title").html(game.title + " by <span>" + game.creator + "</span>");
+		for(var i = 0; i < game.downloadUrls.length; i++) {
+			var link = $(document.createElement("a")).addClass("button");
+			link.attr("href", game.downloadUrls[i].url);
+			link.html(game.downloadUrls[i].name);
+			$("#links").append(link);
+		}
+		$("#mainimage").attr("src", game.imageUrls[0]);
+		$("#description").html(game.description);
+	}
+}
+
+function getParameterByName(name) {
+    name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+        results = regex.exec(location.search);
+    return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+$(document).ready(function() {
+	var gameId = getParameterByName("id");
+	$.ajax({
+		url: "http://" + window.location.host.split(":")[0] + ":8080/libgdx-site/service/game?id=" + gameId,
+		success: loadGame,
+		error: function() {
+			loadGame(testGame());
+		}
+	});
+});
+</script>
+<div id="footer">
+	<div class="container">
+		<div class="grid">
+			This page is copyright &copy; 2013 Mario Zechner; All other trademarks, logos and copyrights are the property of their respective owners. <span style="float:right">Design by XKlibur</div>
+		</div>
+	</div>
+</div>
+</body>
+</html>

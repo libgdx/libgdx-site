@@ -38,4 +38,10 @@ public interface GameDatabase {
 	 * @return the list of games
 	 */
 	public List<Game> getGames();
+	
+	/**
+	 * @param gameId the game's id
+	 * @return the game or null
+	 */
+	public Game getGame(String gameId);
 }

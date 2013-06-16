@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
-  <display-name>com.badlogic.ldstats</display-name>
+  <display-name>com.badlogic.libgdx.site</display-name>
   <servlet>
-    <servlet-name>LD Statistics Service</servlet-name>
+    <servlet-name>Libgdx Games Service</servlet-name>
     <servlet-class>com.sun.jersey.spi.container.servlet.ServletContainer</servlet-class>
     <init-param>
       <param-name>com.sun.jersey.config.property.packages</param-name>
@@ -14,12 +14,12 @@
     </init-param>
     <init-param>
       <param-name>com.sun.jersey.spi.container.ContainerResponseFilters</param-name>
-      <param-value>com.badlogic.ldstats.service.ResponseCorsFilter</param-value>
+      <param-value>com.badlogicgames.libgdx.site.ResponseCorsFilter</param-value>
     </init-param>
     <load-on-startup>1</load-on-startup>
   </servlet>
   <servlet-mapping>
-    <servlet-name>LD Statistics Service</servlet-name>
+    <servlet-name>Libgdx Games Service</servlet-name>
     <url-pattern>/service/*</url-pattern>
   </servlet-mapping>
 </web-app>

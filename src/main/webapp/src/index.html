@@ -1,0 +1,106 @@
+<div id="slogan">Desktop/Android/iOS/HTML5 Java game development framework</div>
+<div id="banner">
+	<div class="container">
+		<div class="one-of-two">
+			<div id="outer">
+				<div id="middle">
+					<div id="inner">
+						<div id="calltoaction">
+							Start creating awesome games NOW!<br /> <a href="download.html">Download
+								libGDX</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="one-of-two">
+			<div id="outer">
+				<div id="middle">
+					<div id="inner">
+						<div id="tabletborder">
+							<div id="tabletinner">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div id="highlights">
+	<div class="container">
+		<div class="one-of-three" id="hl_easy">
+			<h2>Easy to use</h2>
+			Simply download the jar files, include them in your project and you
+			are ready to go.
+		</div>
+
+		<div class="one-of-three" id="hl_open">
+			<h2>Open Source</h2>
+			libgdx is licensed under Apache 2.0 and maintained by the community.
+		</div>
+
+		<div class="one-of-three" id="hl_crossplatform">
+			<h2>Cross Platform</h2>
+			Works on Desktop (Win, Mac, Linux), Android, iOS and HTML5.
+		</div>
+
+		<div class="one-of-three" id="hl_modular">
+			<h2>Modular</h2>
+			The modular architecture allows third party modules to be easily
+			added.
+		</div>
+
+		<div class="one-of-three" id="hl_fast">
+			<h2>super fast</h2>
+			Heavy emphasis on avoiding garbage collection for Dalvik/JavaScript
+			by careful API design and the use of custom collection.
+		</div>
+
+		<div class="one-of-three" id="hl_community">
+			<h2>Community Support</h2>
+			Get great support from a big and growing community of game and
+			application developers.
+		</div>
+
+	</div>
+</div>
+
+<div id="topgameshead">
+	<div class="container">
+		<img src="img/topgames_new.png"
+			style="float: left; margin-left: -35px;" />
+		<h1>Showcase</h1>
+		<div class="clear"></div>
+	</div>
+</div>
+<div id="topgames">
+	<div class="container" id="showcase">
+	</div>
+</div>
+
+<script>
+function loadShowcase(data) {
+	$("#tabletinner").html('<a href="showentry.html?id="' + data[0].id + '><img src="' + data[0].imageUrls[0] + '"/></a>');
+	var topgames = $("#showcase");
+	for(var i=1; i < data.length; i++) {
+		var game = data[i];
+		var div = $(document.createElement("div")).addClass("unit").addClass("one-of-four");
+		div.html('<a href="showentry.html?id=' + game.id + '">' +
+				 '<img src="' + (game.imageUrls.length > 0?game.imageUrls[0]:"img/no_game.png") + '"></img>' +
+				 '<span>' + game.title + '</span> by ' + game.creator + "</a>");
+		topgames.append(div);
+	}
+}
+
+$(document).ready(function() {
+	$.ajax({
+		url: "http://" + window.location.host.split(":")[0] + ":8080/libgdx-site/service/randomGames?num=9",
+		success: loadShowcase,
+		error: function() {
+			loadShowcase(testGames(9));	
+		}
+	})
+});
+</script>

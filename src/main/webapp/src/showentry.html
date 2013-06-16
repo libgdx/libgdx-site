@@ -1,0 +1,47 @@
+<div class="container">
+	<h2 id="title"></h2>
+	<div id="links"></div>
+	<div class="container" id="gallery">
+		<div class="unit one-of-one">
+			<img id="mainimage"/>
+		</div>
+	</div>
+	<div id="description"></div>
+</div>
+
+<script>
+function loadGame(game) {
+	if(!game) {
+		$("#title").html("This is not the game you are looking for");
+		return;
+	} else {
+		$("#title").html(game.title + " by <span>" + game.creator + "</span>");
+		for(var i = 0; i < game.downloadUrls.length; i++) {
+			var link = $(document.createElement("a")).addClass("button");
+			link.attr("href", game.downloadUrls[i].url);
+			link.html(game.downloadUrls[i].name);
+			$("#links").append(link);
+		}
+		$("#mainimage").attr("src", game.imageUrls[0]);
+		$("#description").html(game.description);
+	}
+}
+
+function getParameterByName(name) {
+    name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+        results = regex.exec(location.search);
+    return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+$(document).ready(function() {
+	var gameId = getParameterByName("id");
+	$.ajax({
+		url: "http://" + window.location.host.split(":")[0] + ":8080/libgdx-site/service/game?id=" + gameId,
+		success: loadGame,
+		error: function() {
+			loadGame(testGame());
+		}
+	});
+});
+</script>

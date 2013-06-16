@@ -1,19 +1,19 @@
 package com.badlogicgames.libgdx.site;
 
-import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
-import org.codehaus.jackson.map.ObjectMapper;
-
+import com.badlogicgames.libgdx.site.db.FileGameDatabase;
 import com.badlogicgames.libgdx.site.db.Game;
 import com.badlogicgames.libgdx.site.db.GameDatabase;
-import com.badlogicgames.libgdx.site.db.InMemoryGameDatabase;
 import com.sun.jersey.spi.resource.Singleton;
 
 /**
@@ -21,27 +21,17 @@ import com.sun.jersey.spi.resource.Singleton;
  * libgdx game entries, for libgdx's site.
  * @author badlogic
  */
-@Path("games/")
+@Path("/")
 @Singleton
 public class GameService {
 	private GameDatabase db;
 	
 	public GameService() {
-		try {
-			ObjectMapper mapper = new ObjectMapper();
-			Game[] games = mapper.readValue(GameService.class.getResourceAsStream("/games.json"), Game[].class);
-			db = new InMemoryGameDatabase(games);
-		} catch (IOException e) {
-			e.printStackTrace();
-			db = new InMemoryGameDatabase(new Game[0]);
+		String dir = System.getenv().get("GDX_GAME_DB_DIR");
+		if(dir == null) {
+			dir = "/opt/gamedb";
 		}
-	}
-	
-	@GET
-	@Produces(MediaType.APPLICATION_JSON)
-	@Path("hello")
-	public String hello() {
-		return "{ \"hello\": \"world\" }";
+		db = new FileGameDatabase(dir);
 	}
 	
 	@GET
@@ -49,6 +39,27 @@ public class GameService {
 	@Path("games")
 	public List<Game> games() {
 		return db.getGames();
+	}
+	
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	@Path("game")
+	public Game game(@QueryParam("id") String gameId) {
+		return db.getGame(gameId);
+	}
+	
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	@Path("randomGames")
+	public List<Game> randomGames(@QueryParam("num") int num) {
+		if(num == 0) num = 8;
+		List<Game> games = db.getGames();
+		Collections.shuffle(games);
+		List<Game> randomGames = new ArrayList<Game>();
+		for(int i = 0; i < num && i < games.size(); i++) {
+			randomGames.add(games.get(i));
+		}
+		return randomGames;
 	}
 	
 	@POST

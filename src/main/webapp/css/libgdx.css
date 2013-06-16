@@ -330,13 +330,34 @@ img{
 	}
 	
 	/* TODO
-	   gute Werte für Breiten der verschiedenen Boxen bei verschiedenen Größen finden
+	   gute Werte f��r Breiten der verschiedenen Boxen bei verschiedenen Gr����en finden
 	*/
 	.one-of-four{
 		width: 46.05%; 
 	}
 }
 
+#button {
+  display:inline-block;
+  color:#fff;
+  font-weight:bold;
+  background:#e44d3c;
+  padding:8px;
+  text-decoration:none;
+  margin-top:20px;
+  box-shadow: 4px 4px 5px #222;
+  border-radius:5px;
+  font-size:18px;
+  font-weight:lighter;
+}
+#button hover{
+  margin-top:22px;
+  margin-bottom:-2px;
+  margin-left:2px;
+  margin-right:-2px;
+  color:#ddd;
+  box-shadow: 2px 2px 5px #222;
+}
 
 
 
