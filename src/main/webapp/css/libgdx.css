@@ -16,6 +16,7 @@ html,body{
 img#logo{
 	float:left;
 	padding:25px;
+	padding-left:0px;
 }
 
 /* menu */
@@ -25,7 +26,7 @@ ul.menu li{
 }
 ul.menu li a{
 	display:block;
-	width:150px;
+	width:120px;
 	height:80px;
 	margin-top:10px;
 	border-left:2px solid #eee;
@@ -37,7 +38,7 @@ ul.menu li a{
 	text-decoration:none;
 	font-weight:bold;
 	padding-top:58px;
-	
+
 	background:#fff no-repeat center top 10px;
 }
 ul.menu li a img{
@@ -55,6 +56,12 @@ a#menu_news{
 a#menu_news:hover{
 	background-image:url(../img/news_hover.png);
 }
+a#menu_features{
+	background-image:url(../img/features.png);	
+}
+a#menu_features:hover{
+	background-image:url(../img/features_hover.png);	
+}
 a#menu_download{
 	background-image:url(../img/download.png);
 }
@@ -68,6 +75,7 @@ a#menu_source:hover{
 	background-image:url(../img/source_hover.png);
 }
 a#menu_documentation{
+	width:150px;
 	background-image:url(../img/documentation.png);
 }
 a#menu_documentation:hover{
