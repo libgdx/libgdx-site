@@ -79,7 +79,7 @@
 		max-width: none;
 	}
 
-	.unit {
+	.unit ,.one-of-one,.one-of-two,.one-of-three,.one-of-four{
 		width: auto;
 		margin-left: 0;
 		display: block;

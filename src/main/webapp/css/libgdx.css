@@ -113,7 +113,9 @@ div#banner{
 	text-align:center;
 }
 div#calltoaction{
-	width:400px;
+	/*width:100%;*/
+/*	width:400px;*/
+
 	background:#333;
 /*	border:2px solid #353535;*/
 	box-shadow: 0px 0px 10px #000;
@@ -123,8 +125,10 @@ div#calltoaction{
     padding:30px;
     border-radius:10px;
     font-size:25px;
-    display:inline-block;
-    max-width:100%;
+    /*display:inline-block;*/
+    max-width:400px;
+    
+   	width:100%;
 }
 div#calltoaction a{
 	display:inline-block;
@@ -160,6 +164,33 @@ div#tabletinner{
 	border-radius:8px;
 	padding:30px;
 }
+div#tabletinner img{
+	width:100%;
+}
+
+/* TODO center stuff */
+
+#outer {height: 450px; overflow: hidden; position: relative;width:100%;}
+#outer[id] {display: table; position: static;}
+
+#middle {position: absolute; top: 50%;width: 100%;} /* for quirk explorer only*/
+#middle[id] {display: table-cell; vertical-align: middle;  position: static;}
+
+#inner {position: relative; top: -50%} /* for quirk explorer only */
+/* optional: #inner[id] {position: static;} */
+
+@media screen and (max-width: 650px) {
+	#outer{
+		display:block !important;		
+		height:auto;
+	}
+	#banner{
+		height:auto !important;
+		padding-top:60px !important;
+	}
+}
+
+
 
 div#highlights{
 	background:#343434;
@@ -340,8 +371,7 @@ img{
 		padding-right:5px;
 	}
 	
-	/* TODO
-	   gute Werte f��r Breiten der verschiedenen Boxen bei verschiedenen Gr����en finden
+	/* TODO find good values
 	*/
 	.one-of-four{
 		width: 46.05%; 
@@ -474,14 +504,5 @@ button.submit:active {
 }
 
 
-/* TODO center stuff */
 
-#outer {height: 450px; overflow: hidden; position: relative;width:100%;}
-#outer[id] {display: table; position: static;}
-
-#middle {position: absolute; top: 50%;width: 100%;} /* for quirk explorer only*/
-#middle[id] {display: table-cell; vertical-align: middle;  position: static;}
-
-#inner {position: relative; top: -50%} /* for quirk explorer only */
-/* optional: #inner[id] {position: static;} */
 
