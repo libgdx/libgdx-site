@@ -32,7 +32,7 @@ ul.menu li a{
 	border-left:2px solid #eee;
 	text-align:center;
 
-	font-family:Sans;
+	font-family:Sans, DejaVu Sans,sans-serif,Arial;
 	font-size:16px;
 	color:#999;
 	text-decoration:none;
@@ -100,7 +100,7 @@ div#slogan{
 	position:absolute;
 	text-align:center;
 	color:#fff;
-	font-family:Sans;
+	font-family:Sans, DejaVu Sans,sans-serif,Arial;
 	z-index:2;
 	background:rgba(255,255,255,0.3);
 	font-weight:bold;
@@ -280,10 +280,10 @@ div#topgames span{ /*title of the game*/
 #footer{
 	background:#151515;
 	color:#ccc;
-	font-family:sans-serif;
+	font-family:Sans, DejaVu Sans,sans-serif,Arial;
 	font-size:15px;
-	padding:20px;
-	margin-top:40px;
+/*	padding:20px;
+	margin-top:40px;*/
 }
 
 
@@ -378,6 +378,13 @@ img{
 	}
 }
 
+/* show entry */
+
+h2 span.creator{
+	font-size:23px;
+	color:#666;
+}
+
 .framed {
   display: block;
   border-radius: 8px;
@@ -399,7 +406,7 @@ img{
   background:#e44d3c;
   padding:8px;
   text-decoration:none;
-  box-shadow: 4px 4px 5px #222;
+/*  box-shadow: 4px 4px 5px #222;*/
   border-radius:5px;
   font-size:18px;
   font-weight:lighter;
@@ -424,6 +431,8 @@ img{
   color:#ddd;
   box-shadow: 2px 2px 5px #222;
 }
+
+/* submit entry form */
 
 .contactform ul {
     width:750px;
@@ -504,5 +513,41 @@ button.submit:active {
 }
 
 
+/* features */
+.well{
+  border-radius: 8px;
+  box-shadow: 0 0 5px #ccc;
+  border: 1px #bbb solid;
+  padding: 7px;
+  margin: 5px;
+  margin-bottom: 15px;
+  margin-top: 20px;
+  color: #444;
+  background:#f6f6f6;
+}
+.well h2{
+	text-align:center;
+	line-height:1.8;
+}
 
 
+
+
+/* footer should stay at the bottom of the page */
+html,body{
+	height:100%;
+}
+#site{
+	min-height:100%;
+	position:relative;
+}
+#content{
+	padding-bottom:100px;
+}
+#footer{
+	position:absolute;
+	bottom:0;
+/*	height:60px;*/
+	width:100%;
+	padding:20px;
+}
