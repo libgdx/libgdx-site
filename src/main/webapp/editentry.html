@@ -5,7 +5,7 @@
 <link href="css/toast.css" rel="stylesheet"/>
 <link rel="stylesheet" href="css/libgdx.css" />
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
-<script src="js/testdata.js"></script>
+<script src="js/utils.js"></script>
 </head>
 <body>
 <div id="header">
@@ -61,7 +61,7 @@ function loadGame(game) {
 	$("#tokendiv").html('<label for="token">Token</label><input id="token" name="token"/>');
 	$("#title").attr("value", game.title);
 	$("#creator").attr("value", game.creator);
-	$("#description").html(game.description);
+	$("#description").val(game.description);
 	$("#linkname").attr("value", game.downloadUrls[0].name);
 	$("#linkurl").attr("value", game.downloadUrls[0].url);
 	$("#imageurl").attr("value", game.imageUrls[0]);
@@ -79,7 +79,7 @@ function saveGame() {
 	game = {
 		title: $("#title").val(),
 		creator: $("#creator").val(),
-		description: $("#desription").val(),
+		description: $("#description").val(),
 		imageUrls: [$("#imageurl").val()],
 		downloadUrls: [{name: $("#linkname").val(), url: $("#linkurl").val()}]
 	}
@@ -102,7 +102,7 @@ function saveGame() {
 }
 
 function processResponse(data) {
-	alert(data.success);
+	alert(data.success + " " + data.message);
 }
 
 $(document).ready(function() {
