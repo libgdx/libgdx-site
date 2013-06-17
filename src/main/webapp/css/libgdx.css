@@ -229,6 +229,7 @@ div#topgames a{
 	text-align:center;
 	color:#444;
 	font-size:14px;
+	font-weight:normal;
 }
 div#topgames a:hover{
 	text-decoration:none;
@@ -270,6 +271,7 @@ div#topgames span{ /*title of the game*/
 /* general stuff */
 a{
 	color:#e44d3c;
+	font-weight:bold;
 	text-decoration:none;
 }
 a:hover{
@@ -293,6 +295,7 @@ a.btn{
 	background:#e44d3c;
 	display:inline-block;
 	padding:9px;
+	font-weight:normal;
 }
 a.btn img{
 	vertical-align:middle;
@@ -413,19 +416,19 @@ img{
     padding:3px;
 }
 .contactform input {
-    height:20px;
+    height:25px;
     width:220px;
     padding:5px 8px;
 }
 .contactform textarea {padding:8px; width:400px;}
 .contactform button { padding: 15px; }
 
-.contactform input, .contact_form textarea {
+.contactform input, .contactform textarea {
     border:1px solid #aaa;
     box-shadow: 0px 0px 3px #ccc, 0 10px 15px #eee inset;
     border-radius:2px;
 }
-.contactform input:focus, .contact_form textarea:focus {
+.contactform input:focus, .contactform textarea:focus {
     background: #fff;
     border:1px solid #555;
     box-shadow: 0 0 3px #aaa;
