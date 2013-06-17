@@ -1,6 +1,7 @@
 package com.badlogicgames.libgdx.site.db;
 
 import java.io.File;
+import java.io.FilenameFilter;
 import java.io.IOException;
 import java.util.List;
 import java.util.logging.Level;
@@ -27,7 +28,11 @@ public class FileGameDatabase implements GameDatabase {
 		}
 		log.info("Reading games from " + dir.getAbsolutePath());
 		db = new InMemoryGameDatabase();
-		for(File file: dir.listFiles()) {
+		for(File file: dir.listFiles(new FilenameFilter() {
+			public boolean accept(File dir, String name) {
+				return name.endsWith(".json");
+			}
+		})) {
 			String gameJson;
 			try {
 				gameJson = FileUtils.readFileToString(file);

@@ -38,10 +38,9 @@ public class InMemoryGameDatabase implements GameDatabase {
 	public synchronized boolean update(String token, Game game) {
 		if(token == null) return false;
 		if(game == null) return false;
-		if(game.id == null) return false;
 		String id = tokensToIds.get(token);
 		if(id == null) return false;
-		if(!id.equals(game.id)) return false;
+		game.id = id;
 		idsToGames.put(id, game);
 		return true;
 	}
