@@ -4,8 +4,8 @@ html,body{
 }
 #header{
 	border-top:10px #e84c3d solid;
-  	padding-bottom: 15px;
-    padding-top: 15px;
+  	padding-bottom: 10px;
+    padding-top: 10px;
 }
 .graybar{
 /*	border-bottom:10px #e84c3d solid;*/
@@ -32,7 +32,7 @@ ul.menu li a{
 	border-left:2px solid #eee;
 	text-align:center;
 
-	font-family:Sans;
+	font-family:Sans, DejaVu Sans,sans-serif,Arial;
 	font-size:16px;
 	color:#999;
 	text-decoration:none;
@@ -100,7 +100,7 @@ div#slogan{
 	position:absolute;
 	text-align:center;
 	color:#fff;
-	font-family:Sans;
+	font-family:Sans, DejaVu Sans,sans-serif,Arial;
 	z-index:2;
 	background:rgba(255,255,255,0.3);
 	font-weight:bold;
@@ -113,7 +113,9 @@ div#banner{
 	text-align:center;
 }
 div#calltoaction{
-	width:400px;
+	/*width:100%;*/
+/*	width:400px;*/
+
 	background:#333;
 /*	border:2px solid #353535;*/
 	box-shadow: 0px 0px 10px #000;
@@ -123,8 +125,10 @@ div#calltoaction{
     padding:30px;
     border-radius:10px;
     font-size:25px;
-    display:inline-block;
-    max-width:100%;
+    /*display:inline-block;*/
+    max-width:400px;
+    
+   	width:100%;
 }
 div#calltoaction a{
 	display:inline-block;
@@ -160,6 +164,33 @@ div#tabletinner{
 	border-radius:8px;
 	padding:30px;
 }
+div#tabletinner img{
+	width:100%;
+}
+
+/* TODO center stuff */
+
+#outer {height: 450px; overflow: hidden; position: relative;width:100%;}
+#outer[id] {display: table; position: static;}
+
+#middle {position: absolute; top: 50%;width: 100%;} /* for quirk explorer only*/
+#middle[id] {display: table-cell; vertical-align: middle;  position: static;}
+
+#inner {position: relative; top: -50%} /* for quirk explorer only */
+/* optional: #inner[id] {position: static;} */
+
+@media screen and (max-width: 650px) {
+	#outer{
+		display:block !important;		
+		height:auto;
+	}
+	#banner{
+		height:auto !important;
+		padding-top:60px !important;
+	}
+}
+
+
 
 div#highlights{
 	background:#343434;
@@ -229,6 +260,7 @@ div#topgames a{
 	text-align:center;
 	color:#444;
 	font-size:14px;
+	font-weight:normal;
 }
 div#topgames a:hover{
 	text-decoration:none;
@@ -248,10 +280,10 @@ div#topgames span{ /*title of the game*/
 #footer{
 	background:#151515;
 	color:#ccc;
-	font-family:sans-serif;
+	font-family:Sans, DejaVu Sans,sans-serif,Arial;
 	font-size:15px;
-	padding:20px;
-	margin-top:40px;
+/*	padding:20px;
+	margin-top:40px;*/
 }
 
 
@@ -270,6 +302,7 @@ div#topgames span{ /*title of the game*/
 /* general stuff */
 a{
 	color:#e44d3c;
+	font-weight:bold;
 	text-decoration:none;
 }
 a:hover{
@@ -293,6 +326,7 @@ a.btn{
 	background:#e44d3c;
 	display:inline-block;
 	padding:9px;
+	font-weight:normal;
 }
 a.btn img{
 	vertical-align:middle;
@@ -337,12 +371,18 @@ img{
 		padding-right:5px;
 	}
 	
-	/* TODO
-	   gute Werte f��r Breiten der verschiedenen Boxen bei verschiedenen Gr����en finden
+	/* TODO find good values
 	*/
 	.one-of-four{
 		width: 46.05%; 
 	}
+}
+
+/* show entry */
+
+h2 span.creator{
+	font-size:23px;
+	color:#666;
 }
 
 .framed {
@@ -366,7 +406,7 @@ img{
   background:#e44d3c;
   padding:8px;
   text-decoration:none;
-  box-shadow: 4px 4px 5px #222;
+/*  box-shadow: 4px 4px 5px #222;*/
   border-radius:5px;
   font-size:18px;
   font-weight:lighter;
@@ -392,6 +432,8 @@ img{
   box-shadow: 2px 2px 5px #222;
 }
 
+/* submit entry form */
+
 .contactform ul {
     width:750px;
     list-style-type:none;
@@ -413,19 +455,19 @@ img{
     padding:3px;
 }
 .contactform input {
-    height:20px;
+    height:25px;
     width:220px;
     padding:5px 8px;
 }
 .contactform textarea {padding:8px; width:400px;}
 .contactform button { padding: 15px; }
 
-.contactform input, .contact_form textarea {
+.contactform input, .contactform textarea {
     border:1px solid #aaa;
     box-shadow: 0px 0px 3px #ccc, 0 10px 15px #eee inset;
     border-radius:2px;
 }
-.contactform input:focus, .contact_form textarea:focus {
+.contactform input:focus, .contactform textarea:focus {
     background: #fff;
     border:1px solid #555;
     box-shadow: 0 0 3px #aaa;
@@ -471,14 +513,41 @@ button.submit:active {
 }
 
 
-/* TODO center stuff */
+/* features */
+.well{
+  border-radius: 8px;
+  box-shadow: 0 0 5px #ccc;
+  border: 1px #bbb solid;
+  padding: 7px;
+  margin: 5px;
+  margin-bottom: 15px;
+  margin-top: 20px;
+  color: #444;
+  background:#f6f6f6;
+}
+.well h2{
+	text-align:center;
+	line-height:1.8;
+}
 
-#outer {height: 450px; overflow: hidden; position: relative;width:100%;}
-#outer[id] {display: table; position: static;}
 
-#middle {position: absolute; top: 50%;width: 100%;} /* for quirk explorer only*/
-#middle[id] {display: table-cell; vertical-align: middle;  position: static;}
 
-#inner {position: relative; top: -50%} /* for quirk explorer only */
-/* optional: #inner[id] {position: static;} */
 
+/* footer should stay at the bottom of the page */
+html,body{
+	height:100%;
+}
+#site{
+	min-height:100%;
+	position:relative;
+}
+#content{
+	padding-bottom:100px;
+}
+#footer{
+	position:absolute;
+	bottom:0;
+/*	height:60px;*/
+	width:100%;
+	padding:20px;
+}

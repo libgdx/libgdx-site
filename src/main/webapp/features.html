@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>libgdx</title>
+<link href="css/toast.css" rel="stylesheet" />
+<link rel="stylesheet" href="css/libgdx.css" />
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+<script src="js/utils.js"></script>
+</head>
+<body>
+<div id="site">
+<div id="content">
+<div id="header">
+<div class="container" style="padding:0px;">
+	<a href="index.html"><img src="img/logo.png" id="logo"/></a>
+	<ul class="menu">
+		<li><a href="news.html" id="menu_news">News</a></li>
+		<li><a href="features.html" id="menu_features">Features</a></li>
+		<li><a href="download.html" id="menu_download">Download</a></li>
+		<li><a href="source.html" id="menu_source">Source</a></li>
+		<li><a href="documentation.html" id="menu_documentation">Documentation</a></li>
+		<li><a href="gallery.html" id="menu_gallery">Gallery</a></li>
+		<li><a href="community.html" id="menu_community">Community</a></li>
+	</ul>
+	<div class="clear"></div>
+	</div>
+</div>
+<div class="graybar"></div>
+<div class="container">
+	<div class="one-of-one">
+      <h1>Goals and Features</h1>
+      <blockquote><p>Libgdx is a Java game development framework that provides a unified API that works across all supported platforms.</p></br>
+      <p>The framework provides an environment for rapid prototyping and fast iterations. Instead of deploying to Android/iOS/Javascript after each code change, you can run and debug your game on the desktop, natively. Desktop JVM features like code hotswapping reduce your iteration times considerably.</p></br>
+      <p>Libgdx tries not be the "end all, be all" solution. It does not force a specific design on you. Pick and choose from the features below.</p></blockquote>
+    </div>
+    
+      <div class="one-of-two">
+      <div class="well">        
+        <h2>Cross-Platform</h2>      
+        <p>A single API to target:      
+        <ul>
+        <li>Windows</li>
+        <li>Linux</li>
+        <li>Max OS X</li>
+        <li>Android (+1.5)</li>
+        <li>iOS (requires a Xamarin.iOS license, 30-day free evaluation, 79$ for students, 299$ for "Indies")</li>
+        <li>Java Applet (requires JVM to be installed)</li>
+        <li>Javascript/WebGL (Chrome, Safari, Opera, Firefox, IE via <a href="https://developers.google.com/chrome/chrome-frame/">Google Chrome Frame</a>)</li>        
+        </ul>
+        </p>
+      </div>
+      <div class="well">        
+        <h2>Audio</h2>              
+        <ul>
+        <li><a href="http://libgdx.badlogicgames.com/nightlies/docs/api/com/badlogic/gdx/audio/Music.html">Streaming music</a> and <a href="http://libgdx.badlogicgames.com/nightlies/docs/api/com/badlogic/gdx/audio/Sound.html">sound effect</a> playback for WAV, MP3 and OGG</li>
+        <li>Direct access to audio device for <a href="http://libgdx.badlogicgames.com/nightlies/docs/api/com/badlogic/gdx/audio/AudioDevice.html">PCM sample playback</a> and <a href="http://libgdx.badlogicgames.com/nightlies/docs/api/com/badlogic/gdx/audio/AudioRecorder.html">recording</a> (unsupported in Javascript backend)</li>
+        <li><a href="http://www.badlogicgames.com/wordpress/?p=2269">Decoders</a> for OGG and MPG3 formats (unsupported in Javascript backend)</li>
+        <li><a href="http://www.badlogicgames.com/wordpress/?p=2269">Pitch shifting, time stretching and playback rate modification</a> (unsupported in Javascript backend)</li>
+        </ul>        
+      </div>
+      <div class="well">        
+        <h2>Input Handling</h2>              
+        <ul>
+        <li>Abstractions for <a href="http://code.google.com/p/libgdx/wiki/InputMouseTouchKeyboard">mouse and touch-screen, keyboard</a>, <a href="http://code.google.com/p/libgdx/wiki/InputAccelerometer">accelerometer and <a href="http://code.google.com/p/libgdx/wiki/InputCompass">compass</a></li>
+        <li><a href="http://code.google.com/p/libgdx/wiki/InputGestureDetection">Gesture detector</a>, detects taps, panning, flinging and pinch zooming</li>
+        <li><a href="http://www.badlogicgames.com/wordpress/?p=1590">Gdx remote</a>, to controll your desktop application via your Android phone. Useful to test multi-touch gestures while debugging your desktop application</li>
+        </ul>        
+      </div>
+      <div class="well">        
+        <h2>Math &amp; Physics</h2>              
+        <ul>
+        <li><a href="http://libgdx.badlogicgames.com/nightlies/docs/api/com/badlogic/gdx/math/Matrix4.html">Matrix</a>, <a href="http://libgdx.badlogicgames.com/nightlies/docs/api/com/badlogic/gdx/math/Vector3.html">vector</a> and <a href="http://libgdx.badlogicgames.com/nightlies/docs/api/com/badlogic/gdx/math/Quaternion.html">quaternion</a> classes. Matrix and vector operations are accelerated via native C code where possible</li>        
+        <li>
+        <a href="http://code.google.com/p/libgdx/wiki/Geometry">Bounding shapes and volumes</a>
+        </li>
+        <li>
+        <a href="http://libgdx.badlogicgames.com/nightlies/docs/api/com/badlogic/gdx/math/Frustum.html">Frustum class</a>, for picking and culling
+        </li>
+        <li>
+        <a href="http://libgdx.badlogicgames.com/nightlies/docs/api/com/badlogic/gdx/math/CatmullRomSpline.html">Catmull-Rom splines</a>
+        </li>
+        <li>
+        <a href="http://libgdx.badlogicgames.com/nightlies/docs/api/com/badlogic/gdx/math/Interpolation.html">Common interpolators</a>
+        </li>
+        <li>
+        <a href="http://libgdx.badlogicgames.com/nightlies/docs/api/com/badlogic/gdx/math/EarClippingTriangulator.html">Concave polygon triangulator</a>
+        </li>
+        <li>
+        <a href="http://libgdx.badlogicgames.com/nightlies/docs/api/com/badlogic/gdx/math/Intersector.html">Intersection and overlap testing</a>
+        </li>
+        <li>
+        JNI wrapper for <a href="http://box2d.org/">Box2D</a> physics. So awesome, other <a href="https://github.com/nicolasgramlich/AndEnginePhysicsBox2DExtension">engines</a> use it as well
+        </li>
+        <li>
+        <a href="https://github.com/libgdx/libgdx/tree/master/extensions/gdx-bullet">JNI Wrapper</a> for <a href="http://bulletphysics.org/wordpress/">bullet physics</a>
+        </li>        
+        </ul>        
+      </div>
+      <div class="well"> 
+      <h2>File I/O &amp; Storage</h2>
+      <ul>
+      <li><a href="http://code.google.com/p/libgdx/wiki/FileHandling">File system abstraction for all platforms</a></li>
+      <li>Read-only file system emulation for Javascript backend</li>
+      <li>Binary file support for Javascript backend</li>
+      <li><a href="http://code.google.com/p/libgdx/wiki/Preferences">Preferences</a> for lightweight setting storage</li>
+      </div>
+      </div>           
+      
+      <div class="one-of-two">
+      <div class="well">
+        <h2>Graphics</h2>      
+        <p>      
+        <ul>
+        <li>Rendering through OpenGL ES 1.x and 2.0 on all platforms</li>
+        <li><a href="http://code.google.com/p/gl2-android/">Custom OpenGL ES 2.0 bindings</a> for Android 2.0 and above</li>
+        <li>Low-Level OpenGL helpers:<ul>
+          <li><a href="http://libgdx.badlogicgames.com/nightlies/docs/api/com/badlogic/gdx/graphics/glutils/VertexArray.html">Vertex arrays</a> and <a href="http://libgdx.badlogicgames.com/nightlies/docs/api/com/badlogic/gdx/graphics/glutils/VertexBufferObject.html">vertex buffer objects</a></li>        
+          <li><a href="http://libgdx.badlogicgames.com/nightlies/docs/api/com/badlogic/gdx/graphics/Mesh.html">Meshes</a></li>
+          <li><a href="http://libgdx.badlogicgames.com/nightlies/docs/api/com/badlogic/gdx/graphics/Texture.html">Textures</a></li>
+          <li><a href="http://libgdx.badlogicgames.com/nightlies/docs/api/com/badlogic/gdx/graphics/glutils/FrameBuffer.html">Framebuffer objects</a> (GLES 2.0 only)</a></li>
+          <li><a href="http://libgdx.badlogicgames.com/nightlies/docs/api/com/badlogic/gdx/graphics/glutils/ShaderProgram.html">Shaders</a>, integrating easily with meshes</li>
+          <li><a href="http://libgdx.badlogicgames.com/nightlies/docs/api/com/badlogic/gdx/graphics/glutils/ImmediateModeRenderer.html">Immediate mode rendering emulation</a></li>
+          <li><a href="http://libgdx.badlogicgames.com/nightlies/docs/api/com/badlogic/gdx/graphics/glutils/ShapeRenderer.html">Simple shape rendering</a></li>
+          <li>Automatic software or hardware mipmap generation</li>
+          <li><a href="http://libgdx.badlogicgames.com/nightlies/docs/api/com/badlogic/gdx/graphics/glutils/ETC1.html">ETC1</a> support (not available in Javascript backend)</li>
+          <li>Automatic handling of <a href="http://code.google.com/p/libgdx/wiki/Graphics">OpenGL ES context loss</a>. Restores all textures, shaders and other OpenGL resources</li>    
+        </ul></li>
+        <li>High-level 2D APIs:<ul>
+          <li>Custom CPU side <a href="http://libgdx.badlogicgames.com/nightlies/docs/api/com/badlogic/gdx/graphics/Pixmap.html">bitmap manipulation library</a></li>
+          <li><a href="http://libgdx.badlogicgames.com/nightlies/docs/api/com/badlogic/gdx/graphics/OrthographicCamera.html">Orthographic camera</a></li>
+          <li>High-performance <a href="http://libgdx.badlogicgames.com/nightlies/docs/api/com/badlogic/gdx/graphics/g2d/SpriteBatch.html">sprite batching</a> and <a href="http://libgdx.badlogicgames.com/nightlies/docs/api/com/badlogic/gdx/graphics/g2d/SpriteCache.html">caching</a>, handling OpenGL ES 1.x and 2.0 differences transparently</li>
+          <li><a href="http://libgdx.badlogicgames.com/nightlies/docs/api/com/badlogic/gdx/graphics/g2d/TextureAtlas.html">Texture atlases</a>, with whitespace stripping support. Either generated <a href="http://code.google.com/p/libgdx/wiki/TexturePacker">offline</a> or <a href="http://libgdx.badlogicgames.com/nightlies/docs/api/com/badlogic/gdx/graphics/g2d/PixmapPacker.html">online</a></li>
+          <li><a href="http://libgdx.badlogicgames.com/nightlies/docs/api/com/badlogic/gdx/graphics/g2d/BitmapFont.html">Bitmap fonts</a> (does not support complex scripts like Arabic or Chinese). Either generated <a href="http://www.angelcode.com/products/bmfont/">offline</a> or <a href="http://www.badlogicgames.com/wordpress/?p=2300">loaded from TTF files</a> (unsupported in Javascript backend)</li>
+          <li><a href="http://libgdx.badlogicgames.com/nightlies/docs/api/com/badlogic/gdx/graphics/g2d/ParticleEmitter.html">2D Particle system</a></li>
+          <li><a href="http://www.mapeditor.org/">TMX tile map</a> support</li>
+          <li><a href="http://code.google.com/p/libgdx/wiki/scene2d">2D scene-graph API</li>
+          <li><a href="http://steigert.blogspot.com/2012/03/4-libgdx-tutorial-tablelayout.html">2D UI library</a>, based on scene-graph API, fully skinable</li>
+          
+        </ul></li>
+        <li>High-Level 3D APIs:<ul>
+          <li><a href="http://libgdx.badlogicgames.com/nightlies/docs/api/com/badlogic/gdx/graphics/PerspectiveCamera.html">Perspective camera</a></li>
+          <li><a href="http://libgdx.badlogicgames.com/nightlies/docs/api/com/badlogic/gdx/graphics/g3d/decals/DecalBatch.html">Decal batching</a>, for 3D billboards or particle systems</li>
+          <li>Basic loaders for <a href="http://libgdx.badlogicgames.com/nightlies/docs/api/com/badlogic/gdx/graphics/g3d/loaders/obj/ObjLoader.html">Wavefront OBJ</a> and <a href="http://libgdx.badlogicgames.com/nightlies/docs/api/com/badlogic/gdx/graphics/g3d/loaders/md5/MD5Renderer.html">MD5</a></li>        
+          <li><a href="http://www.badlogicgames.com/forum/viewtopic.php?f=23&t=7020">Work in progress</a>: 3D rendering API with materials and lighting system and support for loading FBX models via <a href="https://github.com/libgdx/fbx-conv">fbx-conv</a></li>
+        </ul></li>
+        </ul>
+        </p>
+      </div>
+      <div class="well">        
+        <h2>Utilities</h2>              
+        <ul>
+        <li><a href="http://libgdx.badlogicgames.com/nightlies/docs/api/com/badlogic/gdx/utils/package-summary.html">Custom collections, with primitive support</li>
+        <li>Json <a href="http://libgdx.badlogicgames.com/nightlies/docs/api/com/badlogic/gdx/utils/JsonWriter.html">writer</a> and <a href="http://libgdx.badlogicgames.com/nightlies/docs/api/com/badlogic/gdx/utils/JsonReader.html">reader</a>, with POJO (de-)serialization support</li>
+        <li>Xml <a href="http://libgdx.badlogicgames.com/nightlies/docs/api/com/badlogic/gdx/utils/XmlReader.html">writer</a> and <a href="http://libgdx.badlogicgames.com/nightlies/docs/api/com/badlogic/gdx/utils/XmlReader.html">reader</a></li>
+        </ul>        
+      </div>
+      <div class="well">
+      <h2>Tools</h2>
+      <ul>
+      <li><a href="http://www.aurelienribon.com/blog/2012/04/new-app-libgdx-project-setup/">Gdx Setup UI</a>, for easy project setup</li>
+      <li><a href="http://code.google.com/p/libgdx/wiki/ParticleEditor">Particle editor</a></li>
+      <li><a href="http://code.google.com/p/libgdx/wiki/TexturePacker">Texture packer</a></li>
+      <li><a href="http://code.google.com/p/libgdx/wiki/Hiero">Bitmap font generator</a></li>
+      </div>
+      </div>
+    </div>     
+</div>
+<div id="footer">
+	<div class="container">
+		<div class="grid">
+			This page is copyright &copy; 2013 Mario Zechner; All other trademarks, logos and copyrights are the property of their respective owners. <span style="float:right">Design by XKlibur</div>
+		</div>
+	</div>
+</div>
+</div>
+</body>
+</html>

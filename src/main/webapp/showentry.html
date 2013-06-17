@@ -2,12 +2,14 @@
 <html>
 <head>
 <title>libgdx</title>
-<link href="css/toast.css" rel="stylesheet"/>
+<link href="css/toast.css" rel="stylesheet" />
 <link rel="stylesheet" href="css/libgdx.css" />
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
 <script src="js/utils.js"></script>
 </head>
 <body>
+<div id="site">
+<div id="content">
 <div id="header">
 <div class="container" style="padding:0px;">
 	<a href="index.html"><img src="img/logo.png" id="logo"/></a>
@@ -39,7 +41,7 @@ function loadGame(game) {
 		$("#title").html("This is not the game you are looking for");
 		return;
 	} else {
-		$("#title").html(game.title + " by <span>" + game.creator + '</span>&nbsp;<a style="font-size: 16px" href="editentry.html?id=' + game.id + '">edit</a>');
+		$("#title").html(game.title + " <span class='creator'>by " + game.creator + '</span>&nbsp;<a style="font-size: 16px" href="editentry.html?id=' + game.id + '">edit</a>');
 		for(var i = 0; i < game.downloadUrls.length; i++) {
 			var link = $(document.createElement("a")).addClass("button");
 			link.attr("href", game.downloadUrls[i].url);
@@ -63,12 +65,14 @@ $(document).ready(function() {
 	});
 });
 </script>
+</div>
 <div id="footer">
 	<div class="container">
 		<div class="grid">
 			This page is copyright &copy; 2013 Mario Zechner; All other trademarks, logos and copyrights are the property of their respective owners. <span style="float:right">Design by XKlibur</div>
 		</div>
 	</div>
+</div>
 </div>
 </body>
 </html>
