@@ -1,6 +1,39 @@
-<div class="graybar"></div>
+<div id="highlights">
 <div class="container">
 	<div class="one-of-one">
 		<h1>Gallery</h1>
+		<p>Take a look at all the awesome games that have already been made with libgdx. <br />You made a cool game yourself and want it to appear here?</p>
+		<a class="btn" href="">Submit your game</a>
 	</div>
 </div>
+</div>
+
+<div class="container" id="gallery">
+</div>
+
+<script>
+function loadGallery(data) {
+	$("#tabletinner").html('<a href="showentry.html?id="' + data[0].id + '><img src="' + data[0].imageUrls[0] + '"/></a>');
+	var topgames = $("#gallery");
+	for(var i=1; i < data.length; i++) {
+		var game = data[i];
+		var div = $(document.createElement("div")).addClass("unit").addClass("one-of-four");
+		div.html('<a href="showentry.html?id=' + game.id + '">' +
+				'<span><span class="gametitle">' + game.title + '</span> by ' + game.creator +'</span>'+ 
+				 '<img src="' + (game.imageUrls.length > 0?game.imageUrls[0]:"img/no_game.png") + '"></img>' +
+				 '<p>'+game.description +'</p>'+
+				 "</a>");
+		topgames.append(div);
+	}
+}
+
+$(document).ready(function() {
+	$.ajax({
+		url: "http://" + window.location.host.split(":")[0] + ":7777/libgdx-site/service/sortetGames?num=17&start=0",
+		success: loadGallery,
+		error: function() {
+			loadGallery(testGames(17));	
+		}
+	})
+});
+</script>

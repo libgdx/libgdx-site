@@ -31,7 +31,7 @@ ul.menu li a{
 	border-left:2px solid #eee;
 	text-align:center;
 
-	font-family:Sans, DejaVu Sans,sans-serif,Arial;
+/*	font-family:Sans, DejaVu Sans,sans-serif,Arial;*/
 	font-size:16px;
 	color:#999;
 	text-decoration:none;
@@ -571,3 +571,53 @@ html,body{
 	width:100%;
 	padding:20px;
 }
+
+
+
+
+/* gallery start */
+#gallery{
+	padding-top:30px;
+}
+#gallery a{
+	display:block;
+	text-align:center;
+	font-size:14px;
+	font-weight:normal;
+	border-radius:10px;
+	margin-top:10px;
+	margin-bottom:10px;
+	background:#eee;
+	color:#111;
+}
+#gallery span{
+	color:#eee;
+	display:block;
+	padding-top:4px;
+	padding-bottom:4px;
+	background:#C53B2F;
+	border-radius:10px 10px 0px 0px;
+}
+#gallery span.gametitle{
+	font-size:16px;
+	color:#fff;
+	font-weight:bold;
+}
+#gallery a:hover{
+	text-decoration:none;
+	box-shadow:#999 0px 0px 8px;
+}
+#gallery p{
+	margin:0px;
+	padding-left:10px;
+	padding-right:10px;
+	font-size:13px;
+	padding-bottom:10px;
+	padding-top:10px;
+	border:1px solid #ccc;
+	border-radius:0px 0px 10px 10px;
+	border-top:0px;
+}
+
+
+/* gallery end */
