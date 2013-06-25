@@ -27,36 +27,34 @@
 </div>
 <div id="highlights">
 	<div class="container">
-		<!-- Content -->
-			<div class="one-of-two">
-				<h1>Release Builds</h1>
-				<p>Release builds are versioned, e.g. 0.9.7, and are published
+		<div class="one-of-two">
+			<h1>Release Builds</h1>
+			<p>Release builds are versioned, e.g. 0.9.7, and are published
 					periodically, usually every few months. They represent stable
 					snapshots of libgdx. Note that new bug fixes and features are never
 					backported to old libgdx releases.</p>
-				<a class="btn" href="https://code.google.com/p/libgdx/downloads/list"><img src="img/save.png" />&nbsp;Download Release</a>
-			</div>
-			<div class="unit one-of-two">
-				<h1>Nightly Builds</h1>
-				<p>Nightly builds are created every night, and on every change
+			<a class="btn" href="https://code.google.com/p/libgdx/downloads/list"><img src="img/save.png" />&nbsp;Download Release</a>
+		</div>
+		<div class="unit one-of-two">
+			<h1>Nightly Builds</h1>
+			<p>Nightly builds are created every night, and on every change
 					in the Git repository, by our build server. They contain the latest
 					and greatest bug fixes and features. Nightlies are usually very
 					stable, just like our master branch on Github.</p>
-				<a class="btn" href="http://libgdx.badlogicgames.com/nightlies/"><img src="img/save.png" />&nbsp;Download Nightly</a>
-			</div>
+			<a class="btn" href="http://libgdx.badlogicgames.com/nightlies/"><img src="img/save.png" />&nbsp;Download Nightly</a>
 		</div>
 	</div>
 </div>
-	<div class="container">
-		<div class="unit content span-grid">
-				<h2>Contents of a Release/Nightly</h2>
-				<p>
-					Each release/nightly contains a bunch of jar files that are
-					necessary for a multi-platform libgdx project. Here's a dump of the
-					directory structure with some explanations. The <a href="http://code.google.com/p/libgdx/wiki/ProjectSetupNew">Gdx
-					Setup UI</a> takes care of managing your dependencies. If you want to setup things manually, here's a <a href="http://code.google.com/p/libgdx/wiki/ProjectSetup">guide</a>.
-				</p>
-				<pre>
+<div class="container">
+	<div class="unit content span-grid">
+		<h2>Contents of a Release/Nightly</h2>
+		<p>
+			Each release/nightly contains a bunch of jar files that are
+			necessary for a multi-platform libgdx project. Here's a dump of the
+			directory structure with some explanations. The <a href="http://code.google.com/p/libgdx/wiki/ProjectSetupNew">Gdx
+			Setup UI</a> takes care of managing your dependencies. If you want to setup things manually, here's a <a href="http://code.google.com/p/libgdx/wiki/ProjectSetup">guide</a>.
+		</p>
+		<pre>
 docs                             - offline Javadocs
 
 extensions                       - jar files and native libraries for extensions
@@ -72,18 +70,15 @@ gdx-backend-lwjgl.jar            - Lwjgl backend jar
 gdx-openal.jar                   - desktop audio backend jar for Jogl & Lwjgl backend
 gdx-natives.jar                  - Gdx core desktop natives jar
 gdx.jar                          - Gdx core jar
-gdx-setup-ui.jar                 - Gdx Setup UI, run this to generate new projects!
-      </pre>
-				<p>Libgdx consists of the core, backends and extensions. The
+gdx-setup-ui.jar                 - Gdx Setup UI, run this to generate new projects! </pre>
+			<p>Libgdx consists of the core, backends and extensions. The
 					core contains the platform agnostic code for all the libgdx APIs.
 					The backends contain the platform specific code upon which the core
 					relies, e.g. OpenGL wrappers. Extensions are optional, most games
 					do not need them.
-				<p>
-		</div>
-		<!-- Content -->
-		</div>
+			<p>
 	</div>
+</div>
 
 
 </div>

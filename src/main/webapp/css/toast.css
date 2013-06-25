@@ -57,7 +57,7 @@
 }
 
 .span-grid {
-	width: 97%;
+	width: 100%;
 }
 
 .one-of-two { width: 50%; }
@@ -66,7 +66,7 @@
 .two-of-three { width: 66.666666666%; }
 
 .one-of-four { width: 25%; }
-.three-of-four { width: 72%; }
+.three-of-four { width: 75%; }
 
 .one-of-five { width: 17.07%; }
 .two-of-five { width: 37%; }
@@ -80,7 +80,7 @@
 	}
 
 	.unit ,.one-of-one,.one-of-two,.one-of-three,.one-of-four{
-		width: auto;
+		width: auto !important;
 		margin-left: 0;
 		display: block;
 	}
@@ -132,7 +132,8 @@ hr {
 \*-----------------------------------*/
 
 html {
-	font: 1.1em Helvetica Neue, Helvetica, Arial, sans-serif;
+	font: 1em Helvetica Neue, Helvetica, Arial, sans-serif;
+	line-height:1.5;
 }
 
 @media screen and (max-width: 650px) {
