@@ -82,7 +82,7 @@
 
 <script>
 function loadShowcase(data) {
-	$("#tabletinner").html('<a href="showentry.html?id="' + data[0].id + '><img src="' + data[0].imageUrls[0] + '"/></a>');
+	$("#tabletinner").html('<a href="showentry.html?id=' + data[0].id + '"><img src="' + data[0].imageUrls[0] + '"/></a>');
 	var topgames = $("#showcase");
 	for(var i=1; i < data.length; i++) {
 		var game = data[i];

@@ -41,6 +41,7 @@ public class InMemoryGameDatabase implements GameDatabase {
 		String id = tokensToIds.get(token);
 		if(id == null) return false;
 		game.id = id;
+		game.created = new Date();
 		idsToGames.put(id, game);
 		return true;
 	}

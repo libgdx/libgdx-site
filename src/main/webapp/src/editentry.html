@@ -1,21 +1,45 @@
 <div class="graybar"></div>
-<div class="container">
+<div class="container" id="containerdiv">
 <h2 id="edit">New Entry</h2>
 <p>Simply fill out the form below. All fields are mandatory. Once submitted, you will see a token that you can to modify your entry in the
 future. If you modify your entry, make sure to supply the token you received when you created the entry.</p>
 <form class="contactform">
 	<ul>
-		<li><label for="title">Title</label><input type="text" id="title" name="title" placeholder="Your game's name"  /></li>
-		<li><label for="creator">Creator</label><input type="text" id="creator" name="creator" placeholder="Name of the game's creator"  />
-		<li><label>Description</label><textarea id="description" placeholder="Describe your game, no markup allowed"></textarea></li>
 		<li>
-			<label for="linkname">Link</label>
-			<input type="text" id="linkname" name="linkname" placeholder="Name of the link, e.g. Play Store, Github, ..."  />
-			<input type="url" id="linkurl" name="linkurl" placeholder="URL"  />
+			<label for="title">Title (max. 140 chars)</label>
+			<input required type="text" id="title" name="title" placeholder="Your game's name"  />
+		</li>
+		<li>
+			<label for="creator">Creator (max. 140 chars)</label>
+			<input required type="text" id="creator" name="creator" placeholder="Name of the game's creator"  />
+		</li>
+		<li>
+			<label>Description (max. 1000 chars)</label>
+			<textarea required id="description" placeholder="Describe your game, no markup allowed"></textarea>
+		</li>
+		<li>
+			<label for="linkname">Link #1</label>
+			<input required type="text" id="linkname" name="linkname0" placeholder="Name of the link, e.g. Play Store, Github, ..."  />
+			<input required type="url" id="linkurl" name="linkurl0" placeholder="URL"  />
+		</li>
+		<li>
+			<label for="linkname">Link #2</label>
+			<input type="text" id="linkname" name="linkname1" placeholder="Name of the link, e.g. Play Store, Github, ..."  />
+			<input type="url" id="linkurl" name="linkurl1" placeholder="URL"  />
+		</li>
+		<li>
+			<label for="linkname">Link #3</label>
+			<input type="text" id="linkname" name="linkname2" placeholder="Name of the link, e.g. Play Store, Github, ..."  />
+			<input type="url" id="linkurl" name="linkurl2" placeholder="URL"  />
+		</li>
+		<li>
+			<label for="linkname">Link #4</label>
+			<input type="text" id="linkname" name="linkname3" placeholder="Name of the link, e.g. Play Store, Github, ..."  />
+			<input type="url" id="linkurl" name="linkurl3" placeholder="URL"  />
 		</li>
 		<li>
 			<label for="imageurl">Image</label>
-			<input type="url" id="imageurl" name="imageurl" placeholder="URL"  />
+			<input required type="url" id="imageurl" name="imageurl" placeholder="URL"  />
 			<img id="preview"/>
 		</li>
 		<li><div id="tokendiv"></div></li>
@@ -33,7 +57,7 @@ var isCreate = true;
 function loadGame(game) {
 	isCreate = false;
 	if(!game) return;
-	$("#tokendiv").html('<label for="token">Token</label><input id="token" name="token"/>');
+	$("#tokendiv").html('<label for="token">Token</label><input required id="token" name="token"/>');
 	$("#title").attr("value", game.title);
 	$("#creator").attr("value", game.creator);
 	$("#description").val(game.description);
@@ -77,7 +101,13 @@ function saveGame() {
 }
 
 function processResponse(data) {
-	alert(data.success + " " + data.message);
+	if(!data.success) {
+		alert("Sorry, there was an error\n" + data.message);	
+	} else {
+		$("#containerdiv").empty();
+		$("#containerdiv").html("<h2>Success! Token: " + data.token + ", save the token to be able to modify the entry later!<h2>"
+						   + '<a href="showentry.html?id=' + data.gameId + '">To your entry</a>');
+	}
 }
 
 $(document).ready(function() {
