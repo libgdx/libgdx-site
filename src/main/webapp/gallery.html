@@ -56,7 +56,7 @@ function loadGallery(data) {
 
 $(document).ready(function() {
 	$.ajax({
-		url: "http://" + window.location.host.split(":")[0] + ":7777/libgdx-site/service/randomGames?num=17",
+		url: "http://" + window.location.host.split(":")[0] + ":7777/libgdx-site/service/sortetGames?num=17&start=0",
 		success: loadGallery,
 		error: function() {
 			loadGallery(testGames(17));	
