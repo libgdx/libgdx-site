@@ -32,7 +32,11 @@
 	<div>
 		<img class="framed" id="mainimage"/>
 	</div>
+	<div id="video">
+	</div>
 	<div id="description"></div>
+	<div id="disqus_thread"></div>
+	<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
 </div>
 
 <script>
@@ -50,6 +54,9 @@ function loadGame(game) {
 		}
 		
 		$("#mainimage").attr("src", game.imageUrls[0]);
+		if(game.videoUrl != null) {
+			$("#video").html('<iframe class="framed" width="560" height="315" src="' + game.videoUrl + '" frameborder="0" allowfullscreen></iframe>');
+		}
 		$("#description").html(game.description.replace(/\n/g, "</br>"));
 	}
 }
@@ -63,6 +70,16 @@ $(document).ready(function() {
 			loadGame(testGame());
 		}
 	});
+	
+	
+	/* * * DON'T EDIT BELOW THIS LINE * * */
+	(function() {
+		var disqus_shortname = 'libgdx-site'; // required: replace example with your forum shortname
+		var disqus_identifier = gameId;
+	    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+	    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+	    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	})();
 });
 </script>
 </div>
@@ -74,5 +91,20 @@ $(document).ready(function() {
 	</div>
 </div>
 </div>
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-12707328-7']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
 </body>
 </html>
