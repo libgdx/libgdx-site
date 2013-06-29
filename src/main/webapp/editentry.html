@@ -33,39 +33,39 @@ future. If you modify your entry, make sure to supply the token you received whe
 <form class="contactform">
 	<ul>
 		<li>
-			<label for="title">Title (max. 140 chars)</label>
+			<label for="title">Title</label>
 			<input required type="text" id="title" name="title" placeholder="Your game's name"  />
 		</li>
 		<li>
-			<label for="creator">Creator (max. 140 chars)</label>
+			<label for="creator">Creator</label>
 			<input required type="text" id="creator" name="creator" placeholder="Name of the game's creator"  />
 		</li>
 		<li>
-			<label>Description (max. 1000 chars)</label>
-			<textarea required id="description" placeholder="Describe your game, no markup allowed"></textarea>
+			<label>Description</label>
+			<textarea required style="width: 445px; height: 150px;" id="description" placeholder="Describe your game, no markup allowed"></textarea>
 		</li>
 		<li>
 			<label for="linkname">Link #1</label>
-			<input required type="text" id="linkname" name="linkname0" placeholder="Name of the link, e.g. Play Store, Github, ..."  />
-			<input required type="url" id="linkurl" name="linkurl0" placeholder="URL"  />
+			<input required type="text" id="linkname0" name="linkname0" placeholder="Name of the link, e.g. Play Store, Github, ..."  />
+			<input required type="url" id="linkurl0" name="linkurl0" placeholder="URL"  />
 		</li>
 		<li>
 			<label for="linkname">Link #2</label>
-			<input type="text" id="linkname" name="linkname1" placeholder="Name of the link, e.g. Play Store, Github, ..."  />
-			<input type="url" id="linkurl" name="linkurl1" placeholder="URL"  />
+			<input type="text" id="linkname1" name="linkname1" placeholder="Name of the link, e.g. Play Store, Github, ..."  />
+			<input type="url" id="linkurl1" name="linkurl1" placeholder="URL"  />
 		</li>
 		<li>
 			<label for="linkname">Link #3</label>
-			<input type="text" id="linkname" name="linkname2" placeholder="Name of the link, e.g. Play Store, Github, ..."  />
-			<input type="url" id="linkurl" name="linkurl2" placeholder="URL"  />
+			<input type="text" id="linkname2" name="linkname2" placeholder="Name of the link, e.g. Play Store, Github, ..."  />
+			<input type="url" id="linkurl2" name="linkurl2" placeholder="URL"  />
 		</li>
 		<li>
 			<label for="linkname">Link #4</label>
-			<input type="text" id="linkname" name="linkname3" placeholder="Name of the link, e.g. Play Store, Github, ..."  />
-			<input type="url" id="linkurl" name="linkurl3" placeholder="URL"  />
+			<input type="text" id="linkname3" name="linkname3" placeholder="Name of the link, e.g. Play Store, Github, ..."  />
+			<input type="url" id="linkurl3" name="linkurl3" placeholder="URL"  />
 		</li>
 		<li>
-			<label for="imageurl">Image</label>
+			<label for="imageurl">Image (705x344)</label>
 			<input required type="url" id="imageurl" name="imageurl" placeholder="URL"  />
 			<img id="preview"/>
 		</li>
@@ -88,8 +88,10 @@ function loadGame(game) {
 	$("#title").attr("value", game.title);
 	$("#creator").attr("value", game.creator);
 	$("#description").val(game.description);
-	$("#linkname").attr("value", game.downloadUrls[0].name);
-	$("#linkurl").attr("value", game.downloadUrls[0].url);
+	for(var i=0; i < game.downloadUrls.length; i++) {
+		$("#linkname" + i).attr("value", game.downloadUrls[i].name);
+		$("#linkurl" + i).attr("value", game.downloadUrls[i].url);
+	}
 	$("#imageurl").attr("value", game.imageUrls[0]);
 	$("#preview").attr("src", game.imageUrls[0]);
 	$("#edit").html("Edit Entry");
@@ -107,7 +109,12 @@ function saveGame() {
 		creator: $("#creator").val(),
 		description: $("#description").val(),
 		imageUrls: [$("#imageurl").val()],
-		downloadUrls: [{name: $("#linkname").val(), url: $("#linkurl").val()}]
+		downloadUrls: []
+	}
+	for(var i=0; i < 4; i++) {
+		if($("#linkname" + i).val().length > 0) {
+			game.downloadUrls.push({name: $("#linkname" + i).val(), url: $("#linkurl" + i).val()})
+		};
 	}
 	
 	$.ajax({

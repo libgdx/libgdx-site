@@ -50,7 +50,7 @@ function loadGame(game) {
 		}
 		
 		$("#mainimage").attr("src", game.imageUrls[0]);
-		$("#description").html(game.description);
+		$("#description").html(game.description.replace(/\n/g, "</br>"));
 	}
 }
 

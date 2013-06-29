@@ -44,8 +44,11 @@ function loadGallery(data) {
 	var topgames = $("#gallery");
 	for(var i=0; i < data.length; i++) {
 		var game = data[i];
-		if(game.description.length > 140) {
+		if(game.description != null && game.description.length > 140) {
 		  game.description = game.description.substring(0, 100) + "...";
+		}
+		if(game.description == null) {
+		  game.description = "";
 		}
 		var div = $(document.createElement("div")).addClass("unit").addClass("one-of-four");
 		div.html('<a href="showentry.html?id=' + game.id + '">' +
