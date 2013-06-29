@@ -38,7 +38,7 @@ ul.menu li a{
 	font-weight:bold;
 	padding-top:58px;
 
-	background:#fff no-repeat center top 10px;
+	background:#fff no-repeat center top;
 }
 ul.menu li a img{
 	margin-top:7px;
