@@ -1,6 +1,8 @@
 package com.badlogicgames.libgdx.site.db;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -41,6 +43,7 @@ public class InMemoryGameDatabase implements GameDatabase {
 		String id = tokensToIds.get(token);
 		if(id == null) return false;
 		game.id = id;
+		game.created = new Date();
 		idsToGames.put(id, game);
 		return true;
 	}
@@ -57,7 +60,13 @@ public class InMemoryGameDatabase implements GameDatabase {
 	}
 
 	public synchronized List<Game> getGames() {
-		return new ArrayList<Game>(idsToGames.values());
+		ArrayList<Game> games = new ArrayList<Game>(idsToGames.values());
+		Collections.sort(games, new Comparator<Game>() {
+			public int compare(Game o1, Game o2) {
+				return o2.created.compareTo(o1.created);
+			}
+		});
+		return games;
 	}
 
 	public synchronized void addGame(GameRecord gameRecord) {

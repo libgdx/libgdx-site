@@ -1,3 +1,8 @@
+<style>
+.small-top-margin {
+	margin-top: 0px;
+}
+</style>
 <div id="slogan">Desktop/Android/iOS/HTML5 Java game development framework</div>
 <div id="banner">
 	<div class="container">
@@ -6,8 +11,7 @@
 				<div id="middle">
 					<div id="inner">
 						<div id="calltoaction">
-							Start creating awesome games NOW!<br /> <a href="download.html">Download
-								libGDX</a>
+							Start creating awesome games NOW!<br /> <a href="documentation.html">Get Started</a>
 						</div>
 					</div>
 				</div>
@@ -30,40 +34,41 @@
 
 <div id="highlights">
 	<div class="container">
-		<div class="one-of-three" id="hl_easy">
-			<h2>Easy to use</h2>
-			Simply download the jar files, include them in your project and you
-			are ready to go.
-		</div>
-
-		<div class="one-of-three" id="hl_open">
-			<h2>Open Source</h2>
-			libgdx is licensed under Apache 2.0 and maintained by the community.
-		</div>
-
 		<div class="one-of-three" id="hl_crossplatform">
 			<h2>Cross Platform</h2>
-			Works on Desktop (Win, Mac, Linux), Android, iOS and HTML5.
+			<p class="small-top-margin">Publish your games on Windows, Mac, Linux, Android, iOS and HTML5, all with the same code base.</p>
 		</div>
-
+	
+		<div class="one-of-three" id="hl_open">
+			<h2>Open Source</h2>
+			<p class="small-top-margin">libgdx is licensed under Apache 2.0 and maintained by the community. Contribute today!</p>
+			<a class="btn" href="https://code.google.com/p/libgdx/wiki/Contributing">Contribute</a>
+		</div>
+		
 		<div class="one-of-three" id="hl_modular">
-			<h2>Modular</h2>
-			The modular architecture allows third party modules to be easily
-			added.
+			<h2>Feature Packed</h2>
+			<p class="small-top-margin">Comes with batteries included. Write 2D or 3D games, let libgdx worry about low-level details.</p>
+			<a class="btn" href="features.html">Features</a>
 		</div>
-
+		
 		<div class="one-of-three" id="hl_fast">
-			<h2>super fast</h2>
+			<h2>Super Fast</h2>
 			Heavy emphasis on avoiding garbage collection for Dalvik/JavaScript
 			by careful API design and the use of custom collection.
+		</div>
+		
+		<div class="one-of-three" id="hl_easy">
+			<h2>Documentation</h2>
+			<p class="small-top-margin">Learn libgdx inside out on the Wiki, study the Javadocs, or read a third-party tutorial. Learn from example code and demos.</p>
+			<a class="btn" href="documentation.html">Learn</a>
 		</div>
 
 		<div class="one-of-three" id="hl_community">
 			<h2>Community Support</h2>
-			Get great support from a big and growing community of game and
-			application developers.
+			<p class="small-top-margin">Get great support from a big and growing community of game and
+			application developers.</p>
+			<a class="btn" href="community.html">Community</a>
 		</div>
-
 	</div>
 </div>
 
@@ -82,7 +87,7 @@
 
 <script>
 function loadShowcase(data) {
-	$("#tabletinner").html('<a href="showentry.html?id="' + data[0].id + '><img src="' + data[0].imageUrls[0] + '"/></a>');
+	$("#tabletinner").html('<a href="showentry.html?id=' + data[0].id + '"><img src="' + data[0].imageUrls[0] + '"/></a>');
 	var topgames = $("#showcase");
 	for(var i=1; i < data.length; i++) {
 		var game = data[i];

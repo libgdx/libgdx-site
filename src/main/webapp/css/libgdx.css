@@ -27,7 +27,7 @@ ul.menu li a{
 	display:block;
 	width:120px;
 	height:80px;
-	margin-top:10px;
+	margin-top:14px;
 	border-left:2px solid #eee;
 	text-align:center;
 
@@ -36,9 +36,9 @@ ul.menu li a{
 	color:#999;
 	text-decoration:none;
 	font-weight:bold;
-	padding-top:58px;
+	padding-top:54px;
 
-	background:#fff no-repeat center top 10px;
+	background:#fff no-repeat center top;
 }
 ul.menu li a img{
 	margin-top:7px;
@@ -304,6 +304,14 @@ div#topgames span{ /*title of the game*/
 	font-size:15px;
 /*	padding:20px;
 	margin-top:40px;*/
+}
+
+#footer a{
+	color:#888;
+}
+#footer a:hover{
+	text-decoration:none;
+	font-style:italic;
 }
 
 

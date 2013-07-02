@@ -26,23 +26,47 @@
 	</div>
 </div>
 <div class="graybar"></div>
-<div class="container">
+<div class="container" id="containerdiv">
 <h2 id="edit">New Entry</h2>
 <p>Simply fill out the form below. All fields are mandatory. Once submitted, you will see a token that you can to modify your entry in the
 future. If you modify your entry, make sure to supply the token you received when you created the entry.</p>
 <form class="contactform">
 	<ul>
-		<li><label for="title">Title</label><input type="text" id="title" name="title" placeholder="Your game's name"  /></li>
-		<li><label for="creator">Creator</label><input type="text" id="creator" name="creator" placeholder="Name of the game's creator"  />
-		<li><label>Description</label><textarea id="description" placeholder="Describe your game, no markup allowed"></textarea></li>
 		<li>
-			<label for="linkname">Link</label>
-			<input type="text" id="linkname" name="linkname" placeholder="Name of the link, e.g. Play Store, Github, ..."  />
-			<input type="url" id="linkurl" name="linkurl" placeholder="URL"  />
+			<label for="title">Title</label>
+			<input required type="text" id="title" name="title" placeholder="Your game's name"  />
 		</li>
 		<li>
-			<label for="imageurl">Image</label>
-			<input type="url" id="imageurl" name="imageurl" placeholder="URL"  />
+			<label for="creator">Creator</label>
+			<input required type="text" id="creator" name="creator" placeholder="Name of the game's creator"  />
+		</li>
+		<li>
+			<label>Description</label>
+			<textarea required style="width: 445px; height: 150px;" id="description" placeholder="Describe your game, no markup allowed"></textarea>
+		</li>
+		<li>
+			<label for="linkname">Link #1</label>
+			<input required type="text" id="linkname0" name="linkname0" placeholder="Name of the link, e.g. Play Store, Github, ..."  />
+			<input required type="url" id="linkurl0" name="linkurl0" placeholder="URL"  />
+		</li>
+		<li>
+			<label for="linkname">Link #2</label>
+			<input type="text" id="linkname1" name="linkname1" placeholder="Name of the link, e.g. Play Store, Github, ..."  />
+			<input type="url" id="linkurl1" name="linkurl1" placeholder="URL"  />
+		</li>
+		<li>
+			<label for="linkname">Link #3</label>
+			<input type="text" id="linkname2" name="linkname2" placeholder="Name of the link, e.g. Play Store, Github, ..."  />
+			<input type="url" id="linkurl2" name="linkurl2" placeholder="URL"  />
+		</li>
+		<li>
+			<label for="linkname">Link #4</label>
+			<input type="text" id="linkname3" name="linkname3" placeholder="Name of the link, e.g. Play Store, Github, ..."  />
+			<input type="url" id="linkurl3" name="linkurl3" placeholder="URL"  />
+		</li>
+		<li>
+			<label for="imageurl">Image (705x344)</label>
+			<input required type="url" id="imageurl" name="imageurl" placeholder="URL"  />
 			<img id="preview"/>
 		</li>
 		<li><div id="tokendiv"></div></li>
@@ -60,12 +84,14 @@ var isCreate = true;
 function loadGame(game) {
 	isCreate = false;
 	if(!game) return;
-	$("#tokendiv").html('<label for="token">Token</label><input id="token" name="token"/>');
+	$("#tokendiv").html('<label for="token">Token</label><input required id="token" name="token"/>');
 	$("#title").attr("value", game.title);
 	$("#creator").attr("value", game.creator);
 	$("#description").val(game.description);
-	$("#linkname").attr("value", game.downloadUrls[0].name);
-	$("#linkurl").attr("value", game.downloadUrls[0].url);
+	for(var i=0; i < game.downloadUrls.length; i++) {
+		$("#linkname" + i).attr("value", game.downloadUrls[i].name);
+		$("#linkurl" + i).attr("value", game.downloadUrls[i].url);
+	}
 	$("#imageurl").attr("value", game.imageUrls[0]);
 	$("#preview").attr("src", game.imageUrls[0]);
 	$("#edit").html("Edit Entry");
@@ -83,7 +109,12 @@ function saveGame() {
 		creator: $("#creator").val(),
 		description: $("#description").val(),
 		imageUrls: [$("#imageurl").val()],
-		downloadUrls: [{name: $("#linkname").val(), url: $("#linkurl").val()}]
+		downloadUrls: []
+	}
+	for(var i=0; i < 4; i++) {
+		if($("#linkname" + i).val().length > 0) {
+			game.downloadUrls.push({name: $("#linkname" + i).val(), url: $("#linkurl" + i).val()})
+		};
 	}
 	
 	$.ajax({
@@ -104,7 +135,13 @@ function saveGame() {
 }
 
 function processResponse(data) {
-	alert(data.success + " " + data.message);
+	if(!data.success) {
+		alert("Sorry, there was an error\n" + data.message);	
+	} else {
+		$("#containerdiv").empty();
+		$("#containerdiv").html("<h2>Success! Token: " + data.token + ", save the token to be able to modify the entry later!<h2>"
+						   + '<a href="showentry.html?id=' + data.gameId + '">To your entry</a>');
+	}
 }
 
 $(document).ready(function() {
@@ -145,7 +182,7 @@ $(document).ready(function() {
 <div id="footer">
 	<div class="container">
 		<div class="grid">
-			This page is copyright &copy; 2013 Mario Zechner; All other trademarks, logos and copyrights are the property of their respective owners. <span style="float:right">Design by XKlibur</div>
+			This page is copyright &copy; 2013 Mario Zechner; All other trademarks, logos and copyrights are the property of their respective owners. <span style="float:right">Design by <a href="http://www.xklibur.com/">XKlibur</a>, HTML/CSS by <a href="http://www.twitter.com/bitowl">bitowl</a></div>
 		</div>
 	</div>
 </div>

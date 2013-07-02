@@ -50,7 +50,7 @@ function loadGame(game) {
 		}
 		
 		$("#mainimage").attr("src", game.imageUrls[0]);
-		$("#description").html(game.description);
+		$("#description").html(game.description.replace(/\n/g, "</br>"));
 	}
 }
 
@@ -69,7 +69,7 @@ $(document).ready(function() {
 <div id="footer">
 	<div class="container">
 		<div class="grid">
-			This page is copyright &copy; 2013 Mario Zechner; All other trademarks, logos and copyrights are the property of their respective owners. <span style="float:right">Design by XKlibur</div>
+			This page is copyright &copy; 2013 Mario Zechner; All other trademarks, logos and copyrights are the property of their respective owners. <span style="float:right">Design by <a href="http://www.xklibur.com/">XKlibur</a>, HTML/CSS by <a href="http://www.twitter.com/bitowl">bitowl</a></div>
 		</div>
 	</div>
 </div>
