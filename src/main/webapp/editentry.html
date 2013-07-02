@@ -69,6 +69,10 @@ future. If you modify your entry, make sure to supply the token you received whe
 			<input required type="url" id="imageurl" name="imageurl" placeholder="URL"  />
 			<img id="preview"/>
 		</li>
+		<li>
+			<label for="videourl">Youtube Embed Url</label>
+			<input type="url" id="videourl" name="videourl" placeholder="http://www.youtube.com/embed/jGy-Uu3DuqY" />
+			<div id="videodiv"></div>
 		<li><div id="tokendiv"></div></li>
 		<li><div id="recaptcha"></div></li>
 		<li><button id="submit" class="submit" type="submit">Submit</button></li>
@@ -93,6 +97,10 @@ function loadGame(game) {
 		$("#linkurl" + i).attr("value", game.downloadUrls[i].url);
 	}
 	$("#imageurl").attr("value", game.imageUrls[0]);
+	$("#videourl").attr("value", game.videoUrl);
+	if(game.videoUrl != null) {
+		$("#videodiv").html('<iframe width="560" height="315" src="' + game.videoUrl + '" frameborder="0" allowfullscreen></iframe>');
+	}
 	$("#preview").attr("src", game.imageUrls[0]);
 	$("#edit").html("Edit Entry");
 }
@@ -109,7 +117,8 @@ function saveGame() {
 		creator: $("#creator").val(),
 		description: $("#description").val(),
 		imageUrls: [$("#imageurl").val()],
-		downloadUrls: []
+		downloadUrls: [],
+		videoUrl: $("#videourl").val()
 	}
 	for(var i=0; i < 4; i++) {
 		if($("#linkname" + i).val().length > 0) {
@@ -172,6 +181,12 @@ $(document).ready(function() {
 		if(url) $("#preview").attr("src", url);
 	});
 	
+	$("#videourl").change(function() {
+		var url = $("#videourl").val();
+		console.log(url);
+		if(url) $("#videodiv").html('<iframe width="560" height="315" src="' + url + '" frameborder="0" allowfullscreen></iframe>');
+	});
+	
 	$("form").submit(function() {
 		saveGame();
 		return false;
@@ -187,5 +202,20 @@ $(document).ready(function() {
 	</div>
 </div>
 </div>
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-12707328-7']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
 </body>
 </html>

@@ -140,7 +140,11 @@ public class GameService {
 			if(!urlValidator.isValid(url)) return new Result(false, "Image #" + (i+1) + " URL is not valid");
 		}
 		// FIXME no videos for now
-		game.videoUrl = null;
+		if(game.videoUrl != null && game.videoUrl.length() > 0) {
+			if(!urlValidator.isValid(game.videoUrl)) return new Result(false, "Video URL is not valid");
+		} else {
+			game.videoUrl = null;
+		}
 		return new Result(true, "Validated");
 	}
 	
