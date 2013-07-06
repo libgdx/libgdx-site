@@ -37,6 +37,7 @@ public class FileGameDatabase implements GameDatabase {
 			try {
 				gameJson = FileUtils.readFileToString(file);
 				GameRecord game = mapper.readValue(gameJson, GameRecord.class);
+				log.info("load game "+game.game.title);
 				db.addGame(game);
 			} catch (IOException e) {
 				log.log(Level.SEVERE, "Couldn't load game record " + file.getAbsolutePath(), e);
@@ -88,8 +89,17 @@ public class FileGameDatabase implements GameDatabase {
 	public List<Game> getGames() {
 		return db.getGames();
 	}
-
+	
+	public List<Game> getGames(int page) {
+		return db.getGames(page);
+	}
+	
 	public Game getGame(String gameId) {
 		return db.getGame(gameId);
 	}
+
+	public int countGames() {
+		return db.countGames();
+	}
+
 }

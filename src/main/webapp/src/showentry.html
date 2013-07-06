@@ -39,6 +39,7 @@ $(document).ready(function() {
 	$.ajax({
 		url: "http://" + window.location.host.split(":")[0] + ":7777/libgdx-site/service/game?id=" + gameId,
 		success: loadGame,
+		dataType: "json",
 		error: function() {
 			loadGame(testGame());
 		}

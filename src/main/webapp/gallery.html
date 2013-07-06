@@ -29,19 +29,29 @@
 <div class="container">
 	<div class="one-of-one">
 		<h1>Gallery</h1>
-		<p>Take a look at all the awesome games that have already been made with libgdx. <br />You made a cool game yourself and want it to appear here?</p>
+		<p>Take a look at all the awesome games that have already been made with libgdx. We have <span id="amountgames"></span> games listed in this gallery.<br />You made a cool game yourself and want it to appear here?</p>
 		<a class="btn" href="editentry.html">Submit your game</a>
 	</div>
 </div>
 </div>
 
 <div class="container" id="gallery">
+<a name="gallery"></a>
+</div>
+
+<div class="container" id="pager">
 </div>
 
 <script>
 function loadGallery(data) {
-	$("#tabletinner").html('<a href="showentry.html?id="' + data[0].id + '><img src="' + data[0].imageUrls[0] + '"/></a>');
 	var topgames = $("#gallery");
+	
+	// no more games found?
+	if(data.length==0){
+		var h1=document.createElement("h1");
+		h1.appendChild(document.createTextNode("No more games found"));
+		topgames.append(h1);
+	}
 	for(var i=0; i < data.length; i++) {
 		var game = data[i];
 		if(game.description != null && game.description.length > 140) {
@@ -60,9 +70,34 @@ function loadGallery(data) {
 	}
 }
 
+// creates a pager below the gallery
+function loadPager(data){
+	var page=parseInt(getParameterByName("page"));if(isNaN(page)){page=0;} // we are currently on a page
+	
+	$("#amountgames").text(data.message);
+	var pager=$("#pager");
+	for(var i=0;i<parseInt(data.message)/16;i++){
+		var link = $(document.createElement("a")).addClass("btn");
+		if(page==i){link.addClass("current");}
+		link.attr("href","gallery.html?page="+i+"#gallery");
+		link.text(""+(i+1));
+		pager.append(link);
+	}
+}
+
 $(document).ready(function() {
+	// how many games do we have?
 	$.ajax({
-		url: "http://" + window.location.host.split(":")[0] + ":7777/libgdx-site/service/games",
+		url: "http://" + window.location.host.split(":")[0] + ":7777/libgdx-site/service/countGames",
+		success: loadPager,
+		dataType: "json",
+		error: function() {
+			loadPager({"success":true,"message":"0","gameId":null,"token":null}); // well there are no games :/
+		}
+	})
+	
+	$.ajax({
+		url: "http://" + window.location.host.split(":")[0] + ":7777/libgdx-site/service/games?page="+getParameterByName("page"),
 		success: loadGallery,
 		dataType: "json",
 		error: function() {

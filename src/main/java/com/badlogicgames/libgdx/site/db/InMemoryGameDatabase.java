@@ -69,6 +69,23 @@ public class InMemoryGameDatabase implements GameDatabase {
 		return games;
 	}
 
+	
+	public synchronized List<Game> getGames(int page) {
+		// get all Games
+		ArrayList<Game> allgames = (ArrayList<Game>) getGames();
+		
+		ArrayList<Game> games=new ArrayList<Game>(16);
+		for(int i=page*16;i<page*16+16;i++){
+			if(i>=allgames.size()){
+				// we do not have enough games to show you
+				break;
+			}
+			System.out.println(i);
+			games.add(allgames.get(i));
+		}
+		return games;
+	}
+	
 	public synchronized void addGame(GameRecord gameRecord) {
 		idsToGames.put(gameRecord.game.id, gameRecord.game);
 		tokensToIds.put(gameRecord.token, gameRecord.game.id);
@@ -76,5 +93,9 @@ public class InMemoryGameDatabase implements GameDatabase {
 
 	public synchronized Game getGame(String gameId) {
 		return idsToGames.get(gameId);
+	}
+
+	public int countGames() {
+		return idsToGames.size();
 	}
 }
