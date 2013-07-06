@@ -9,6 +9,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class Game {
 	public String id;
 	public Date created;
+	public Date modified;
 	public String title;
 	public String creator;
 	public String description;
