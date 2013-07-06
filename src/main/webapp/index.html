@@ -130,6 +130,7 @@ $(document).ready(function() {
 	$.ajax({
 		url: "http://" + window.location.host.split(":")[0] + ":7777/libgdx-site/service/randomGames?num=9",
 		success: loadShowcase,
+		dataType: "json",
 		error: function() {
 			loadShowcase(testGames(9));	
 		}

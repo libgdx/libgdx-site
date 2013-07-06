@@ -37,8 +37,9 @@ $(document).ready(function() {
 	$.ajax({
 		url: "http://" + window.location.host.split(":")[0] + ":7777/libgdx-site/service/games",
 		success: loadGallery,
+		dataType: "json",
 		error: function() {
-			loadGallery(testGames(17));
+			loadGallery(testGames(16));
 		}
 	})
 });
