@@ -42,8 +42,13 @@ public class InMemoryGameDatabase implements GameDatabase {
 		if(game == null) return false;
 		String id = tokensToIds.get(token);
 		if(id == null) return false;
+		// get the old game to get the created-game from it
+		Game oldgame=getGame(id);
+		
 		game.id = id;
+		game.created=oldgame.created;
 		game.modified = new Date();
+		
 		idsToGames.put(id, game);
 		return true;
 	}
@@ -80,7 +85,6 @@ public class InMemoryGameDatabase implements GameDatabase {
 				// we do not have enough games to show you
 				break;
 			}
-			System.out.println(i);
 			games.add(allgames.get(i));
 		}
 		return games;
