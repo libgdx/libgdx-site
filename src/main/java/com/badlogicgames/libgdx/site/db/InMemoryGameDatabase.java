@@ -42,7 +42,7 @@ public class InMemoryGameDatabase implements GameDatabase {
 		if(game == null) return false;
 		String id = tokensToIds.get(token);
 		if(id == null) return false;
-		// get the old game to get the created-game from it
+		// get the old game to get the created-date from it
 		Game oldgame=getGame(id);
 		
 		game.id = id;
@@ -76,7 +76,7 @@ public class InMemoryGameDatabase implements GameDatabase {
 
 	
 	public synchronized List<Game> getGames(int page) {
-		// get all Games
+		// get all games
 		ArrayList<Game> allgames = (ArrayList<Game>) getGames();
 		
 		ArrayList<Game> games=new ArrayList<Game>(16);
