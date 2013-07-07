@@ -17,17 +17,22 @@ html,body{
 }
 @media screen and (max-width: 1280px){
 	#content{
-		padding-bottom:82px !important;
+		padding-bottom:75px !important;
 	}
 }
 @media screen and (max-width: 700px){
 	#content{
-		padding-bottom:104px !important;
+		padding-bottom:96px !important;
 	}
 }
 @media screen and (max-width: 500px){
 	#content{
-		padding-bottom:124px !important;
+		padding-bottom:117px !important;
+	}
+}
+@media screen and (max-width: 400px){
+	#content{
+		padding-bottom:180px !important;
 	}
 }
 #footer{
@@ -172,7 +177,13 @@ div#calltoaction a{
 	font-size:18px;
 	font-weight:lighter;
 	text-decoration:none;
-	background:-moz-linear-gradient(top,#e44d3c,#d43d2c);
+	background-color:#E44D3C;
+    background: -webkit-gradient(linear, left top, left bottom, from(#e44d3c), to(#d43d2c));
+    background: -webkit-linear-gradient(top,#e44d3c,#d43d2c);
+    background: -moz-linear-gradient(top,#e44d3c,#d43d2c);
+    background: -ms-linear-gradient(top,#e44d3c,#d43d2c);
+    background: -o-linear-gradient(top,#e44d3c,#d43d2c);
+    background: linear-gradient(top,#e44d3c,#d43d2c);
 	padding:8px 15px;
 	margin-top:20px;
 	box-shadow: 4px 4px 5px #222222, 0 1px 0 #f85C4D inset;
@@ -238,6 +249,9 @@ div#highlights h2{
 div#highlights h1{
 	color:#ddd;
 }
+div#highlights h1 a{
+	color:#ddd;
+}
 div#highlights div div{
 	padding:20px;
 	padding:0px 20px 20px 50px;
@@ -287,7 +301,7 @@ div#topgameshead h1{
 }
 
 div#topgames{
-	padding:30px 0px 10px;
+	padding:30px 0;
 }
 div#topgames a{
 	display:block;
@@ -429,9 +443,11 @@ img{
 
 /* show entry */
 
-h2 span.creator{
+h1 span.creator{
 	font-size:23px;
 	color:#666;
+	padding:24px 0px 27px 0px;
+	display:inline-block;
 }
 
 .framed {
@@ -610,6 +626,9 @@ button.submit:active {
 #gallery a:hover{
 	text-decoration:none;
 	box-shadow:#999 0px 0px 8px;
+}
+#gallery img{	
+	max-height:138px;
 }
 #gallery p{
 	margin:0px;
