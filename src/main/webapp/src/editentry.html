@@ -6,19 +6,19 @@ future. If you modify your entry, make sure to supply the token you received whe
 <form class="contactform">
 	<ul>
 		<li>
-			<label for="title">Title</label>
+			<label for="title">Title *</label>
 			<input required type="text" id="title" name="title" placeholder="Your game's name"  />
 		</li>
 		<li>
-			<label for="creator">Creator</label>
+			<label for="creator">Creator *</label>
 			<input required type="text" id="creator" name="creator" placeholder="Name of the game's creator"  />
 		</li>
 		<li>
-			<label>Description</label>
+			<label>Description *</label>
 			<textarea required style="width: 445px; height: 150px;" id="description" placeholder="Describe your game, no markup allowed"></textarea>
 		</li>
 		<li>
-			<label for="linkname">Link #1</label>
+			<label for="linkname">Link #1 *</label>
 			<input required type="text" id="linkname0" name="linkname0" placeholder="Name of the link, e.g. Play Store, Github, ..."  />
 			<input required type="url" id="linkurl0" name="linkurl0" placeholder="URL"  />
 		</li>
@@ -38,7 +38,7 @@ future. If you modify your entry, make sure to supply the token you received whe
 			<input type="url" id="linkurl3" name="linkurl3" placeholder="URL"  />
 		</li>
 		<li>
-			<label for="imageurl">Image (705x344)</label>
+			<label for="imageurl">Image (705x344) *</label>
 			<input required type="url" id="imageurl" name="imageurl" placeholder="URL"  />
 			<img id="preview"/>
 		</li>
@@ -48,6 +48,7 @@ future. If you modify your entry, make sure to supply the token you received whe
 			<div><b>Should look like: http://www.youtube.com/embed/videoid, e.g. http://www.youtube.com/embed/jGy-Uu3DuqY</b></div>
 			<div id="videodiv"></div>
 		<li><div id="tokendiv"></div></li>
+		<li>* required fields</li>
 		<li><div id="recaptcha"></div></li>
 		<li><button id="submit" class="submit" type="submit">Submit</button></li>
 	</ul>

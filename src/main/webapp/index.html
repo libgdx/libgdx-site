@@ -38,7 +38,7 @@
 				<div id="middle">
 					<div id="inner">
 						<div id="calltoaction">
-							Start creating awesome games NOW!<br /> <a href="documentation.html">Get Started</a>
+							Start creating awesome games NOW!<br /> <a href="documentation.html#gettingstarted">Get Started</a>
 						</div>
 					</div>
 				</div>
@@ -102,7 +102,7 @@
 
 <div id="topgameshead">
 	<div class="container">
-		<img src="img/topgames_new.png"
+		<img src="img/topgames.png"
 			style="float: left; margin-left: -35px;" />
 		<h1>Showcase</h1>
 		<div class="clear"></div>
@@ -131,6 +131,7 @@ $(document).ready(function() {
 	$.ajax({
 		url: "http://" + window.location.host.split(":")[0] + ":7777/libgdx-site/service/randomGames?num=9",
 		success: loadShowcase,
+		dataType: "json",
 		error: function() {
 			loadShowcase(testGames(9));	
 		}
@@ -141,10 +142,9 @@ $(document).ready(function() {
 <div id="footer">
 	<div class="container">
 		<div class="grid">
-			This page is copyright &copy; 2013 Mario Zechner; All other trademarks, logos and copyrights are the property of their respective owners. <span style="float:right">Design by <a href="http://www.xklibur.com/">XKlibur</a>, HTML/CSS by <a href="http://www.twitter.com/bitowl">bitowl</a></div>
+			This page is copyright &copy; 2013 Mario Zechner; All other trademarks, logos and copyrights are the property of their respective owners. <span style="float:right">Design by <a href="http://www.xklibur.com/">XKlibur</a>, HTML/CSS by <a href="http://bitowl.de/">bitowl</a></span></div>
 		</div>
 	</div>
-</div>
 </div>
 
 <script type="text/javascript">

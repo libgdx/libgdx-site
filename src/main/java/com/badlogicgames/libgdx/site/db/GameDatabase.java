@@ -40,8 +40,19 @@ public interface GameDatabase {
 	public List<Game> getGames();
 	
 	/**
+	 * returns 16 games
+	 * @return a list of games on the specified page
+	 */
+	public List<Game> getGames(int page);
+	
+	/**
 	 * @param gameId the game's id
 	 * @return the game or null
 	 */
 	public Game getGame(String gameId);
+
+	/**
+	 * @return how many games does this database contain
+	 */
+	public int countGames();
 }

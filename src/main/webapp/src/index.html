@@ -11,7 +11,7 @@
 				<div id="middle">
 					<div id="inner">
 						<div id="calltoaction">
-							Start creating awesome games NOW!<br /> <a href="documentation.html">Get Started</a>
+							Start creating awesome games NOW!<br /> <a href="documentation.html#gettingstarted">Get Started</a>
 						</div>
 					</div>
 				</div>
@@ -75,7 +75,7 @@
 
 <div id="topgameshead">
 	<div class="container">
-		<img src="img/topgames_new.png"
+		<img src="img/topgames.png"
 			style="float: left; margin-left: -35px;" />
 		<h1>Showcase</h1>
 		<div class="clear"></div>
@@ -104,6 +104,7 @@ $(document).ready(function() {
 	$.ajax({
 		url: "http://" + window.location.host.split(":")[0] + ":7777/libgdx-site/service/randomGames?num=9",
 		success: loadShowcase,
+		dataType: "json",
 		error: function() {
 			loadShowcase(testGames(9));	
 		}

@@ -88,8 +88,17 @@ public class FileGameDatabase implements GameDatabase {
 	public List<Game> getGames() {
 		return db.getGames();
 	}
-
+	
+	public List<Game> getGames(int page) {
+		return db.getGames(page);
+	}
+	
 	public Game getGame(String gameId) {
 		return db.getGame(gameId);
 	}
+
+	public int countGames() {
+		return db.countGames();
+	}
+
 }

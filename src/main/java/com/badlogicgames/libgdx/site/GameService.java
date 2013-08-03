@@ -59,7 +59,14 @@ public class GameService {
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("games")
-	public List<Game> games() {
+	public List<Game> games(@QueryParam("page") int page) {
+		return db.getGames(page);
+	}
+	
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	@Path("allgames")
+	public List<Game> allgames() {
 		return db.getGames();
 	}
 	
@@ -82,6 +89,13 @@ public class GameService {
 			randomGames.add(games.get(i));
 		}
 		return randomGames;
+	}
+	
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	@Path("countGames")
+	public Result countGames(){
+		return new Result(true,Integer.toString(db.countGames()));
 	}
 	
 	@POST
