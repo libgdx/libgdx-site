@@ -89,6 +89,8 @@ public class GameService {
 	@Path("create")
 	public Result create(@Context HttpServletRequest hsr, GameRequest request) {
 		if(!checkCaptcha(hsr.getRemoteAddr(), request)) return new Result(false, "Captcha wrong");
+		Result result = validate(request.game);
+		if(!result.success) return result;
 		String token = db.create(request.game);
 		return new Result(true, "created", request.game.id, token);
 	}

@@ -54,7 +54,7 @@ function loadGame(game) {
 		}
 		
 		$("#mainimage").attr("src", game.imageUrls[0]);
-		if(game.videoUrl != null) {
+		if(game.videoUrl != null && game.videoUrl != "") {
 			$("#video").html('<iframe class="framed" width="560" height="315" src="' + game.videoUrl + '" frameborder="0" allowfullscreen></iframe>');
 		}
 		$("#description").html(game.description.replace(/\n/g, "</br>"));
