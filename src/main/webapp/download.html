@@ -33,7 +33,7 @@
 					periodically, usually every few months. They represent stable
 					snapshots of libgdx. Note that new bug fixes and features are never
 					backported to old libgdx releases.</p>
-			<a class="btn" href="https://code.google.com/p/libgdx/downloads/list"><img src="img/save.png" />&nbsp;Download Release</a>
+			<a class="btn" href="http://libgdx.badlogicgames.com/releases/libgdx-0.9.8.zip"><img src="img/save.png" />&nbsp;Download Latest Release</a>
 		</div>
 		<div class="unit one-of-two">
 			<h1>Nightly Builds</h1>
@@ -49,34 +49,10 @@
 	<div class="unit content span-grid">
 		<h2>Contents of a Release/Nightly</h2>
 		<p>
-			Each release/nightly contains a bunch of jar files that are
-			necessary for a multi-platform libgdx project. Here's a dump of the
-			directory structure with some explanations. The <a href="http://code.google.com/p/libgdx/wiki/ProjectSetupNew">Gdx
-			Setup UI</a> takes care of managing your dependencies. If you want to setup things manually, here's a <a href="http://code.google.com/p/libgdx/wiki/ProjectSetup">guide</a>.
+			Each release/nightly contains a bunch of jar files and native library that are
+			necessary for a multi-platform libgdx project. The <a href="https://github.com/libgdx/libgdx/wiki/Project-setup%2C-running-%26-debugging">Gdx
+			Setup UI</a> takes care of managing your dependencies. If you want to setup things manually, here's a <a href="https://github.com/libgdx/libgdx/wiki/Manual-project-setup">guide</a>.
 		</p>
-		<pre>
-docs                             - offline Javadocs
-
-extensions                       - jar files and native libraries for extensions
-
-sources                          - source jars for core and backends for IDE integration
-ios                              - contains IKVM, iOS libgdx binaries and MonoTouch Java bindings
-armeabi                          - native libraries for Android (arm6), copy to $ANDROID_PROJECT/libs/
-armeabi-v7a                      - native libraries for Android (arm7), copy to $ANDROID_PROJECT/libs/
-gdx-backend-android.jar          - Android backend jar
-gdx-backend-gwt.jar              - GWT backend jar
-gdx-backend-lwjgl-natives.jar    - Lwjgl backend natives jar
-gdx-backend-lwjgl.jar            - Lwjgl backend jar
-gdx-openal.jar                   - desktop audio backend jar for Jogl &amp; Lwjgl backend
-gdx-natives.jar                  - Gdx core desktop natives jar
-gdx.jar                          - Gdx core jar
-gdx-setup-ui.jar                 - Gdx Setup UI, run this to generate new projects! </pre>
-			<p>Libgdx consists of the core, backends and extensions. The
-					core contains the platform agnostic code for all the libgdx APIs.
-					The backends contain the platform specific code upon which the core
-					relies, e.g. OpenGL wrappers. Extensions are optional, most games
-					do not need them.
-			<p>
 	</div>
 </div>
 
