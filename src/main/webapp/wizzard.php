@@ -373,8 +373,8 @@ case 8: ?>
 if ($_REQUEST["backend"]) echo  "Backend:\n" . trim($_REQUEST["backend"]) . "\n\n";
 echo "Problem context:\n" . $_REQUEST["context"] . "\n\n";
 echo "Problem statement:\n" . $_REQUEST["problem"] . "\n\n";
-if ($_REQUEST["exception"]) echo "Error:\n" . $_REQUEST["exception"] . "\n\n";
-echo "Executable example code:\n" . $_REQUEST["code"] . "\n\n";
+if ($_REQUEST["exception"]) echo "Error:\n[code]" . $_REQUEST["exception"] . "[/code]\n\n";
+echo "Executable example code:\n[code]" . $_REQUEST["code"] . "[/code]\n\n";
 ?></textarea>
 	<?
 	exit;
