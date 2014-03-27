@@ -267,7 +267,7 @@ case 7: ?>
 	<label><input type="radio" name="bare" value="none"> None</label><br><br>
 	<textarea id="app">import com.badlogic.gdx.*;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
-import com.badlogic.gdx.graphics.GL10;
+import com.badlogic.gdx.graphics.GL20;
 
 public class Barebones extends ApplicationAdapter {
     public void create () {
@@ -275,7 +275,7 @@ public class Barebones extends ApplicationAdapter {
     }
 
     public void render () {
-        Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
+        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         // your code here
     }
 
@@ -298,7 +298,7 @@ public class BarebonesBatch extends ApplicationAdapter {
     }
 
     public void render () {
-        Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
+        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         batch.begin();
         batch.draw(texture, 100, 100);
         batch.end();
@@ -310,40 +310,40 @@ public class BarebonesBatch extends ApplicationAdapter {
 }</textarea>
 	<textarea id="stage" style="display:none">import com.badlogic.gdx.*;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
-import com.badlogic.gdx.graphics.GL10;
+import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.*;
 
 public class BarebonesStage extends ApplicationAdapter {
-    Stage stage;
+	Stage stage;
 
-    public void create () {
-        stage = new Stage();
-        Gdx.input.setInputProcessor(stage);
+	public void create () {
+		stage = new Stage();
+		Gdx.input.setInputProcessor(stage);
 
-        Skin skin = new Skin(Gdx.files.internal("data/uiskin.json"));
-        Label label = new Label("Some Label", skin);
-        TextButton button = new TextButton("Some Button", skin);
+		Skin skin = new Skin(Gdx.files.internal("skin.json"));
+		Label label = new Label("Some Label", skin);
+		TextButton button = new TextButton("Some Button", skin);
 
-        Table table = new Table();
-        stage.addActor(table);
-        table.setFillParent(true);
+		Table table = new Table();
+		stage.addActor(table);
+		table.setFillParent(true);
 
-        table.debug();
-        table.defaults().space(6);
-        table.add(label);
-        table.add(button);
-    }
+		table.debug();
+		table.defaults().space(6);
+		table.add(label);
+		table.add(button);
+	}
 
-    public void render () {
-        Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
-        stage.draw();
-        Table.drawDebug(stage);
-    }
+	public void render () {
+		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+		stage.draw();
+		Table.drawDebug(stage);
+	}
 
-    public static void main (String[] args) throws Exception {
-        new LwjglApplication(new BarebonesStage());
-    }
+	public static void main (String[] args) throws Exception {
+		new LwjglApplication(new BarebonesStage());
+	}
 }</textarea>
 	<textarea id="none" style="display:none"></textarea><br><br>
 	This is the final step. An executable example is very important, please do not skip it.<br><br>
