@@ -64,7 +64,7 @@ function loadGame(game) {
 $(document).ready(function() {
 	var gameId = getParameterByName("id");
 	$.ajax({
-		url: "http://" + window.location.host.split(":")[0] + ":7777/libgdx-site/service/game?id=" + gameId,
+		url: "libgdx-site/service/game?id=" + gameId,
 		success: loadGame,
 		dataType: "json",
 		error: function() {

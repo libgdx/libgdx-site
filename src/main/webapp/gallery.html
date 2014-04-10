@@ -88,7 +88,7 @@ function loadPager(data){
 $(document).ready(function() {
 	// how many games do we have?
 	$.ajax({
-		url: "http://" + window.location.host.split(":")[0] + ":7777/libgdx-site/service/countGames",
+		url: "libgdx-site/service/countGames",
 		success: loadPager,
 		dataType: "json",
 		error: function() {
@@ -97,7 +97,7 @@ $(document).ready(function() {
 	})
 	
 	$.ajax({
-		url: "http://" + window.location.host.split(":")[0] + ":7777/libgdx-site/service/games?page="+getParameterByName("page"),
+		url: "libgdx-site/service/games?page="+getParameterByName("page"),
 		success: loadGallery,
 		dataType: "json",
 		error: function() {
