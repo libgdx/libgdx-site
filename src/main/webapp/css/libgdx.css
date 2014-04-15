@@ -13,26 +13,21 @@ html,body{
 	position:relative;
 }
 #content{
-	padding-bottom:55px;
+	padding-bottom:80px;
 }
-@media screen and (max-width: 1280px){
+@media screen and (max-width: 1000px){
 	#content{
-		padding-bottom:75px !important;
+		padding-bottom:120px !important;
 	}
 }
-@media screen and (max-width: 700px){
+@media screen and (max-width: 570px){
 	#content{
-		padding-bottom:96px !important;
-	}
-}
-@media screen and (max-width: 500px){
-	#content{
-		padding-bottom:117px !important;
+		padding-bottom:160px !important;
 	}
 }
 @media screen and (max-width: 400px){
 	#content{
-		padding-bottom:180px !important;
+		padding-bottom:210px !important;
 	}
 }
 #footer{
@@ -77,7 +72,7 @@ ul.menu li a{
 	font-size:16px;
 	color:#999;
 	text-decoration:none;
-	font-weight:bold;
+	font-weight:500;
 	padding-top:54px;
 
 	background:#fff no-repeat center top;
@@ -141,10 +136,10 @@ div#slogan{
 	position:absolute;
 	text-align:center;
 	color:#fff;
-	font-family:Sans, DejaVu Sans,sans-serif,Arial;
+	font-family:"Open Sans",Sans, DejaVu Sans,sans-serif,Arial;
 	z-index:2;
 	background:rgba(255,255,255,0.3);
-	font-weight:bold;
+	font-weight:600;
 	padding:20px;
 }
 @media screen and (max-width: 650px) {
@@ -175,7 +170,7 @@ div#calltoaction a{
 	display:inline-block;
 	color:#fff;
 	font-size:18px;
-	font-weight:lighter;
+	font-weight:500;
 	text-decoration:none;
 	background-color:#E44D3C;
     background: -webkit-gradient(linear, left top, left bottom, from(#e44d3c), to(#d43d2c));
@@ -213,6 +208,7 @@ div#tabletinner{
 }
 div#tabletinner img{
 	width:100%;
+	max-height: 250px;
 }
 
 /* responsibly center the tablet */
@@ -308,8 +304,9 @@ div#topgames a{
 	border-radius: 8px;
 	box-shadow: 0 0 4px #aaa;
 	border:1px #aaa solid;
-   	padding: 7px;
-	margin:15px 5px;
+   	padding: 0px;
+   	padding-top: 0px;
+	margin:10px 0px;
 	text-align:center;
 	color:#444;
 	font-size:14px;
@@ -328,7 +325,10 @@ div#topgames span{ /*title of the game*/
 	line-height:1;
 	margin-top:5px;
 }
-
+div#topgames img {
+	max-height:138px;
+	border-radius:7px 7px 0px 0px;
+}
 .clear{
 	clear:both;
 }
@@ -338,6 +338,7 @@ div#topgames span{ /*title of the game*/
 	color:#ccc;
 	font-family:sans-serif,Arial,sans;
 	font-size:14px;
+	font-weight: 400;
 }
 
 #footer a{
@@ -627,6 +628,10 @@ button.submit:active {
 	text-decoration:none;
 	box-shadow:#999 0px 0px 8px;
 }
+#gallery .img{
+	border-left:1px solid #ccc;
+	border-right:1px solid #ccc;
+}
 #gallery img{	
 	max-height:138px;
 }
@@ -644,11 +649,13 @@ button.submit:active {
 
 #pager{
 	margin-bottom:30px;
-	text-align:right;
+	text-align:left
 }
 
 #pager a{
-	margin:0px 10px;
+	margin: 2px 4px;
+	width: 45px;
+	text-align: center;
 }
 #pager .current{
 	border:2px solid #c42D1C;
@@ -659,3 +666,16 @@ button.submit:active {
 }
 
 /* gallery end */
+
+#supported {
+	background: #343434;
+	text-align: right;
+	padding: 10px;
+}
+
+#supported span {
+	font-size: 50px;
+	vertical-align: middle;
+	color: #ccc;
+	margin-right: 5px;
+}

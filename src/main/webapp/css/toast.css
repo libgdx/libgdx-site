@@ -132,7 +132,8 @@ hr {
 \*-----------------------------------*/
 
 html {
-	font: 1em Helvetica Neue, Helvetica, Arial, sans-serif;
+	font-family: "Roboto", Helvetica Neue, Helvetica, Arial, sans-serif;
+	font-weight: 200;
 	line-height:1.5;
 }
 

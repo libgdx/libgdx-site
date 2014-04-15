@@ -86,30 +86,24 @@
 	</div>
 </div>
 
-<div id="topgameshead">
-	<div class="container">		
-		<h1 style="font-size: 36px">Supported by</h1>
-		<div class="clear"></div>
-	</div>
-</div>
-
-<div id="topgames" style="margin-bottom: 25px">
+<div id="supported">
 	<div class="container">
-		<div class="one-of-three">
-			<img src="img/intel.png" style="width: 150px"/>
+		<div class="grid">
+			<span>supported by</span>
+			<img src="img/intel.png" alt="intel Software Partner" />
 		</div>
 	</div>
 </div>
 
 <script>
 function loadShowcase(data) {
-	$("#tabletinner").html('<a href="showentry.html?id=' + data[0].id + '"><img src="' + data[0].imageUrls[0] + '"/></a>');
+	$("#tabletinner").html('<a href="showentry.html?id=' + data[0].id + '"><img src="' + data[0].imageUrls[0] + '" onerror="fixImage(this)"/></a>');
 	var topgames = $("#showcase");
 	for(var i=1; i < data.length; i++) {
 		var game = data[i];
 		var div = $(document.createElement("div")).addClass("unit").addClass("one-of-four");
 		div.html('<a href="showentry.html?id=' + game.id + '">' +
-				 '<img src="' + (game.imageUrls.length > 0?game.imageUrls[0]:"img/no_game.png") + '"></img>' +
+				 '<img src="' + (game.imageUrls.length > 0?game.imageUrls[0]:"img/no_game.png") + '" onerror="fixImage(this)" />' +
 				 '<span>' + game.title + '</span> by ' + game.creator + "</a>");
 		topgames.append(div);
 	}
@@ -125,4 +119,8 @@ $(document).ready(function() {
 		}
 	})
 });
+
+function fixImage(img){
+	img.src="/img/notfound.png";
+}
 </script>
