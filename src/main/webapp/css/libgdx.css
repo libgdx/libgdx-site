@@ -639,11 +639,13 @@ button.submit:active {
 
 #pager{
 	margin-bottom:30px;
-	text-align:right;
+	text-align:left
 }
 
 #pager a{
-	margin:0px 10px;
+	margin: 2px 4px;
+	width: 45px;
+	text-align: center;
 }
 #pager .current{
 	border:2px solid #c42D1C;
