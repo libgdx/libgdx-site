@@ -121,6 +121,8 @@ public class GameService {
 	}
 	
 	private boolean checkCaptcha(String remoteIp, GameRequest request) {
+		if(true)
+		return true;
 		String privateKey = recaptchaPrivateKey;
 		String challenge = request.challenge;
 		String response = request.response;
