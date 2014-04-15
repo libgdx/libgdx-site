@@ -665,3 +665,16 @@ button.submit:active {
 }
 
 /* gallery end */
+
+#supported {
+	background: #343434;
+	text-align: right;
+	padding: 10px;
+}
+
+#supported span {
+	font-size: 50px;
+	vertical-align: middle;
+	color: #ccc;
+	margin-right: 5px;
+}
