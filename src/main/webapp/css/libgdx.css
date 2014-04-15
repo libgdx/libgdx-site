@@ -72,7 +72,7 @@ ul.menu li a{
 	font-size:16px;
 	color:#999;
 	text-decoration:none;
-	font-weight:bold;
+	font-weight:500;
 	padding-top:54px;
 
 	background:#fff no-repeat center top;
@@ -136,10 +136,10 @@ div#slogan{
 	position:absolute;
 	text-align:center;
 	color:#fff;
-	font-family:Sans, DejaVu Sans,sans-serif,Arial;
+	font-family:"Open Sans",Sans, DejaVu Sans,sans-serif,Arial;
 	z-index:2;
 	background:rgba(255,255,255,0.3);
-	font-weight:bold;
+	font-weight:600;
 	padding:20px;
 }
 @media screen and (max-width: 650px) {
@@ -170,7 +170,7 @@ div#calltoaction a{
 	display:inline-block;
 	color:#fff;
 	font-size:18px;
-	font-weight:lighter;
+	font-weight:500;
 	text-decoration:none;
 	background-color:#E44D3C;
     background: -webkit-gradient(linear, left top, left bottom, from(#e44d3c), to(#d43d2c));
@@ -338,6 +338,7 @@ div#topgames img {
 	color:#ccc;
 	font-family:sans-serif,Arial,sans;
 	font-size:14px;
+	font-weight: 400;
 }
 
 #footer a{
