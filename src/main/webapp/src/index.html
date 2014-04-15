@@ -103,13 +103,13 @@
 
 <script>
 function loadShowcase(data) {
-	$("#tabletinner").html('<a href="showentry.html?id=' + data[0].id + '"><img src="' + data[0].imageUrls[0] + '"/></a>');
+	$("#tabletinner").html('<a href="showentry.html?id=' + data[0].id + '"><img src="' + data[0].imageUrls[0] + '" onerror="fixImage(this)"/></a>');
 	var topgames = $("#showcase");
 	for(var i=1; i < data.length; i++) {
 		var game = data[i];
 		var div = $(document.createElement("div")).addClass("unit").addClass("one-of-four");
 		div.html('<a href="showentry.html?id=' + game.id + '">' +
-				 '<img src="' + (game.imageUrls.length > 0?game.imageUrls[0]:"img/no_game.png") + '"></img>' +
+				 '<img src="' + (game.imageUrls.length > 0?game.imageUrls[0]:"img/no_game.png") + '" onerror="fixImage(this)" />' +
 				 '<span>' + game.title + '</span> by ' + game.creator + "</a>");
 		topgames.append(div);
 	}
@@ -125,4 +125,8 @@ $(document).ready(function() {
 		}
 	})
 });
+
+function fixImage(img){
+	img.src="/img/notfound.png";
+}
 </script>

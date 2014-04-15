@@ -36,7 +36,7 @@ function loadGallery(data) {
 		var div = $(document.createElement("div")).addClass("unit").addClass("one-of-four");
 		div.html('<a href="showentry.html?id=' + game.id + '">' +
 				'<span><span class="gametitle">' + game.title + '</span> by ' + game.creator +'</span>'+ 
-				 '<img src="' + (game.imageUrls.length > 0?game.imageUrls[0]:"img/no_game.png") + '"></img>' +
+				 '<div class="img"><img src="' + (game.imageUrls.length > 0?game.imageUrls[0]:"img/no_game.png") + '" onerror="fixImage(this)"/></div>' +
 				 '<p>'+game.description +'</p>'+
 				 "</a>");
 		topgames.append(div);
@@ -78,4 +78,7 @@ $(document).ready(function() {
 		}
 	})
 });
+function fixImage(img){
+	img.src="/img/notfound.png";
+}
 </script>

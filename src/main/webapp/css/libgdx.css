@@ -208,6 +208,7 @@ div#tabletinner{
 }
 div#tabletinner img{
 	width:100%;
+	max-height: 250px;
 }
 
 /* responsibly center the tablet */
@@ -303,8 +304,9 @@ div#topgames a{
 	border-radius: 8px;
 	box-shadow: 0 0 4px #aaa;
 	border:1px #aaa solid;
-   	padding: 7px;
-	margin:15px 5px;
+   	padding: 0px;
+   	padding-top: 0px;
+	margin:10px 0px;
 	text-align:center;
 	color:#444;
 	font-size:14px;
@@ -323,7 +325,10 @@ div#topgames span{ /*title of the game*/
 	line-height:1;
 	margin-top:5px;
 }
-
+div#topgames img {
+	max-height:138px;
+	border-radius:7px 7px 0px 0px;
+}
 .clear{
 	clear:both;
 }
@@ -621,6 +626,10 @@ button.submit:active {
 #gallery a:hover{
 	text-decoration:none;
 	box-shadow:#999 0px 0px 8px;
+}
+#gallery .img{
+	border-left:1px solid #ccc;
+	border-right:1px solid #ccc;
 }
 #gallery img{	
 	max-height:138px;
