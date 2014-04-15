@@ -13,26 +13,21 @@ html,body{
 	position:relative;
 }
 #content{
-	padding-bottom:55px;
+	padding-bottom:80px;
 }
-@media screen and (max-width: 1280px){
+@media screen and (max-width: 1000px){
 	#content{
-		padding-bottom:75px !important;
+		padding-bottom:120px !important;
 	}
 }
-@media screen and (max-width: 700px){
+@media screen and (max-width: 570px){
 	#content{
-		padding-bottom:96px !important;
-	}
-}
-@media screen and (max-width: 500px){
-	#content{
-		padding-bottom:117px !important;
+		padding-bottom:160px !important;
 	}
 }
 @media screen and (max-width: 400px){
 	#content{
-		padding-bottom:180px !important;
+		padding-bottom:210px !important;
 	}
 }
 #footer{
