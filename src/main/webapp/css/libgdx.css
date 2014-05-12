@@ -671,11 +671,16 @@ button.submit:active {
 	background: #343434;
 	text-align: center;
 	padding: 10px;
+	padding-bottom: 50px;
+	padding-top: 20px;
 }
 
 #supported span {
 	font-size: 50px;
 	vertical-align: middle;
 	color: #ccc;
-	margin-right: 5px;
+}
+#supported a {
+	margin-left: 15px;
+	margin-right: 15px;
 }
