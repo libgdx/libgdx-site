@@ -1,0 +1,97 @@
+<script src="js/versions.js"></script>
+<div class="graybar"></div>
+<div class="container">
+    <div class="two-of-two">
+        <h1>Libgdx Versions</h1>
+        <p>Keep up to date with the latest versions of dependencies and recommended tools!</p>
+    </div>
+
+    <div class="one-of-two">
+        <div class="well">
+            <h2>Release</h2>
+            <p class="version" id="libgdxRelease">Unknown</p>
+            <h3>RoboVM</h3>
+            <hr>
+            <ul>
+                <li><a href="http://www.robovm.org/" target="_blank">RoboVM Version:</a>
+                    <p class="ver" id="robovmRelease">Unknown</p>
+                </li>
+                <li><a href="https://github.com/jtakakura/gradle-robovm-plugin" target="_blank">RoboVM Gradle Plugin Version:</a>
+                    <p class="ver" id="robovmGradleRelease">Unknown</p>
+                </li>
+            </ul>
+            <h3>Android</h3>
+            <hr>
+            <ul>
+                <li><a href="http://developer.android.com/sdk/index.html?hl=sk" target="_blank">Android Build Tools Version:</a>
+                    <p class="ver" id="androidToolsRelease">Unknown</p>
+                </li>
+                <li><a href="http://developer.android.com/sdk/index.html?hl=sk" target="_blank">Android SDK Version:</a>
+                    <p class="ver" id="androidSDKRelease">Unknown</p>
+                </li>
+                <li><a href="http://tools.android.com/" target="_blank">Android Gradle Tool Version:</a>
+                    <p class="ver" id="androidGradleToolsRelease">Unknown</p>
+                </li>
+            </ul>
+            <h3>GWT</h3>
+            <hr>
+            <ul>
+                <li><a href="http://www.gwtproject.org/" target="_blank">GWT Version:</a>
+                    <p class="ver" id="gwtRelease">Unknown</p>
+                </li>
+                <li><a href="https://github.com/steffenschaefer/gwt-gradle-plugin" target="_blank">GWT Gradle Plugin Version:</a>
+                    <p class="ver" id="gwtGradleRelease">Unknown</p>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+
+
+    <div class="one-of-two">
+        <div class="well">
+            <h2>Snapshots</h2>
+            <p class="version" id="libgdxSnapshot">Unknown</p>
+            <h3>RoboVM</h3>
+            <hr>
+            <ul>
+                <li><a href="http://www.robovm.org/" target="_blank">RoboVM Version:</a>
+                    <p class="ver" id="robovmSnapshot">Unknown</p>
+                </li>
+                <li><a href="https://github.com/jtakakura/gradle-robovm-plugin" target="_blank">RoboVM Gradle Plugin Version:</a>
+                    <p class="ver" id="robovmGradleSnapshot">Unknown</p>
+                </li>
+            </ul>
+            <h3>Android</h3>
+            <hr>
+            <ul>
+                <li><a href="http://developer.android.com/sdk/index.html?hl=sk" target="_blank">Android Build Tools Version:</a>
+                    <p class="ver" id="androidToolsSnapshot">Unknown</p>
+                </li>
+                <li><a href="http://developer.android.com/sdk/index.html?hl=sk" target="_blank">Android SDK Version:</a>
+                    <p class="ver" id="androidSDKSnapshot">Unknown</p>
+                </li>
+                <li><a href="http://tools.android.com/" target="_blank">Android Gradle Tool Version:</a>
+                    <p class="ver" id="androidGradleToolsSnapshot">Unknown</p>
+                </li>
+            </ul>
+            <h3>GWT</h3>
+            <hr>
+            <ul>
+                <li><a href="http://www.gwtproject.org/" target="_blank">GWT Version:</a>
+                    <p class="ver" id="gwtSnapshot">Unknown</p>
+                </li>
+                <li><a href="https://github.com/steffenschaefer/gwt-gradle-plugin" target="_blank">GWT Gradle Plugin Version:</a>
+                    <p class="ver" id="gwtGradleSnapshot">Unknown</p>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+</div>
+
+<script>
+    $(document).ready(function () {
+        getLatestVersions(document);
+    });
+</script>

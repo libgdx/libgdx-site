@@ -49,7 +49,38 @@ html,body{
 	border-top:10px #343434 solid;
 	margin-bottom:15px;
 }
-
+#versionbox {
+    width: 280px;
+    height: 50px;
+    margin: 0 auto;
+}
+#versionbox p {
+    text-align: center;
+    color: #e84c3d;
+}
+.item {
+    float: left;
+    margin: 0 auto;
+}
+#snapshotVersion, #releaseVersion {
+    font-weight: 600;
+    display: inline-block;
+}
+.version {
+    color:#e84c3d;
+    width: 100%;
+    margin: 0;
+    text-align: center;
+    margin-bottom: 40px;
+}
+.ver {
+    text-align: center;
+    margin: 0;
+    display: inline-block;
+    float: right;
+    padding-right: 20px;
+    font-weight: 800;
+}
 img#logo{
 	float:left;
 	padding:25px;
@@ -593,7 +624,14 @@ button.submit:active {
 	text-align:center;
 	line-height:1.8;
 }
-
+.well h3{
+    text-align:center;
+    line-height: 1.8;
+}
+.well .version{
+    text-align:center;
+    line-height: 1.8;
+}
 
 /* gallery start */
 #gallery{
