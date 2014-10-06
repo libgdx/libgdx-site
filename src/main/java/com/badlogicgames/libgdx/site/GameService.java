@@ -1,5 +1,12 @@
 package com.badlogicgames.libgdx.site;
 
+import com.badlogicgames.libgdx.site.db.DownloadUrl;
+import com.badlogicgames.libgdx.site.db.FileGameDatabase;
+import com.badlogicgames.libgdx.site.db.Game;
+import com.badlogicgames.libgdx.site.db.GameDatabase;
+import com.sun.jersey.api.core.PackagesResourceConfig;
+import com.sun.jersey.spi.container.servlet.ServletContainer;
+import com.sun.jersey.spi.resource.Singleton;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -7,7 +14,6 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -16,10 +22,12 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
-
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.StringEscapeUtils;
 import org.apache.commons.validator.routines.UrlValidator;
+import org.codehaus.jettison.json.JSONArray;
+import org.codehaus.jettison.json.JSONException;
+import org.codehaus.jettison.json.JSONObject;
 import org.eclipse.jetty.server.Handler;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.server.handler.ContextHandler;
@@ -27,14 +35,6 @@ import org.eclipse.jetty.server.handler.ContextHandlerCollection;
 import org.eclipse.jetty.server.handler.ResourceHandler;
 import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
-
-import com.badlogicgames.libgdx.site.db.DownloadUrl;
-import com.badlogicgames.libgdx.site.db.FileGameDatabase;
-import com.badlogicgames.libgdx.site.db.Game;
-import com.badlogicgames.libgdx.site.db.GameDatabase;
-import com.sun.jersey.api.core.PackagesResourceConfig;
-import com.sun.jersey.spi.container.servlet.ServletContainer;
-import com.sun.jersey.spi.resource.Singleton;
 
 /**
  * Simple service using sqllite to store and return
@@ -118,6 +118,85 @@ public class GameService {
 		if(!checkCaptcha(hsr.getRemoteAddr(), request)) return new Result(false, "Captcha wrong");
 		if(!db.update(request.token, request.game)) return new Result(false, "Token wrong");
 		return new Result(true, "updated", request.game.id, request.token);
+	}
+
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	@Path("getVersions")
+	public Versions getVersions(@QueryParam("release") boolean release) {
+		boolean result;
+		File cachedFile = release ? new File("cached-versions-release") : new File("cached-versions-snapshot");
+		if (!cachedFile.isFile()) {
+			result = HttpUtils.downloadFile(getDependencyBankUrl(release), cachedFile);
+		} else if ((System.currentTimeMillis() - cachedFile.lastModified()) > 3600000) {
+			result = HttpUtils.downloadFile(getDependencyBankUrl(release), cachedFile);
+		} else {
+			result = true;
+		}
+		if (!result) return new Versions(false, "Can't access versions");
+
+		return new Versions(true, release, cachedFile);
+	}
+
+	private String getDependencyBankUrl (boolean release) {
+		if (release) {
+			return "https://raw.githubusercontent.com/libgdx/libgdx/" + getLatestRelease() + "/extensions/gdx-setup/src/com/badlogic/gdx/setup/DependencyBank.java";
+		} else {
+			return "https://raw.githubusercontent.com/libgdx/libgdx/master/extensions/gdx-setup/src/com/badlogic/gdx/setup/DependencyBank.java";
+		}
+	}
+
+	private String getLatestRelease () {
+		String data = HttpUtils.getHttp("https://api.github.com/repos/libgdx/libgdx/tags");
+		int[] latestVersion = null;
+		JSONArray jsonArray;
+		try {
+			jsonArray = new JSONArray(data);
+			for (int i = 0; i < jsonArray.length(); i++) {
+				JSONObject jsonObject = jsonArray.getJSONObject(i);
+				String versionString = jsonObject.getString("name");
+				if (latestVersion == null) {
+					if (convertVersion(versionString) != null) {
+						latestVersion = convertVersion(versionString);
+						continue;
+					}
+				}
+				int[] testVersionArray = convertVersion(versionString);
+				if (testVersionArray != null) {
+					if (compareVersions(testVersionArray, latestVersion)) {
+						latestVersion = testVersionArray;
+					}
+				}
+			}
+			if (latestVersion != null) return latestVersion[0] + "." + latestVersion[1] + "." + latestVersion[2];
+		} catch (JSONException e) {
+			return "1.0.0";
+		}
+		return "1.0.0";
+	}
+
+	private int[] convertVersion (String versionString) {
+		String[] split = versionString.split("\\.");
+		int[] array = new int[3];
+		if (split.length == 3) {
+			for (int i = 0; i < 3; i++) {
+				try {
+					array[i] = Integer.parseInt(split[i]);
+				} catch (NumberFormatException nfe) {
+					return null;
+				}
+			}
+			return array;
+		} else {
+			return null;
+		}
+	}
+
+	private boolean compareVersions(int[] testArray, int[] targetArray) {
+		for (int i = 0; i < 3; i++) {
+			if (testArray[i] < targetArray[i]) return false;
+		}
+		return true;
 	}
 	
 	private boolean checkCaptcha(String remoteIp, GameRequest request) {
