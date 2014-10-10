@@ -128,7 +128,7 @@ public class GameService {
 		File cachedFile = release ? new File("cached-versions-release") : new File("cached-versions-snapshot");
 		if (!cachedFile.isFile()) {
 			result = HttpUtils.downloadFile(getDependencyBankUrl(release), cachedFile);
-		} else if ((System.currentTimeMillis() - cachedFile.lastModified()) > 3600000) {
+		} else if ((System.currentTimeMillis() - cachedFile.lastModified()) > 1000) {
 			result = HttpUtils.downloadFile(getDependencyBankUrl(release), cachedFile);
 		} else {
 			result = true;
