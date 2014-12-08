@@ -84,7 +84,7 @@ public class Versions {
 		libgdxSnapshot = get("libgdxNightlyVersion", bigString);
 
 		robovmVersion = get("roboVMVersion", bigString);
-		robovmPluginVersion = getPlugin("roboVMPluginImport", bigString);
+		robovmPluginVersion = getPlugin("roboVMVersion", bigString);
 
 		androidBuildtoolsVersion = get("buildToolsVersion", bigString);
 		androidSDKVersion = get("androidAPILevel", bigString);
