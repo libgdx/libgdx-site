@@ -23,7 +23,7 @@ function getLatestVersions(document) {
 function processVersions(data) {
         var modifier = data.release ? "Release" : "Snapshot";
         $('#libgdx' + modifier).text(data.release ? data.libgdxRelease : data.libgdxSnapshot);
-        $('#robovm' + modifier).text(data.robovmVersion);
+        $('#robovm' + modifier).text(data.release ? data.robovmVersion : "1.0.0-SNAPSHOT");
         $('#robovmGradle' + modifier).text(data.robovmPluginVersion);
         $('#androidTools' + modifier).text(data.androidBuildtoolsVersion);
         $('#androidSDK' + modifier).text(data.androidSDKVersion);
