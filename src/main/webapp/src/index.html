@@ -4,33 +4,9 @@
 }
 </style>
 <div id="slogan">Desktop/Android/BlackBerry/iOS/HTML5 Java game development framework</div>
-<div id="banner">
-	<div class="container">
-		<div class="one-of-two">
-			<div id="outer">
-				<div id="middle">
-					<div id="inner">
-						<div id="calltoaction">
-							<iframe width="450" height="253" src="//www.youtube.com/embed/BTC922ki2mc?rel=0" frameborder="0" allowfullscreen></iframe>
-							<br /> <a href="documentation.html#gettingstarted">Get Started</a>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="one-of-two">
-			<div id="outer">
-				<div id="middle">
-					<div id="inner">
-						<div id="tabletborder">
-							<div id="tabletinner">
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+<div id="banner" style="height: 650px; padding-top: 70px; padding-bottom: 7px">		
+	<iframe width="1024" height="570" src="https://www.youtube.com/embed/hA2e3xIuNlk" frameborder="0" allowfullscreen></iframe>
+	<br /> <a href="documentation.html#gettingstarted">Get Started</a>	
 </div>
 
 <div id="highlights">
@@ -38,6 +14,7 @@
 		<div class="one-of-three" id="hl_crossplatform">
 			<h2>Cross Platform</h2>
 			<p class="small-top-margin">Publish your games on Windows, Mac, Linux, Android, iOS, BlackBerry and HTML5, all with the same code base.</p>
+			<a class="btn" href="documentation.html">Get Started</a>
 		</div>
 	
 		<div class="one-of-three" id="hl_open">
@@ -115,7 +92,7 @@
 
 <script>
 function loadShowcase(data) {
-	$("#tabletinner").html('<a href="showentry.html?id=' + data[0].id + '"><img src="' + data[0].imageUrls[0] + '" onerror="fixImage(this)"/></a>');
+	// $("#tabletinner").html('<a href="showentry.html?id=' + data[0].id + '"><img src="' + data[0].imageUrls[0] + '" onerror="fixImage(this)"/></a>');
 	var topgames = $("#showcase");
 	for(var i=1; i < data.length; i++) {
 		var game = data[i];
