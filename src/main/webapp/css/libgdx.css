@@ -722,3 +722,28 @@ button.submit:active {
 	margin-left: 15px;
 	margin-right: 15px;
 }
+.tools-well.well {
+    width: 100%;
+    height: 500px;
+}
+.tools-well p,a {
+    text-align: center;
+}
+.tools-well img{
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    height: 350px;
+    text-align: center;
+}
+.tools-well div {
+    width: 100%;   
+}
+.tools-well div.links {
+    width: 100%;   
+    text-align: center;
+}
+div.links a {
+    display: inline-block;
+    width: 40%;
+}
