@@ -1,0 +1,90 @@
+<html>
+<head>
+<title>libGDX Jam - dev logs</title>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+<style>
+body {
+	color: #a9a9a9;
+	background-color: #333333;
+	font: 16px 'Helvetica Neue', Roboto, 'Segoe UI', Calibri, sans-serif;
+}
+.posts {
+   width: 650px;
+}
+.post {	
+	border-width: 0 0 1px;
+	border: 0 0 0 0 1px solid #e8e8e8;
+	padding: 10px;
+}
+.header {
+	margin-bottom: 0px;
+	font-size: 36px;
+	color: #dd4a4a;
+}
+.date {	
+	font-style:italic;
+}
+.reply {
+	text-align: right;
+}
+.avatar {
+	width: 80px;
+	height: 80px;
+}
+a {
+	color: #dd4a4a;
+	text-decoration: none;
+	cursor: auto;
+}
+img {
+   max-width: 100%; 
+}
+pre {
+	overflow: scroll;
+	color: #a9a9a9;
+	background-color: #000;
+	padding: 5px;
+}
+td {
+	padding: 5px;
+}
+iframe {
+	max-width: 100%;
+}
+</style>
+</head>
+<body>
+<div class="posts">
+</div>
+</body>
+<script>
+function showPosts(data) {
+	var len = data.length;
+	var postsDiv = $(".posts");
+	for (var i = 0; i < len; i++) {
+		var post = data[i];
+		var postDiv = document.createElement("div");
+		postDiv.className = "post";
+		var html = '<table><tr><td><img class="avatar" src="' + post.authorAvatarUrl + '"></td><td><div><a class="header" href="' + post.url +'">' + post.author + "'s dev log</a></div>" +
+				   '<span class="date">' + post.timeText + "</span></td></tr></table>" +
+				   post.content +
+				   '<div class="reply"><a href="' + post.url + '">Reply</a>'
+		
+		postDiv.innerHTML = html;		
+		postsDiv.append(postDiv);
+	}
+}
+
+$(document).ready(function() {
+	// how many games do we have?
+	$.ajax({
+		url: "libgdx-site/service/jam/posts",
+		success: showPosts,
+		dataType: "json",
+		error: function() {
+			showPosts([]); // well there are no games :/
+		}
+	})		
+});
+</script>
+</html>
