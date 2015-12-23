@@ -122,22 +122,30 @@ public class JamService {
 			Document page = Jsoup.connect(log.getUrl()).get();
 			while(page != null) {				
 				for(Element entry: page.getElementsByClass("community_post")) {
-					String avatarUrl = entry.getElementsByClass("post_avatar").first().attr("style");
-					avatarUrl = avatarUrl.split("url")[1].replace(")", "").replace("(", "");
-					if(!avatarUrl.startsWith("http")) {
-						avatarUrl = "https://itch.io" + avatarUrl;
+					try {
+						if(entry.hasClass("deleted")) {
+							continue;
+						}
+						String avatarUrl = entry.getElementsByClass("post_avatar").first().attr("style");
+						avatarUrl = avatarUrl.split("url")[1].replace(")", "").replace("(", "");
+						if(!avatarUrl.startsWith("http")) {
+							avatarUrl = "https://itch.io" + avatarUrl;
+						}
+						Element row = entry.getElementsByClass("post_content").first();
+						String author = row.getElementsByClass("post_author").first().getElementsByTag("a").first().text();
+						if(!log.getAuthor().equals(author)) {
+							continue;
+						}					
+						Element postDate = row.getElementsByClass("post_date").first();
+						String url = "https://itch.io" + postDate.getElementsByTag("a").attr("href");
+						String date = postDate.attr("title");
+						long dateUTC = dateFormat.parse(date).getTime();
+						String content = row.getElementsByClass("post_body").first().toString();
+						posts.add(new DevLogPost(author, avatarUrl, url, content, dateUTC, date));					
+					} catch(Throwable e) {
+						e.printStackTrace();
+						System.out.println("Couldn't parse post " + log.getUrl());
 					}
-					Element row = entry.getElementsByClass("post_content").first();
-					String author = row.getElementsByClass("post_author").first().getElementsByTag("a").first().text();
-					if(!log.getAuthor().equals(author)) {
-						continue;
-					}					
-					Element postDate = row.getElementsByClass("post_date").first();
-					String url = "https://itch.io" + postDate.getElementsByTag("a").attr("href");
-					String date = postDate.attr("title");
-					long dateUTC = dateFormat.parse(date).getTime();
-					String content = row.getElementsByClass("post_body").first().toString();
-					posts.add(new DevLogPost(author, avatarUrl, url, content, dateUTC, date));					
 				}
 				
 				Elements pageLinks = page.getElementsByClass("page_link");

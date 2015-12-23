@@ -44,16 +44,20 @@ import org.eclipse.jetty.servlet.ServletHolder;
 @Path("/")
 @Singleton
 public class GameService {
-	private final GameDatabase db;
-	private final String recaptchaPrivateKey;
+	private GameDatabase db;
+	private String recaptchaPrivateKey;
 	
-	public GameService() throws IOException {
-		String dir = System.getenv().get("GDX_GAME_DB_DIR");
-		if(dir == null) {
-			dir = "/opt/gamedb";
+	public GameService() {
+		try {
+			String dir = System.getenv().get("GDX_GAME_DB_DIR");
+			if(dir == null) {
+				dir = "/opt/gamedb";
+			}
+			recaptchaPrivateKey = FileUtils.readFileToString(new File(dir, "recaptcha.key")).trim();
+			db = new FileGameDatabase(dir);
+		} catch(IOException e) {
+			e.printStackTrace();
 		}
-		recaptchaPrivateKey = FileUtils.readFileToString(new File(dir, "recaptcha.key")).trim();
-		db = new FileGameDatabase(dir);
 	}
 	
 	@GET
