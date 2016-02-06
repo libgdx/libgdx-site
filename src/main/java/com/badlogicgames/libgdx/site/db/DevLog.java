@@ -6,6 +6,9 @@ public class DevLog {
 	String authorAvatarUrl;
 	String url;
 	String title;
+	
+	public DevLog() {
+	}
 
 	public DevLog(String author, String authorUrl, String authorAvatarUrl, String url, String title) {
 		super();
