@@ -7,6 +7,7 @@ public class Skin {
 	public String description;
 	public String author;
 	public String foldername;
+	public String filename;
 
 	public Skin () {
 
