@@ -747,3 +747,14 @@ div.links a {
     display: inline-block;
     width: 40%;
 }
+.skin-element {
+    height: 250px;
+    width: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+}
+
+.skin-download {
+    float: right;
+}
