@@ -5,28 +5,28 @@
 		</div>
 	</div>
   <script src="https://code.jquery.com/jquery.js"></script>
-       <script type="text/javascript" src="https://www.google.com/jsapi"></script>
-    <script type="text/javascript">
-    google.load("feeds", "1");
-    </script>
     <script>
-    function fetchFeed() {
-       var feed = new google.feeds.Feed("http://www.badlogicgames.com/wordpress/?feed=rss2");
-       feed.setNumEntries(3);
-       feed.load(function(result) {
-          if (!result.error) {
-          var container = $("#feed");
-          for (var i = 0; i < result.feed.entries.length; i++) {
-            var entry = result.feed.entries[i];
-            var item = $(document.createElement("div")); //.addClass("well");
-            item.html('<h2><a href="' + entry.link + '">' + entry.title + "</a></h2>" +
-                      "<h5>" + entry.author + ", " + entry.publishedDate + "</h5>" + 
-                      entry.content +
-                      '<a href="' + entry.link + '#disqus_thread">Comments</a>');        
-            container.append(item);
-            }
-          }
-       });
+    function fetchFeed() {        
+        var target = "http://www.badlogicgames.com/wordpress/?feed=rss2";
+        var data = {
+            rss_url: target,
+            count: 3,
+            api_key: "qloceczfnpgf479z8vg11eyqn0nndfidihoz8fyu"
+        };
+        $.get('//api.rss2json.com/v1/api.json', data, function (response) {
+                $.each(response.items, function (itemNumber, entry) {
+                    if (response.status == 'ok') {
+                        var container = $("#feed");
+                        var item = $(document.createElement("div")); //.addClass("well");
+                        console.log(item);
+                        item.html('<h2><a href="' + entry.link + '">' + entry.title + "</a></h2>" +
+                              "<h5>" + entry.author + ", " + entry.pubDate + "</h5>" + 
+                              entry.content +
+                              '<a href="' + entry.link + '#disqus_thread">Comments</a>');        
+                        container.append(item);
+                    }
+                });
+            });
     }
     fetchFeed();
     </script>
