@@ -18,6 +18,17 @@ rm -r /opt/libgdx-skins/
 mkdir /opt/libgdx-skins/
 mv libgdx-skins/* /opt/libgdx-skins/
 
+cd src/main/docs
+npm install
+gulp deploy
+
+rm -r ../webapp/documentation/
+mkdir ../webapp/documentation
+cp -r deploy/documentation/* ../webapp/documentation/
+
+cd ../../../
+
+
 cd src/main/webapp
 ./build.sh
 cd ../../..

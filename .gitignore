@@ -4,3 +4,14 @@
 .settings/
 .externalToolBuilders/
 target/
+src/main/docs/deploy/
+src/main/docs/dist/
+src/main/docs/node_modules/
+libgdx-skins/
+*.iml
+.idea/
+cached-versions-release
+cached-versions-snapshot
+src/main/webapp/skin-previews/
+src/main/webapp/documentation/
+src/main/webapp/libgdx-skins-dist/

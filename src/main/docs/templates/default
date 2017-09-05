@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>{{title}}</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="shortcut icon" href="/favicon.ico" />
+<link href="/css/toast.css" rel="stylesheet" />
+<link  href="/css/libgdx.css" rel="stylesheet" />
+<link  href="/css/docs.css" rel="stylesheet" />
+<link href='//fonts.googleapis.com/css?family=Roboto:400,700,500,300' rel='stylesheet' type='text/css'>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+<script src="/js/utils.js"></script>
+<script src="/js/docs.js"></script>
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/default.min.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+</head>
+<body>
+<div id="site">
+<div id="content">
+<div id="header">
+<div class="container" style="padding:0px;">
+	<a href="index.html"><img src="/img/logo.png" id="logo"/></a>
+	<ul class="menu">
+		<li><a href="/news.html" id="menu_news">News</a></li>
+		<li><a href="/features.html" id="menu_features">Features</a></li>
+		<li><a href="/download.html" id="menu_download">Download</a></li>
+		<li><a href="/source.html" id="menu_source">Source</a></li>
+		<li><a href="/documentation" id="menu_documentation">Documentation</a></li>
+		<li><a href="/gallery.html" id="menu_gallery">Gallery</a></li>
+		<li><a href="/community.html" id="menu_community">Community</a></li>
+	</ul>
+	<div class="clear"></div>
+	</div>
+</div>
+<div id="highlights">
+</div>
+
+<div class="documentation-panel">
+
+<div class="toc" id="toc">
+
+<div class="searchbar">
+	<input id="searchbar" class="search" placeholder="Search" />
+</div>
+
+<ul class="list" id="list1">
+	<li><p class="category" data-always-visible="true">Getting Started</p></li>
+	<li><a class="title" href="/documentation/">Introduction</a></li>
+	<li><a class="title" href="/documentation/gettingstarted/Setting Up.html">Setting Up</a></li>
+	<li><a class="title" href="/documentation/gettingstarted/Creating Projects.html">Creating Projects</a></li>
+	<li><a class="title" href="/documentation/gettingstarted/Importing into IDE.html">Importing into IDE</a></li>
+	<li><a class="title" href="/documentation/gettingstarted/Running and Debugging.html">Running and Debugging</a></li>
+	<li><a class="title" href="/documentation/gettingstarted/Packaging.html">Packaging</a></li>
+</ul>
+
+<ul class="list" id="list2">
+	<li><p class="category" data-always-visible="true">Hacking</p></li>
+	<li><a class="title" href="/documentation/hacking/Working from source.html">Working from source</a></li>
+	<li><a class="title" href="/documentation/hacking/Contributing.html">Contributing</a></li>
+</ul>
+
+<ul class="list" id="list3">
+	<li><p class="category" data-always-visible="true">Getting help</p></li>
+	<li><a class="title" href="/documentation/help/Documentation.html">Documentation</a></li>
+	<li><a class="title" href="/documentation/help/Issue Reporting.html">Issue reporting</a></li>
+	<li><a class="title" href="/documentation/help/Community Help.html">Community help</a></li>
+
+</ul>
+
+<ul class="list" id="list4">
+	<li><p class="category" data-always-visible="true">Tutorials</p></li>
+</ul>
+
+
+</div>
+
+<div class="documentation">
+{{body}}
+</div>
+	
+</div>
+
+</div>
+<div id="footer">
+	<div class="container">
+		<div class="grid">
+			This page is copyright &copy; 2013 Mario Zechner; All other trademarks, logos and copyrights are the property of their respective owners. 
+		</div>
+		<div>
+		<span style="float:right">Design by <a href="http://www.xklibur.com/">XKlibur</a>, HTML/CSS by <a href="http://bitowl.de/">bitowl</a></span>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+
+	var userList1 = new List("list1"); 
+	var userList2 = new List("list2"); 
+	var userList3 = new List("list3"); 
+
+	$('#searchbar').on('keyup', function() {
+		var searchString = $(this).val();
+		search(searchString, userList1);
+		search(searchString, userList2);
+		search(searchString, userList3);
+	});
+
+</script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-12707328-7']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+</body>
+</html>

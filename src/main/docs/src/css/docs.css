@@ -1,0 +1,50 @@
+.well.error {
+    background-color: #f2dede;
+    border-color: #ebcccc;
+    color: #a94442;
+}
+
+.well.info {
+    color: #31708f;
+    background-color: #d9edf7;
+    border-color: #bce8f1;
+}
+
+.documentation-panel {
+    padding-left: 300px;
+    min-height: 1024px;
+}
+.toc {
+    background-color: #f0f0f0;
+    font-size: 0.9em;
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 300px;
+    border-right: solid 1px #dfe2e7;
+    padding: 10px;
+    padding-left: 0px;
+}
+p.category {
+    font-size: 1.5em;
+}
+.toc ul {
+    list-style-type: none;
+}
+.documentation {
+    max-width: 1000px;
+    padding: 30px;
+}
+.searchbar {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.searchbar input {
+    width: 100%;
+}
+
+.header-link {
+    
+}

@@ -1,0 +1,144 @@
+/*-----------------------------------*\
+
+	Toast
+	A Simple CSS Framework
+	=================================
+
+	Values you may want to change:
+	- .container { max-width:; }
+	- p { margin-bottom:; }
+	- html { font:; }
+
+	Remember: no framework will be as
+	good as a custom built, per-
+	project	one. Toast and other
+	frameworks are best used for
+	rapid prototyping.
+
+\*-----------------------------------*/
+
+/*-----------------------------------*\
+	$RESET
+\*-----------------------------------*/
+
+* {
+	margin: 0;
+	padding: 0;
+	position: relative;
+	-webkit-box-sizing: border-box;
+	   -moz-box-sizing: border-box;
+	        box-sizing: border-box;
+}
+
+/*-----------------------------------*\
+	$GRID
+\*-----------------------------------*/
+
+.container {
+	/* Whatever you want. They’re your oats. */
+	max-width: 1280px;
+	margin: 0 auto;
+	padding: 0 30px;
+	padding: 0 1.5rem;
+		
+}
+
+.unit,.one-of-one,.one-of-two,.one-of-three,.one-of-four,.three-of-four{
+	display: inline-block;
+	*display: inline;
+	*zoom: 1;
+	vertical-align: top;
+	margin-right: -.25em;
+	padding-left:1.5%;
+	padding-right:1.5%;
+	/* Clearfix */
+	overflow: hidden;
+	*overflow: visible;
+}
+
+.span-grid {
+	width: 100%;
+}
+
+.one-of-two { width: 50%; }
+
+.one-of-three { width: 33.33%; }
+.two-of-three { width: 66.666666666%; }
+
+.one-of-four { width: 25%; }
+.three-of-four { width: 75%; }
+
+.one-of-five { width: 17.07%; }
+.two-of-five { width: 37%; }
+.three-of-five { width: 57%; }
+.four-of-five { width: 77%; }
+
+@media screen and (max-width: 650px) {
+	.grid {
+		margin-left: 0;
+		max-width: none;
+	}
+
+	.unit ,.one-of-one,.one-of-two,.one-of-three{
+		width: auto !important;
+		margin-left: 0;
+		display: block;
+	}
+}
+
+/*-----------------------------------*\
+	$TYPE
+
+	Works off the assumption of a 1.5
+	line height @ 20px. Again, change
+	as necessary.
+\*-----------------------------------*/
+
+/*p, .p, ul, ol, hr, table, form, pre,
+h1, .alpha, h2, .beta {
+	margin-bottom: 30px;
+	margin-bottom: 1.5rem;
+}*/
+
+h1, .alpha {
+	font-size: 60px;
+	font-size: 3rem;
+/*	font-weight: 700;*/
+	font-weight:normal;
+	line-height: 1;
+}
+
+h2, .beta {
+	font-size: 30px;
+	font-size: 1.5rem;
+	font-weight: 400;
+	line-height: 2;
+}
+
+h3, .gamma {
+	font-size: 20px;
+	font-size: 1rem;
+	font-weight: 700;
+}
+
+hr {
+	border: none;
+	border-bottom: 1px solid rgba(0,0,0,.1);
+	margin-top: -1px;
+}
+
+/*-----------------------------------*\
+	$MAIN
+\*-----------------------------------*/
+
+html {
+	font-family: "Roboto", Helvetica Neue, Helvetica, Arial, sans-serif;
+	font-weight: 200;
+	line-height:1.5;
+}
+
+@media screen and (max-width: 650px) {
+	html {
+		font-size: 100%;
+	}
+}
