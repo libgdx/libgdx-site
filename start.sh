@@ -34,5 +34,4 @@ cd src/main/webapp
 cd ../../..
 mvn clean package
 cp -r src/main/webapp/* /usr/share/nginx/html/
-cp -r src/main/webapp/documentation/** /usr/share/nginx/html/documentation/
 java -jar target/libgdx-site-jar-with-dependencies.jar
