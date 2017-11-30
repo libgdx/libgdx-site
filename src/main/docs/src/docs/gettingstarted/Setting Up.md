@@ -39,6 +39,15 @@ set them up correctly.
 ---
 
 ## Setting up Intellij IDEA/Android Studio
+
+<div class="well error">
+<strong>NOTE:</strong>
+<br>
+- Android Studio 3.0 is not compatible.<br>
+
+- If your IDE recommended you to upgrade versions, do not let it upgrade. Keep to the versions supplied by the setup tool.
+</div>
+
 Minimum:
 - Java Development Kit 7+ (Must be JDK)
 - Intellij IDEA 2016+, (community edition is sufficient) [Link](https://www.jetbrains.com/idea/download/#section=windows)

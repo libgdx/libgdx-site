@@ -41,7 +41,7 @@ to launch and debug your projects.
     - [Intellij/Android studio](#running-ios-multi-os-engine-project-in-intellij-android-studio)
     - ~~[Eclipse](#eclipse)~~<br>_Not supported_.    See [command line usage](#command-line-running) for alternative
     - ~~[Netbeans](#netbeans)~~<br>_Not supported_.    See [command line usage](#command-line-running) for alternative
-- [Running/Debugging the HTML project](#HTML)
+- [Running/Debugging the HTML project](#html)
 
 - [Running projects from command line](#command-line-running)
 
