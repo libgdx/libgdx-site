@@ -62,11 +62,30 @@ To generate a signed APK, you can follow the guide here: [Android Signing](https
 This goes through how you can do this in **Intellij** and **Android studio**, but also on command line. See the **"Configure Gradle to sign your APK"** section for this.
 
 <br>
-## Packaging for RoboVM 
+## Packaging for iOS (Using RoboVM)
+ 
 
 Its recommended you use your IDE plugin to package for RoboVM.
 
-- Create an IPA in **Intellij/Android Studio** documentation [here](http://docs.robovm.com/getting-started/intellij.html#deployment)
+### Prerequisites:
+- Create DEV and PROD Signing Identities in you [Apple Developer account](https://developer.apple.com)
+- Create DEV and PROD Provisioning profiles in your [Apple Developer account](https://developer.apple.com)
+- Once done, open XCode and select Menu XCode->Preferences. In the account section select your account and click "Download Manual Profiles (Xcode 9+) or "Download All Profiles" (Xcode 8)
+- Restart Android Intellij/Android Studio
+
+Note: 
+- Your DEV Signing Identities and Provisioning profiles are required to deploy on your local devices.
+- Your PROD ones will be used to submit to the AppStore.
+
+- Create an IPA in **Intellij/Android Studio** 
+1) Select Build -> Create IPA
+2) The "Create IPA" windows comes up 
+Module: your IOS LibGDXProject
+Destination Dir: where your IPA will be stored
+Signing Identity: Your DEV or PROD Signing identity
+Provisioning profile: Your DEV or PROD Provisioning profile
+Architectures: leave "All"
+
 - Create an IPA in **Eclipse** documentation [here](http://docs.robovm.com/getting-started/eclipse.html#deployment)
 
 Alternatively run:
@@ -74,8 +93,9 @@ Alternatively run:
 ```bash
 ./gradlew ios:createIPA
 ```
-
 This will require you to setup additional configuration in the build.gradle file for robovm. See [documentation](https://github.com/MobiDevelop/robovm/tree/master/plugins/gradle)
+
+This will create an IPA in the `ios/build/robovm` folder that you distribute to the Apple App Store. You can follow Apple's guide on [app store distribution](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/AppDistributionGuide/Introduction/Introduction.html)
 
 <br>
 ## Packaging for Multi-OS Engine 
