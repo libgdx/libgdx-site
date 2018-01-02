@@ -48,5 +48,6 @@ Below is the quick start guide series to get you started with LibGDX with your s
 
 ## Tutorials
 
-Soon...
+Tutorial are coming soon...
+In the meantime, check out code example and samples on [LibGDX.info](libgdx.info)
 
