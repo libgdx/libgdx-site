@@ -758,3 +758,8 @@ div.links a {
 .skin-download {
     float: right;
 }
+
+#banner iframe{
+	width: 75%;
+	height: 90%;
+}
