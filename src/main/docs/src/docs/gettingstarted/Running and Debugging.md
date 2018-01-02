@@ -160,7 +160,7 @@ to your <strong>android/assets</strong> folder, or the <strong>core/assets</stro
 - Select the provisioning profile and simulator/device target
 - Run the created run configuration
 
-For more information on using and configuring the RoboVM intellij plugin please see the [documentation](http://docs.robovm.com/getting-started/intellij.html)
+For more information on using and configuring the RoboVM intellij plugin please see the [documentation](http://robovm.mobidevelop.com/)
 
 <div class="well error">
 <strong>NOTE:</strong> The documentation is for the 'Official' RoboVM plugin, we currently use a fork of this.
@@ -188,7 +188,7 @@ Debugging is not supported at this time.
 ![robovmeclipse](../../img/docs/robovmeclipse.png)
 
 
-For more information on using and configuring the RoboVM eclipse plugin please see the [documentation](http://docs.robovm.com/getting-started/eclipse.html)
+For more information on using and configuring the RoboVM eclipse plugin please see the [documentation](http://robovm.mobidevelop.com/)
 
 <div class="well error">
 <strong>NOTE:</strong> The documentation is for the 'Official' RoboVM plugin, we currently use a fork of this.
