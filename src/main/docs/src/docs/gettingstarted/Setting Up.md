@@ -74,7 +74,15 @@ iOS:
 - Multi OS Engine plugin [Link](https://multi-os-engine.org/start/)
 
 ## Setting up Netbeans
-Haha good one...
+Minimum:
+- Java Development Kit 7+ (Must be JDK)
+- Netbeans 7.3+, (Java SE is sufficient) [Link](https://netbeans.org/downloads/)
+
+Android:
+- Not officially supported.
+
+iOS:
+- Not officially supported.
 
 ## Command Line
 Minimum:
