@@ -86,6 +86,11 @@ Signing Identity: Your DEV or PROD Signing identity
 Provisioning profile: Your DEV or PROD Provisioning profile
 Architectures: leave "All"
 
+- Create an Asset Catalog
+As of iOS 11 you need to include an asset Catalog within your iOS app instead of having the icons directly stored into the "data" folder.
+To do this you can follow the [instructions here](https://github.com/MobiVM/robovm/wiki/Howto-Create-an-Asset-Catalog-for-XCode-9-Appstore-Submission%3F)
+
+
 - Create an IPA in **Eclipse** documentation [here](http://docs.robovm.com/getting-started/eclipse.html#deployment)
 
 Alternatively run:
@@ -95,7 +100,13 @@ Alternatively run:
 ```
 This will require you to setup additional configuration in the build.gradle file for robovm. See [documentation](https://github.com/MobiDevelop/robovm/tree/master/plugins/gradle)
 
+
 This will create an IPA in the `ios/build/robovm` folder that you distribute to the Apple App Store. You can follow Apple's guide on [app store distribution](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/AppDistributionGuide/Introduction/Introduction.html)
+
+To submit your IPA to the app Store you will need to use XCode's Application loader:
+- Open XCode
+- Click XCode->Open Developer Tool->Application Loader
+
 
 <br>
 ## Packaging for Multi-OS Engine 
