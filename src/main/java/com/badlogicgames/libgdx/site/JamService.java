@@ -31,33 +31,21 @@ import com.sun.jersey.spi.resource.Singleton;
 public class JamService {
 	private List<DevLogPost> posts = new ArrayList<DevLogPost>();
 	private SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-	
-	public JamService() {
-		Thread t = new Thread(new Runnable() {
 
-			public void run() {
-				while(true) {
-					try {
-						updateDevLogPosts();
-						Thread.sleep(1000 * 60 * 5);
-					} catch (Exception e) {					
-						e.printStackTrace();
-					}
-				}
-			}
-			
-		});
-		t.setDaemon(true);
-		t.start();
+	public JamService() {
+		try {
+			updateDevLogPosts();
+		} catch (Throwable t) {
+		}
 	}
-	
+
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("posts")
 	public List<DevLogPost> getDevLogPosts() {
 		return posts;
 	}
-	
+
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("updatePosts")
@@ -66,7 +54,7 @@ public class JamService {
 		List<DevLogPost> logPosts = new ArrayList<DevLogPost>();
 		for(DevLog log: logs) {
 			logPosts.addAll(processLogPosts(log));
-		}		
+		}
 		Collections.sort(logPosts, new Comparator<DevLogPost>() {
 			public int compare(DevLogPost o1, DevLogPost o2) {
 				return (int)o2.time - (int)o1.time;
@@ -75,7 +63,7 @@ public class JamService {
 		posts = logPosts;
 		return posts;
 	}
-	
+
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("collectLogs")
@@ -83,26 +71,26 @@ public class JamService {
 		List<DevLog> logs = new ArrayList<DevLog>();
 		Document page = Jsoup.connect("http://itch.io/jam/libgdxjam/community").get();
 		while(page != null) {
-			logs.addAll(processLogPage(page));			
+			logs.addAll(processLogPage(page));
 			Elements pageLinks = page.getElementsByClass("page_link");
 			page = null;
 			if(pageLinks.size() != 0) {
 				for(Element pageLink: pageLinks) {
 					if("Next page".equals(pageLink.text())) {
-						page = Jsoup.connect("https://itch.io" + pageLink.attr("href")).get();						
+						page = Jsoup.connect("https://itch.io" + pageLink.attr("href")).get();
 						break;
 					}
 				}
 			}
 		}
 		return logs;
-	}		
-	
+	}
+
 	private List<DevLog> processLogPage(Document page) throws IOException {
 		List<DevLog> logs = new ArrayList<DevLog>();
 		Elements topics = page.select(".topic_row");
 		for(Element topic: topics) {
-			Element title = topic.getElementsByClass("topic_title").first().getElementsByTag("a").first();			
+			Element title = topic.getElementsByClass("topic_title").first().getElementsByTag("a").first();
 			String logTitle = title.text();
 			String logURL = "https://itch.io" + title.attr("href");
 			Element author = topic.getElementsByClass("topic_poster").first().getElementsByClass("topic_author").first();
@@ -111,16 +99,16 @@ public class JamService {
 			if(!logTitle.toLowerCase().contains("introduce yourself!")) {
 				logs.add(new DevLog(authorName, authorURL, null, logURL, logTitle));
 			}
-			
+
 		}
 		return logs;
 	}
-	
+
 	private List<DevLogPost> processLogPosts(DevLog log) throws IOException {
 		List<DevLogPost> posts = new ArrayList<DevLogPost>();
 		try {
 			Document page = Jsoup.connect(log.getUrl()).get();
-			while(page != null) {				
+			while(page != null) {
 				for(Element entry: page.getElementsByClass("community_post")) {
 					try {
 						if(entry.hasClass("deleted")) {
@@ -135,34 +123,34 @@ public class JamService {
 						String author = row.getElementsByClass("post_author").first().getElementsByTag("a").first().text();
 						if(!log.getAuthor().equals(author)) {
 							continue;
-						}					
+						}
 						Element postDate = row.getElementsByClass("post_date").first();
 						String url = "https://itch.io" + postDate.getElementsByTag("a").attr("href");
 						String date = postDate.attr("title");
 						long dateUTC = dateFormat.parse(date).getTime();
 						String content = row.getElementsByClass("post_body").first().toString();
-						posts.add(new DevLogPost(author, avatarUrl, url, content, dateUTC, date));					
+						posts.add(new DevLogPost(author, avatarUrl, url, content, dateUTC, date));
 					} catch(Throwable e) {
 						e.printStackTrace();
 						System.out.println("Couldn't parse post " + log.getUrl());
 					}
 				}
-				
+
 				Elements pageLinks = page.getElementsByClass("page_link");
 				page = null;
 				if(pageLinks.size() != 0) {
 					for(Element pageLink: pageLinks) {
 						if("Next page".equals(pageLink.text())) {
-							page = Jsoup.connect("https://itch.io" + pageLink.attr("href")).get();						
+							page = Jsoup.connect("https://itch.io" + pageLink.attr("href")).get();
 							break;
 						}
 					}
 				}
-			}			
+			}
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
-		
+
 		return posts;
 	}
 }
