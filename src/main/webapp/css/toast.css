@@ -43,7 +43,7 @@
 		
 }
 
-.unit,.one-of-one,.one-of-two,.one-of-three,.one-of-four{
+.unit,.one-of-one,.one-of-two,.one-of-three,.one-of-four,.three-of-four{
 	display: inline-block;
 	*display: inline;
 	*zoom: 1;
@@ -79,7 +79,7 @@
 		max-width: none;
 	}
 
-	.unit ,.one-of-one,.one-of-two,.one-of-three,.one-of-four{
+	.unit ,.one-of-one,.one-of-two,.one-of-three{
 		width: auto !important;
 		margin-left: 0;
 		display: block;
@@ -142,4 +142,3 @@ html {
 		font-size: 100%;
 	}
 }
-

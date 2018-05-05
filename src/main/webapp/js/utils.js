@@ -12,7 +12,7 @@ function testGame() {
 				{ "name": "Play Store", "url": "https://play.google.com/store/apps/details?id=com.bithack.apparatus" }
 			]
 		};
-}
+} 
 
 function testGames(num) {
 	var games = new Array();
