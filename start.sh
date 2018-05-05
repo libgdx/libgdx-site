@@ -1,3 +1,4 @@
+echo "----- Starting libGDX site build"
 git pull
 
 cd src/main/docs
