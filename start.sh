@@ -15,5 +15,5 @@ cd ../../../
 cd src/main/webapp
 ./build.sh
 cd ../../..
-mvn clean package
-java -jar target/libgdx-site-jar-with-dependencies.jar
+#mvn clean package
+#java -jar target/libgdx-site-jar-with-dependencies.jar
