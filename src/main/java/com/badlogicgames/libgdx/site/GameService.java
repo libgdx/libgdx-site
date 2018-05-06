@@ -248,7 +248,7 @@ public class GameService {
 							"response", response);
 		if(result == null) return false;
 		System.out.println(result);
-		return result.startsWith("true");
+		return result.contains("\"success\": true");
 	}
 
 	private Result validate(Game game) {
