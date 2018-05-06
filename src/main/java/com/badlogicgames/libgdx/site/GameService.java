@@ -111,7 +111,10 @@ public class GameService {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("create")
 	public Result create(@Context HttpServletRequest hsr, GameRequest request) {
-		if(!checkCaptcha(hsr.getRemoteAddr(), request)) return new Result(false, "Captcha wrong");
+		String remoteIp = hsr.getHeader("X-Real-Ip");
+		if (remoteIp == null) remoteIp = hsr.getRemoteAddr();
+
+		if(!checkCaptcha(remoteIp, request)) return new Result(false, "Captcha wrong");
 		Result result = validate(request.game);
 		if(!result.success) return result;
 		String token = db.create(request.game);
@@ -239,8 +242,8 @@ public class GameService {
 	private boolean checkCaptcha(String remoteIp, GameRequest request) {
 		String privateKey = recaptchaPrivateKey;
 		String response = request.response;
-		String result = HttpUtils.postHttp("http://www.google.com/recaptcha/api/verify",
-							"privatekey", privateKey,
+		String result = HttpUtils.postHttp("https://www.google.com/recaptcha/api/siteverify",
+							"secret", privateKey,
 							"remoteip", remoteIp,
 							"response", response);
 		if(result == null) return false;
