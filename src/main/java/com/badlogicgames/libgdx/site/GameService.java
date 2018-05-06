@@ -238,12 +238,10 @@ public class GameService {
 
 	private boolean checkCaptcha(String remoteIp, GameRequest request) {
 		String privateKey = recaptchaPrivateKey;
-		String challenge = request.challenge;
 		String response = request.response;
 		String result = HttpUtils.postHttp("http://www.google.com/recaptcha/api/verify",
 							"privatekey", privateKey,
 							"remoteip", remoteIp,
-							"challenge", challenge,
 							"response", response);
 		if(result == null) return false;
 		System.out.println(result);

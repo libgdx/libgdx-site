@@ -49,16 +49,21 @@ future. If you modify your entry, make sure to supply the token you received whe
 			<div id="videodiv"></div>
 		<li><div id="tokendiv"></div></li>
 		<li>* required fields</li>
-		<li><div id="recaptcha"></div></li>
+		<li><div class="g-recaptcha" data-sitekey="6LcY7OISAAAAAEWzUbJzDJXuy0I1UfpEdDuErm-g" id="recaptcha" data-callback="recaptchaSuccess"></div></li>
 		<li><button id="submit" class="submit" type="submit">Submit</button></li>
 	</ul>
 </form>
 <div id="result"></div>
 </div>
-<script type="text/javascript" src="//www.google.com/recaptcha/api/js/recaptcha_ajax.js"></script>
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
 <script>
 var isCreate = true;
+var captchaResponseToken = null;
+
+function recaptchaSuccess(token) {
+	captchaResponseToken = token;
+}
 
 function loadGame(game) {
 	isCreate = false;
@@ -80,9 +85,8 @@ function loadGame(game) {
 	$("#edit").html("Edit Entry");
 }
 
-function saveGame() {
-	var challenge = Recaptcha.get_challenge();
-	var response = Recaptcha.get_response();
+function saveGame() {	
+	var response = captchaResponseToken;
 	var url = "libgdx-site/service/";
 	if(isCreate) url += "create";
 	else url += "update";
@@ -105,8 +109,7 @@ function saveGame() {
 		type: "POST",
 		url: url,
 		contentType: "application/json",
-		data: JSON.stringify({ 
-			challenge: challenge,
+		data: JSON.stringify({ 			
 			response: response,
 			token: $("#token").val(),
 			game: game,
@@ -129,15 +132,7 @@ function processResponse(data) {
 }
 
 $(document).ready(function() {
-	var publicKey = "6LcY7OISAAAAAEWzUbJzDJXuy0I1UfpEdDuErm-g";
-	Recaptcha.create(
-		publicKey,
-		"recaptcha",
-		{
-		  theme: "red",
-		  callback: Recaptcha.focus_response_field
-		}
-	);
+	var publicKey = "6LcY7OISAAAAAEWzUbJzDJXuy0I1UfpEdDuErm-g";	
 	
 	var gameId = getParameterByName("id");
 	if(gameId) {

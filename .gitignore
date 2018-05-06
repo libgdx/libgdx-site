@@ -17,3 +17,4 @@ src/main/webapp/documentation/
 src/main/webapp/libgdx-skins-dist/
 gamedb/
 .vscode/
+/bin/
