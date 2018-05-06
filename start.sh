@@ -15,4 +15,4 @@ cd src/main/webapp
 ./build.sh
 cd ../../..
 mvn clean package
-java java -Xdebug -Xrunjdwp:transport=dt_socket,server=y,address=9000 -jar target/libgdx-site-jar-with-dependencies.jar
+java -Xdebug -Xrunjdwp:transport=dt_socket,server=y,address=9000 -jar target/libgdx-site-jar-with-dependencies.jar
