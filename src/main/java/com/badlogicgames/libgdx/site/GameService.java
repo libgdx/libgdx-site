@@ -176,8 +176,12 @@ public class GameService {
 	
 	@GET
 	@Path("restart")
-	public void restart (@QueryParam("key") String key) {
-		if (restartKey.equals(key)) System.exit(0);
+	public String restart (@QueryParam("key") String key) throws Exception {
+		if (restartKey.equals(key)) {
+			server.setGracefulShutdown(2000);
+			server.stop();
+		}
+		return "OK";
 	}
 
 	private String getDependencyBankUrl (boolean release) {
