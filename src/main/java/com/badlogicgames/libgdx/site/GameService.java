@@ -175,6 +175,7 @@ public class GameService {
 	}
 	
 	@GET
+	@Produces(MediaType.APPLICATION_JSON)
 	@Path("restart")
 	public String restart (@QueryParam("key") String key) throws Exception {
 		if (restartKey.equals(key)) {
