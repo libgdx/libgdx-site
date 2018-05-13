@@ -180,7 +180,16 @@ public class GameService {
 	public Versions restart (@QueryParam("key") String key) throws Exception {
 		if (restartKey.equals(key)) {
 			server.setGracefulShutdown(2000);
-			server.stop();
+			new Thread (new Runnable() {
+				@Override
+				public void run () {
+					try {
+						server.stop();
+					} catch (Exception e) {
+						e.printStackTrace();
+					}					
+				}
+			}).start();
 		}
 		return new Versions(true, "OK");
 	}
