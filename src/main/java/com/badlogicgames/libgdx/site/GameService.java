@@ -51,6 +51,7 @@ public class GameService {
 	private GameDatabase db;
 	private String recaptchaPrivateKey;
 	private final ObjectMapper mapper = new ObjectMapper();
+	private String auth;
 
 	public GameService() {
 		try {
@@ -59,6 +60,7 @@ public class GameService {
 				dir = "./gamedb";
 			}
 			recaptchaPrivateKey = FileUtils.readFileToString(new File(dir, "recaptcha.key")).trim();
+			auth = FileUtils.readFileToString(new File(dir, "restart-auth.key")).trim();
 			db = new FileGameDatabase(dir);
 		} catch(IOException e) {
 			e.printStackTrace();
@@ -170,6 +172,12 @@ public class GameService {
 		if (!result) return new Versions(false, "Can't access versions");
 
 		return new Versions(true, release, cachedFile);
+	}
+	
+	@GET
+	@Path("restart")
+	public void restart (@QueryParam("auth") String auth) {
+		System.exit(0);
 	}
 
 	private String getDependencyBankUrl (boolean release) {
