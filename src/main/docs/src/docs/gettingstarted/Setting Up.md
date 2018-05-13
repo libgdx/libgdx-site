@@ -27,6 +27,12 @@ you are working in a team.
 The 3 major java IDEs, IDEA/Android Studio, Eclipse and Netbeans are all supported, just make sure you have
 set them up correctly.
 
+<div class="well info">
+    <strong>
+    It is highly recommended that you use the Intellij IDE.
+    </strong>
+</div>
+
 ---
 
 ## Setting up your Development Environment
@@ -40,18 +46,11 @@ set them up correctly.
 
 ## Setting up Intellij IDEA/Android Studio
 
-<div class="well error">
-<strong>NOTE:</strong>
-<br>
-- Android Studio 3.0 is not compatible.<br>
-
-- If your IDE recommended you to upgrade versions, do not let it upgrade. Keep to the versions supplied by the setup tool.
-</div>
 
 Minimum:
-- Java Development Kit 7+ (Must be JDK)
-- Intellij IDEA 2016+, (community edition is sufficient) [Link](https://www.jetbrains.com/idea/download/#section=windows)
-- Android Studio, 2.2+ [Link](https://developer.android.com/studio/index.html)
+- Java Development Kit 8+ (Must be JDK)
+- <strong>(Recommended)</strong> Intellij IDEA 2018.1.3, (community edition is sufficient) [Link](https://www.jetbrains.com/idea/download/#section=windows)
+- Android Studio, 3.1.2 [Link](https://developer.android.com/studio/index.html)
 
 Android:
 - Android SDK (If using IDEA) [Link](https://developer.android.com/studio/index.html#downloads)
@@ -62,12 +61,11 @@ iOS:
 
 ## Setting up Eclipse
 Minimum:
-- Java Development Kit 7+ (Must be JDK)
-- Eclipse Mars+ with Buildship [link](https://www.eclipse.org/downloads/)
+- Java Development Kit 8+ (Must be JDK)
+- Eclipse Oxygen+ with Buildship [link](https://www.eclipse.org/downloads/)
 
 Android:
-- Android SDK [Link](https://developer.android.com/studio/index.html#downloads)
-- ADT Tools [Link](https://developer.android.com/studio/tools/sdk/eclipse-adt.html)
+- Not officially supported.
 
 iOS:
 - RobovmOSS Eclipse plugin [Link](http://robovm.mobidevelop.com/)
@@ -75,8 +73,8 @@ iOS:
 
 ## Setting up Netbeans
 Minimum:
-- Java Development Kit 7+ (Must be JDK)
-- Netbeans 7.3+, (Java SE is sufficient) [Link](https://netbeans.org/downloads/)
+- Java Development Kit 8+ (Must be JDK)
+- Netbeans 8.2, (Java SE is sufficient) [Link](https://netbeans.org/downloads/)
 
 Android:
 - Not officially supported.
@@ -86,7 +84,7 @@ iOS:
 
 ## Command Line
 Minimum:
-- Java Development Kit 7+ (Must be JDK)
+- Java Development Kit 8+ (Must be JDK)
 
 Android:
 - Android SDK

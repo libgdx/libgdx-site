@@ -18,15 +18,25 @@ tags:
 
 Importing projects into your IDE should be painless if setup correctly.
 
+<div class="well info">
+    <strong>
+    It is highly recommended that you use the Intellij IDE.
+    </strong>
+</div>
+
 - [Importing into Intellij/Android Studio](#intellij)
 - [Importing into Eclipse](#eclipse)
 - [Importing into Neatbeans](#netbeans)
+
+
+<br>
 
 ## Intellij
 
 - File > Open > ProjectRoot/build.gradle
 - Select OK on the 'Import Project from Gradle dialog'
 - Import all modules
+- Make sure that <strong>configure on demand</strong> is disabled in your IDEA/AS. You will find this in settings.
 
 <div class="well error">
 If you have any issues when importing, resolve these before continuing!
@@ -37,6 +47,8 @@ To do this you bring up the Gradle tool window (View > Tool windows > Gradle), a
 Gradle tool window.
 
 If this succeeds, you are all imported and ready to get developing.
+
+<br>
 
 ## Eclipse
 
