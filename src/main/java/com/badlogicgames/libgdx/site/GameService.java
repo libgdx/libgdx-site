@@ -177,12 +177,12 @@ public class GameService {
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("restart")
-	public String restart (@QueryParam("key") String key) throws Exception {
+	public Versions restart (@QueryParam("key") String key) throws Exception {
 		if (restartKey.equals(key)) {
 			server.setGracefulShutdown(2000);
 			server.stop();
 		}
-		return "OK";
+		return new Versions(true, "OK");
 	}
 
 	private String getDependencyBankUrl (boolean release) {
