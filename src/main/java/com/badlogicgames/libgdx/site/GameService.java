@@ -50,8 +50,8 @@ import org.eclipse.jetty.servlet.ServletHolder;
 public class GameService {
 	private GameDatabase db;
 	private String recaptchaPrivateKey;
-	private final ObjectMapper mapper = new ObjectMapper();
-	private String auth;
+	private String restartKey;
+	private final ObjectMapper mapper = new ObjectMapper();	
 
 	public GameService() {
 		try {
@@ -59,8 +59,8 @@ public class GameService {
 			if(dir == null) {
 				dir = "./gamedb";
 			}
-			recaptchaPrivateKey = FileUtils.readFileToString(new File(dir, "recaptcha.key")).trim();
-			auth = FileUtils.readFileToString(new File(dir, "restart-auth.key")).trim();
+			restartKey = FileUtils.readFileToString(new File(dir, "restart-auth.key")).trim();
+			recaptchaPrivateKey = FileUtils.readFileToString(new File(dir, "recaptcha.key")).trim();			
 			db = new FileGameDatabase(dir);
 		} catch(IOException e) {
 			e.printStackTrace();
@@ -176,8 +176,8 @@ public class GameService {
 	
 	@GET
 	@Path("restart")
-	public void restart (@QueryParam("auth") String auth) {
-		System.exit(0);
+	public void restart (@QueryParam("key") String key) {
+		if (restartKey.equals(key)) System.exit(0);
 	}
 
 	private String getDependencyBankUrl (boolean release) {

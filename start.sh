@@ -9,7 +9,7 @@ do
 	npm install
 	gulp deploy
 	
-	rm -r ../webapp/documentation/
+	rm -rf ../webapp/documentation/
 	mkdir ../webapp/documentation
 	cp -r dist/* ../webapp/
 	
