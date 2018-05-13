@@ -184,6 +184,7 @@ public class GameService {
 				@Override
 				public void run () {
 					try {
+						Thread.sleep(2000);
 						server.stop();
 					} catch (Exception e) {
 						e.printStackTrace();
