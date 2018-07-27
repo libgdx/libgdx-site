@@ -36,7 +36,7 @@ Importing projects into your IDE should be painless if setup correctly.
 - File > Open > ProjectRoot/build.gradle
 - Select OK on the 'Import Project from Gradle dialog'
 - Import all modules
-- Make sure that <strong>configure on demand</strong> is disabled in your IDEA/AS. You will find this in settings.
+- Make sure that <strong>configure on demand</strong> is disabled in your IDEA/AS (File > Settings > Build, Execution, Deployment > Gradle-Android Compiler > Configure on demand)
 
 <div class="well error">
 If you have any issues when importing, resolve these before continuing!
