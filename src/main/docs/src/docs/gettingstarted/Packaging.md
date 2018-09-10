@@ -64,10 +64,17 @@ This goes through how you can do this in **Intellij** and **Android studio**, bu
 <br>
 ## Packaging for iOS (Using RoboVM)
  
+There are two ways to package the IPA. 
+1) Using the IDE plugin menu
+2) Using the gradle task
 
-Its recommended you use your IDE plugin to package for RoboVM.
+Both do the same thing. It is recommended you use your IDE plugin to package for RoboVM.
+Either way, you will need the get the prerequisites below:
 
-### Prerequisites:
+
+### Prerequisites
+
+- Create an Asset Catalog. As of iOS 11 you need to include an asset Catalog within your iOS app instead of having the icons directly stored into the "data" folder. To do this you can follow the [instructions here](https://github.com/MobiVM/robovm/wiki/Howto-Create-an-Asset-Catalog-for-XCode-9-Appstore-Submission%3F)
 - Create DEV and PROD Signing Identities in you [Apple Developer account](https://developer.apple.com)
 - Create DEV and PROD Provisioning profiles in your [Apple Developer account](https://developer.apple.com)
 - Once done, open XCode and select Menu XCode->Preferences. In the account section select your account and click "Download Manual Profiles (Xcode 9+) or "Download All Profiles" (Xcode 8)
@@ -76,6 +83,8 @@ Its recommended you use your IDE plugin to package for RoboVM.
 Note: 
 - Your DEV Signing Identities and Provisioning profiles are required to deploy on your local devices.
 - Your PROD ones will be used to submit to the AppStore.
+
+### Create the IPA Using the IDE Plugin
 
 - Create an IPA in **Intellij/Android Studio** 
 1) Select Build -> Create IPA
@@ -86,27 +95,49 @@ Signing Identity: Your DEV or PROD Signing identity
 Provisioning profile: Your DEV or PROD Provisioning profile
 Architectures: leave "All"
 
-- Create an Asset Catalog
-As of iOS 11 you need to include an asset Catalog within your iOS app instead of having the icons directly stored into the "data" folder.
-To do this you can follow the [instructions here](https://github.com/MobiVM/robovm/wiki/Howto-Create-an-Asset-Catalog-for-XCode-9-Appstore-Submission%3F)
+### Create the IPA using the Gradle task
+
+Before you can create your IPA using gradle, you must specify your provisioning profile and signature in your project's root build.gradle file.
 
 
-- Create an IPA in **Eclipse** documentation [here](http://docs.robovm.com/getting-started/eclipse.html#deployment)
+```project(":ios") {
+	apply plugin: "java"
+	apply plugin: "robovm"
 
-Alternatively run:
+	dependencies {
+    	compile project(":core")
+		compile "com.mobidevelop.robovm:robovm-rt:$roboVMVersion"
+		compile "com.mobidevelop.robovm:robovm-cocoatouch:$roboVMVersion"
+		compile "com.badlogicgames.gdx:gdx-backend-robovm:$gdxVersion"
+		compile "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-ios"
+	}
+
+	robovm {
+		iosSignIdentity = "[Signing identity name]"
+		iosProvisioningProfile = "[provisioning profile name]"
+		iosSkipSigning = false
+		archs = "thumbv7:arm64"
+	}
+}
+```
+
+- Your provisioning profile name is available in your developer portal (where you created your provisioning profile).
+- Your Signing identity name is available in your keychain, under "My Certificates". You can double click
+
+Now you can run the following gradle task. This will pick up the parameters you have defined above.
 
 ```bash
 ./gradlew ios:createIPA
 ```
-This will require you to setup additional configuration in the build.gradle file for robovm. See [documentation](https://github.com/MobiDevelop/robovm/tree/master/plugins/gradle)
 
-
-This will create an IPA in the `ios/build/robovm` folder that you distribute to the Apple App Store. You can follow Apple's guide on [app store distribution](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/AppDistributionGuide/Introduction/Introduction.html)
+The task will create an IPA in the `ios/build/robovm` folder that you distribute to the Apple App Store. 
 
 To submit your IPA to the app Store you will need to use XCode's Application loader:
 - Open XCode
 - Click XCode->Open Developer Tool->Application Loader
 
+For more information on the gradle configuration See [documentation](https://github.com/MobiDevelop/robovm/tree/master/plugins/gradle)
+More information on Apple distribution process on [app store distribution](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/AppDistributionGuide/Introduction/Introduction.html)
 
 <br>
 ## Packaging for Multi-OS Engine 
