@@ -35,6 +35,10 @@ The forums and irc channel are great places to go for getting your issues resolv
     We have an active irc channel **#libgdx** on the **freenode** server at **irc.freenode.net**.  Core contributors lurk here, as well as lots of other contributors and developers.
     Lots of friendly people to help you with your issues, and talk about anything LibGDX.
 
+- [Discord community](https://discord.gg/7c6Wg8H)
+
+    LibGDX also has a friendly Discord server. There are a number of channels, including but not limited to: screenshot sharing, question and answers, and kotlin discussions.
+
 
 <br>
 <hr>
