@@ -34,9 +34,14 @@ Importing projects into your IDE should be painless if setup correctly.
 ## Intellij
 
 - File > Open > ProjectRoot/build.gradle
+- Uncheck 'Create separate module per source set'
 - Select OK on the 'Import Project from Gradle dialog'
+
+![intellijimport](../../img/docs/intellijimport.png)
+
 - Import all modules
 - Make sure that <strong>configure on demand</strong> is disabled in your IDEA/AS (File > Settings > Build, Execution, Deployment > Gradle-Android Compiler > Configure on demand)
+![intellijconfigureondemand](../../img/docs/intellijconfigureondemand.png)
 
 <div class="well error">
 If you have any issues when importing, resolve these before continuing!
