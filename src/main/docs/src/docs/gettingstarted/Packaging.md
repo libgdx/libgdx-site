@@ -132,9 +132,11 @@ Now you can run the following gradle task. This will pick up the parameters you 
 
 The task will create an IPA in the `ios/build/robovm` folder that you distribute to the Apple App Store. 
 
-To submit your IPA to the app Store you will need to use XCode's Application loader:
-- Open XCode
-- Click XCode->Open Developer Tool->Application Loader
+To submit your IPA to the app Store you will need to use XCode's Application loader command line (Application loader has been removed in Xcode 11).
+
+- Generate an app password for your dev account https://t.co/r2P9vC3zII
+- xcrun altool --upload-app --type ios --file <file.ipa> --username <user-email> --password <password>
+- Check App Store Connect
 
 For more information on the gradle configuration See [documentation](https://github.com/MobiDevelop/robovm/tree/master/plugins/gradle)
 More information on Apple distribution process on [app store distribution](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/AppDistributionGuide/Introduction/Introduction.html)
