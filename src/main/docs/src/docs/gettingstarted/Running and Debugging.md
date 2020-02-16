@@ -256,7 +256,7 @@ You should see lots of text wizzing by, and if all goes well you should see the 
 
 ![beep](../../img/docs/superdev.png)
 
-You can then go to [http://localhost:8080](http://localhost:8080) to see your application running, with a recompile button.
+You can then go to [http://localhost:8080](http://localhost:8080) (older Gradle, circa ~2.14), or [http://localhost:8080/index.html](http://localhost:8080/index.html) (newer Gradle, circa 4.6+), to see your application running, with a recompile button.
 
 For further info on configuring and debugging with SuperDev check the documentation for [Super Dev](http://www.gwtproject.org/articles/superdevmode.html)
 
