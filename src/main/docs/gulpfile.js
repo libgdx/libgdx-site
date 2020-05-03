@@ -34,14 +34,14 @@ function TokenMap (document, fullpath) {
 }
 
 
-gulp.task("clean", function() {
+gulp.task("clean", async function() {
     return del.sync(['dist/index.html']);
 });
 
-gulp.task("templates", ['clean'], function () {
+gulp.task("templates", gulp.series(['clean'], async function () {
     return gulp.src(['src/docs/**/*.md'])
     .pipe(data(function(file) {
-        var template = new Buffer(fs.readFileSync("templates/default"));
+        var template = Buffer.from(fs.readFileSync("templates/default"));
 
         var content = frontmatter(String(file.contents));
 
@@ -94,36 +94,36 @@ gulp.task("templates", ['clean'], function () {
     }))
     .pipe(swig({ defaults: {autoescape: false, cache: false} }))
     .pipe(gulp.dest('dist/documentation'));
-});
+}));
 
-gulp.task('css', function() {
+gulp.task('css', async function() {
     return gulp.src(['src/css/**.css'])
     .pipe(gulp.dest('dist/css/'));
 });
 
 
-gulp.task('js', function() {
+gulp.task('js', async function() {
     return gulp.src(['src/js/**.js'])
     .pipe(gulp.dest('dist/js/'));
 });
 
-gulp.task('img', function() {
+gulp.task('img', async function() {
     return gulp.src(['src/img/**'])
     .pipe(gulp.dest('dist/img/'));
 });
 
-gulp.task("index", ['templates'], function () {
+gulp.task("index", gulp.series(['templates'], async function () {
     fs.writeFile("dist/documentation/documentation_index", JSON.stringify(globalTokens), "UTF-8");
-})
+}))
 
-gulp.task('build', ['templates', 'img', 'css', 'js', 'index'])
+gulp.task('build', gulp.series(['templates', 'img', 'css', 'js', 'index']))
 
-gulp.task('deploy', ['build'], function () {
+gulp.task('deploy', gulp.series(['build'], async function () {
     del.sync(['deploy/']);
     gulp.src(['dist/documentation/**/*']).pipe(gulp.dest('deploy/documentation'));
-})
+}))
 
-gulp.task('serve', ['build'], function() {
+gulp.task('serve', gulp.series(['build'], async function() {
 
     browsersync.init({
         server: "./dist",
@@ -131,6 +131,6 @@ gulp.task('serve', ['build'], function() {
         scrollRestoreTechnique: 'cookie'
     });
 
-    gulp.watch(['src/**', 'templates/**'], ['build']);
+    gulp.watch(['src/**', 'templates/**'], gulp.series(['build']));
     gulp.watch("dist/**").on('change', browsersync.reload);
-});
+}));
