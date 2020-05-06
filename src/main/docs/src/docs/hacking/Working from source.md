@@ -17,6 +17,7 @@ There are two main components when working with the LibGDX, the java source, and
 Most users won't need to dive into the c/c++ components, but for those that want to this guide will also go into that.
 
 <hr>
+
 - **Java source only**
   - [Steps before importing](#steps-before-importing)
       - [Environment setup](#environment-setup)
@@ -81,6 +82,7 @@ ant -f fetch.xml
 <div class="well error">
 If you get the following error:
 <br>
+
 ```java
 javax.net.ssl.SSLHandshakeException
 ```
