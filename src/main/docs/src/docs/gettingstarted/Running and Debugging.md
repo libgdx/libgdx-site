@@ -46,6 +46,7 @@ to launch and debug your projects.
 - [Running projects from command line](#command-line-running)
 
 <br>
+
 ## Running Desktop project in Intellij/Android Studio
 ### Running <br><br>
 - Right click your DesktopLauncher class
@@ -262,7 +263,7 @@ For further info on configuring and debugging with SuperDev check the documentat
 
 ## Command line running
 
-All of the targets can be run and deployed to via the command line interface.
+All the targets can be run and deployed to via the command line interface.
 
 This is not only a helpful feature when debugging, but it also allows you to easily push your project to continuous integration, or use any number
 of automation tools. Its also very helpful when trying to debug an issue with a build in your IDE.  It will let you know if there is a system/configuration issue

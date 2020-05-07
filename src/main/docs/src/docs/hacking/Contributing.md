@@ -45,6 +45,7 @@ If you want to submit code back to the project, please take a moment to review o
  the developers on the irc channel/forums or by starting up an issue on the issue tracker on Github. 
 
 <br>
+
 ### Formatting
 
 If you are working on any of the LibGDX code, we require you to use the formatter that we use. You can find it [here](https://github.com/libgdx/libgdx/blob/master/eclipse-formatter.xml)
@@ -57,6 +58,7 @@ Only run the formatter on the lines you are specifically changing.
 </div>
 
 <br>
+
 ### Code Style
 
 LibGDX stands by the usual java style, but we don't have an official coding standard.  
@@ -78,11 +80,13 @@ methods that are self explanatory.
 - If your class is thread safe, mention it in the documentation. Its assumed that LibGDX classes are not thread safe by default, so please mention it.
 
 <br>
+
 ### Compatibility
 
 Due to the cross platform nature of LibGDX, there are some things you have to avoid when contributing code.  For example. GWT does not support all java features, and Android does not support all desktop jvm features.
 
 <br>
+
 ### Considerations for GWT compatibility
 
 You can see what features are supported on GWT [here](http://www.gwtproject.org/doc/latest/RefJreEmulation.html).
@@ -102,6 +106,7 @@ Common limitations on GWT include:
 Determine if any new classes are compatible with GWT, and either **include** or **exclude** elements to the [gwt module](https://github.com/libgdx/libgdx/blob/master/gdx/src/com/badlogic/gdx.gwt.xml)
 
 <br>
+
 ### Performance considerations
 
 Due to some of the targets of the framework being mobile and the web, along with it being a game development focused framework, its important to keep performance as tight as possible.
@@ -119,6 +124,7 @@ A couple of guidelines regarding performance:
 - Use pooling if necessary, if possible avoid exposing the internal pooling to the user
 
 <br>
+
 ### Size of code changes
 
 To reduce the chances of introducing errant behavior, and to increase the chance that your pull request gets merged, we ask you to keep the requests small and focused.
@@ -133,6 +139,7 @@ Please do not leave it up to the core contributors to test your code, make sure 
 
 
 <br>
+
 ## How to contribute code
 
 LibGDX uses git, with our codebase situated on Github.  In order to submit changes back to the official LibGDX project, you will need to fork the project, clone your fork, push changes back to your fork, and then submit a pull request based on your changes.
@@ -155,12 +162,14 @@ Pull requests may be denied for not being ready, or not fitting the scope of the
 
 
 <br>
+
 ## Wiki contributions
 
 The [LibGDX Wiki](https://github.com/libgdx/libgdx/wiki) contains lots of detailed descriptions and guides of specific parts of the API. Anyone is free to contribute to the project, keeping documents up to date, and adding new entries.
 Please feel free to make your own additions/changes to articles if they need it, it is much appreciated.
 
 <br>
+
 ## Patreon
 
 If you would like to contribute to LibGDX monetarily, we have a [Patreon](https://www.patreon.com/libgdx) page that helps support the project.

@@ -33,6 +33,7 @@ in your IDE by yourself, feel free!
 
 
 <br>
+
 ## Packaging for desktop
 
 ```bash
@@ -45,11 +46,13 @@ java -jar desktop.jar
  ```
  
  <br>
+ 
  ### Further Packaging desktop
  You can wrap this jar into a .EXE bundle along with a small JRE so that your end users don't have to have java installed.
  [PackR](https://github.com/libgdx/packr) is a wonderful tool that allows you to do this.
 
 <br>
+
 ## Packaging for Android
 
 ```bash
@@ -62,6 +65,7 @@ To generate a signed APK, you can follow the guide here: [Android Signing](https
 This goes through how you can do this in **Intellij** and **Android studio**, but also on command line. See the **"Configure Gradle to sign your APK"** section for this.
 
 <br>
+
 ## Packaging for iOS (Using RoboVM)
  
 There are two ways to package the IPA. 
@@ -142,12 +146,14 @@ For more information on the gradle configuration See [documentation](https://git
 More information on Apple distribution process on [app store distribution](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/AppDistributionGuide/Introduction/Introduction.html)
 
 <br>
+
 ## Packaging for Multi-OS Engine 
 
 
 See the official documentation for building an IPA with Multi-OS Engine [here](https://doc.multi-os-engine.org/multi-os-engine/3_getting_started/1_hello_world_app/hello_world_app.html#building-ipa-to-deploy-app-to-appstore)
 
 <br>
+
 ## Packaging for HTML
 
 Run the following Gradle task to package the HTML project:

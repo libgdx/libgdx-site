@@ -28,13 +28,13 @@ Below is the quick start guide series to get you started with LibGDX with your s
 
 ## Getting started series
 
-- [Setting up](gettingstarted/Setting Up.html)
-- [Creating your project](gettingstarted/Creating Projects.html)
-- [Importing into your IDE](gettingstarted/Importing into IDE.html)
- - [Intellij IDEA and Android Studio](gettingstarted/Importing into IDE.html#intellij)
- - [Eclipse](gettingstarted/Importing into IDE.html#eclipse)
- - [Netbeans](gettingstarted/Importing into IDE.html#netbeans)
-- [Running and Debugging with LibGDX](gettingstarted/Running and Debugging.html)
+- [Setting up](gettingstarted/Setting%20Up.html)
+- [Creating your project](gettingstarted/Creating%20Projects.html)
+- [Importing into your IDE](gettingstarted/Importing%20into%20IDE.html)
+ - [Intellij IDEA and Android Studio](gettingstarted/Importing%20into%20IDE.html#intellij)
+ - [Eclipse](gettingstarted/Importing%20into%20IDE.html#eclipse)
+ - [Netbeans](gettingstarted/Importing%20into%20IDE.html#netbeans)
+- [Running and Debugging with LibGDX](gettingstarted/Running%20and%20Debugging.html)
 - [Packaging your LibGDX application](gettingstarted/Packaging.html)
  - [Desktop](gettingstarted/Packaging.html#packaging-for-desktop)
  - [Android](gettingstarted/Packaging.html#packaging-for-android)
