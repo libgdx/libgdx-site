@@ -49,7 +49,7 @@ set them up correctly.
 
 Minimum:
 - Java Development Kit 8+ (Must be JDK)
-- <strong>(Recommended)</strong> Intellij IDEA 2018.1.3, (community edition is sufficient) [Link](https://www.jetbrains.com/idea/download/#section=windows)
+- <strong>(Recommended)</strong> Intellij IDEA 2020.1.2, (community edition is sufficient) [Link](https://www.jetbrains.com/idea/download/#section=windows)
 - Android Studio, 3.1.2 [Link](https://developer.android.com/studio/index.html)
 
 Android:
