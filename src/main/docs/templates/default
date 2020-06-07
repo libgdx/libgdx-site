@@ -20,7 +20,7 @@
 <div id="content">
 <div id="header">
 <div class="container" style="padding:0px;">
-	<a href="index.html"><img src="/img/logo.png" id="logo"/></a>
+	<a href="/index.html"><img src="/img/logo.png" id="logo"/></a>
 	<ul class="menu">
 		<li><a href="/news.html" id="menu_news">News</a></li>
 		<li><a href="/features.html" id="menu_features">Features</a></li>
