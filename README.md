@@ -1,6 +1,3 @@
-libgdx-site
-===========
+# libgdx-site
 
-libGDX now has a [new website](https://libgdx.com/).
-
-Check out the [new GitHub repo](https://github.com/libgdx/libgdx.github.io) associated with it too!
+This is the archived repo of our old website. You can find the repository of our **new website [here](https://github.com/libgdx/libgdx.github.io).**
